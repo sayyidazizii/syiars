@@ -20,6 +20,17 @@
 
 ## Code Style
 
+<!-- cek phpcs -->
+<!-- jalankan -->
+
+composer phpcbf
+
+<!-- jika belum install silahkan install phpcs -->
+<!-- jalankan dua perintah ini -->
+
+composer require --dev squizlabs/php_codesniffer
+composer require --dev friendsofphp/php-cs-fixer
+
 -   Gunakan standar penulisan kode PHP PSR-12.
 -   Jalan kan `./vendor/bin/php-cs-fixer fix --config=php-cs-fixer.php` untuk unit test.
 -   Jalan kan `./vendor/bin/phpcbf --standard=PSR12 app/` untuk memperbaiki penulisan kode.
