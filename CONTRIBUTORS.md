@@ -16,7 +16,7 @@
 -   Gunakan format: `enhance(nama-fitur): deskripsi-fitur` atau `fix(nama-fitur): deskripsi-fitur`.
 -   Contoh: `enhance(login): add-validation-on-login-form`.
 -   Gunakan kata kerja yang sesuai dengan perubahan yang dilakukan.
-<!-- (Kondisi jika hanya menigkatkan feature pada salah satu branch) -->
+<!-- (Kondisi jika hanya menigkatkan/edit feature pada salah satu branch) -->
 
 ## Code Style
 
