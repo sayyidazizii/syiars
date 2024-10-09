@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('system_menus', function (Blueprint $table) {
+        Schema::create('system_menu', function (Blueprint $table) {
             $table->string('id_menu', 10)->primary();
             $table->string('id', 100)->nullable();
             $table->enum('type', array('folder', 'file', 'function'))->nullable();
