@@ -12,13 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('system_menu', function (Blueprint $table) {
-            $table->bigIncrements('id_menu', 10)->primary();
+            $table->bigIncrements('id_menu');
             $table->string('id', 100)->nullable();
             $table->enum('type', array('folder', 'file', 'function'))->nullable();
-            $table->integer('indent_level', 1)->nullable();
+            $table->unsignedBigInteger('indent_level')->nullable();
             $table->string('text', 50)->nullable();
             $table->string('image', 50)->nullable();
-            $table->integer('company_id', 10)->nullable();
+            $table->unsignedBigInteger('company_id')->nullable();
+            $table->smallInteger('data_state')->default(0)->nullable();
             $table->unsignedBigInteger('branch_id')->default(1)->nullable();
             $table->unsignedBigInteger('created_id')->nullable();
             $table->unsignedBigInteger('updated_id')->nullable();
