@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('system_menu_mappings', function (Blueprint $table) {
+        Schema::create('system_menu_mapping', function (Blueprint $table) {
             $table->bigIncrements('menu_mapping_id');
             $table->unsignedBigInteger('company_id')->nullable();
             $table->unsignedSmallInteger('user_group_level')->nullable();
