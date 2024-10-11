@@ -371,7 +371,7 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'menu'],
         [
             'text' => 'important',
             'icon_color' => 'red',
