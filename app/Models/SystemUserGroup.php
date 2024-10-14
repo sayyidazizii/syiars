@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -32,5 +33,17 @@ class SystemUserGroup extends Model
         'date_state',
         'branch_id',
     ];
+    protected static function booted(){
+        $userid=auth->id();
+        static::creating(function ($model) use($userid) {
+            $model->created_id = $userid;
+        });
+        static::updated(function ($model) use($userid) {
+            $model->updated_id = $userid;
+        });
+        static::deleting(function ($model) use($userid) {
+            $model->deleted_id = $userid;
+        });
+}
 
 }
