@@ -29,4 +29,16 @@ class SystemMenuMapping extends Model
         'data_state',
         'branch_id',
     ];
+    protected static function booted(){
+        $userid=auth->id();
+        static::creating(function ($model) use($userid) {
+            $model->created_id = $userid;
+        });
+        static::updated(function ($model) use($userid) {
+            $model->updated_id = $userid;
+        });
+        static::deleting(function ($model) use($userid) {
+            $model->deleted_id = $userid;
+        });
+}
 }
