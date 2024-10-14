@@ -300,7 +300,9 @@ return [
             'text' => 'search',
             'topnav_right' => true,
         ],
-        ['header' => 'menu'],
+        [
+            'header' => 'menu'
+        ],
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,

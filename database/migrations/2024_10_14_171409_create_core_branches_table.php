@@ -11,14 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('system_user_group', function (Blueprint $table) {
-            $table->bigIncrements('user_group_id');
-            $table->unsignedBigInteger('company_id')->nullable();
-            $table->integer('user_group_level')->nullable();
-            $table->string('user_group_name', 50)->nullable();
-            $table->string('user_group_token', 250)->default('');
+        Schema::create('core_branch', function (Blueprint $table) {
+            $table->bigIncrements('branch_id');
+            $table->string('branch_code',255)->nullable();
+            $table->string('branch_name',255)->nullable();
+            $table->string('branch_address',255)->nullable();
+            $table->string('branch_city',255)->nullable();
+            $table->string('branch_contact_person',255)->nullable();
+            $table->string('branch_email',255)->nullable();
+            $table->string('branch_phone1',255)->nullable();
+            $table->string('branch_phone2',255)->nullable();
             $table->smallInteger('data_state')->default(0)->nullable();
-            $table->unsignedBigInteger('branch_id')->default(1)->nullable();
             $table->unsignedBigInteger('created_id')->nullable();
             $table->unsignedBigInteger('updated_id')->nullable();
             $table->uuid('uuid')->nullable();
@@ -33,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('system_user_groups');
+        Schema::dropIfExists('core_branch');
     }
 };
