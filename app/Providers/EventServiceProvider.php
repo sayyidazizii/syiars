@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Providers;
 
 use App\Models\User;
@@ -17,7 +16,6 @@ class EventServiceProvider extends ServiceProvider
     {
         //
     }
-
     /**
      * Bootstrap services.
      */

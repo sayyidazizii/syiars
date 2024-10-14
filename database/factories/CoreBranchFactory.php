@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\SystemMenu>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CoreBranch>
  */
-class SystemMenuFactory extends Factory
+class CoreBranchFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,4 +20,4 @@ class SystemMenuFactory extends Factory
             //
         ];
     }
-
+}
