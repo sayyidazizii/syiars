@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class SystemMenuSeeder extends Seeder
+class CoreBranchSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,4 +14,4 @@ class SystemMenuSeeder extends Seeder
     {
         //
     }
-
+}

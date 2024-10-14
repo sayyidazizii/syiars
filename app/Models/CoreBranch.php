@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SystemMenu extends Model
+class CoreBranch extends Model
 {
-    /** @use HasFactory<\Database\Factories\SystemMenuFactory> */
+    /** @use HasFactory<\Database\Factories\CoreBranchFactory> */
     use HasFactory;
-
+}
