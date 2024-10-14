@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
 
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -23,7 +24,6 @@ class EventServiceProvider extends ServiceProvider
     {
         Event::listen(BuildingMenu::class, function (BuildingMenu $event) {
             $menus = Cache::remember("menus".auth()->id(), (60 * 60 * 60), function () {
-           return User::select(['system_menu_mapping.*','system_menu.*'])
            ->join('system_user_group','system_user_group.user_group_id','=','system_user.user_group_id')
            ->join('system_menu_mapping','system_menu_mapping.user_group_level','=','system_user_group.user_group_level')
            ->join('system_menu','system_menu.id_menu','=','system_menu_mapping.id_menu')
@@ -84,5 +84,4 @@ class EventServiceProvider extends ServiceProvider
         }
         });
     }
-
 }
