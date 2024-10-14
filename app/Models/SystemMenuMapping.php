@@ -29,6 +29,7 @@ class SystemMenuMapping extends Model
         'data_state',
         'branch_id',
     ];
+    
     protected static function booted(){
         $userid=auth->id();
         static::creating(function ($model) use($userid) {
