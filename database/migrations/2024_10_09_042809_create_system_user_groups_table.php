@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('system_menu_mapping', function (Blueprint $table) {
-            $table->bigIncrements('menu_mapping_id');
+        Schema::create('system_user_group', function (Blueprint $table) {
+            $table->bigIncrements('user_group_id');
             $table->unsignedBigInteger('company_id')->nullable();
-            $table->unsignedSmallInteger('user_group_level')->nullable();
-            $table->string('id_menu',10)->nullable();
+            $table->integer('user_group_level')->nullable();
+            $table->string('user_group_name', 50)->nullable();
+            $table->string('user_group_token', 250)->default('');
             $table->smallInteger('data_state')->default(0)->nullable();
             $table->unsignedBigInteger('branch_id')->default(1)->nullable();
             $table->unsignedBigInteger('created_id')->nullable();
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('system_menu_mapping');
+        Schema::dropIfExists('system_user_groups');
     }
 };
