@@ -32,9 +32,17 @@ class EventServiceProvider extends ServiceProvider
            ->where('system_user.user_id','=',auth()->id())
            ->orderBy('system_menu_mapping.id_menu','ASC')->get();
           });
+            $menus =User::select(['system_menu_mapping.*','system_menu.*']) 
+           ->join('system_user_group','system_user_group.user_group_id','=','system_user.user_group_id')
+           ->join('system_menu_mapping','system_menu_mapping.user_group_level','=','system_user_group.user_group_level')
+           ->join('system_menu','system_menu.id_menu','=','system_menu_mapping.id_menu')
+           ->where('system_user.user_id','=',auth()->id())
+           ->orderBy('system_menu_mapping.id_menu','ASC')->get()->toArray();
+         
         $last_key = 'tes';
         $last_key2= 'tes';
         $last_key3= 'tes';
+   
         foreach($menus as $key => $val){
         if($val['indent_level']==1){
         $event->menu->add([
@@ -78,4 +86,5 @@ class EventServiceProvider extends ServiceProvider
         }
         });
     }
+
 }
