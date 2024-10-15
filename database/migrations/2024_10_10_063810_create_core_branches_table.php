@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('core_branch', function (Blueprint $table) {
+        Schema::create('core_branches', function (Blueprint $table) {
             $table->bigIncrements('branch_id');
             $table->string('branch_code',255)->nullable();
             $table->string('branch_name',255)->nullable();
@@ -22,13 +22,11 @@ return new class extends Migration
             $table->string('branch_phone1',255)->nullable();
             $table->string('branch_phone2',255)->nullable();
             $table->smallInteger('data_state')->default(0)->nullable();
-            $table->unsignedBigInteger('branch_id')->default(1)->nullable();
             $table->unsignedBigInteger('created_id')->nullable();
             $table->unsignedBigInteger('updated_id')->nullable();
             $table->uuid('uuid')->nullable();
             $table->unsignedBigInteger('deleted_id')->nullable();
             $table->softDeletes(); // Menambahkan kolom deleted_at
-            $table->timestamps();
             $table->timestamps();
         });
     }

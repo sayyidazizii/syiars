@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('system_menu', function (Blueprint $table) {
-            $table->bigIncrements('id_menu');
+            $table->string('id_menu', 10)->primary();
             $table->string('id', 100)->nullable();
-            $table->enum('type', array('folder', 'file', 'function'))->nullable();
-            $table->unsignedBigInteger('indent_level')->nullable();
+            $table->enum('type', ['folder', 'file', 'function'])->nullable();
+            $table->tinyInteger('indent_level', false, true)->nullable();
             $table->string('text', 50)->nullable();
             $table->string('image', 50)->nullable();
             $table->unsignedBigInteger('company_id')->nullable();
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('system_menu');
+        Schema::dropIfExists('system_menus');
     }
 };
