@@ -46,5 +46,9 @@ class SystemUserGroup extends Model
             $model->deleted_id = $userid;
         });
     }
+    public function maping() {
+        return $this->hasMany(SystemMenuMapping::class,'user_group_level','user_group_id');
+     }
+ 
 
 }
