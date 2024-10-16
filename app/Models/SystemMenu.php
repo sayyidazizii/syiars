@@ -10,3 +10,4 @@ class SystemMenu extends Model
     /** @use HasFactory<\Database\Factories\SystemMenuFactory> */
     use HasFactory;
 }
+

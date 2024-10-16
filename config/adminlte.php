@@ -312,6 +312,11 @@ return [
             'text' => 'search',
         ],
         [
+            'text' => 'Core Branch',
+            'url' => 'core_branch',
+            'icon' => 'fas fa-fw fa-list',
+        ],
+        [
             'text' => 'blog',
             'url' => 'admin/blog',
             'can' => 'manage-blog',
@@ -332,6 +337,11 @@ return [
         [
             'text' => 'change_password',
             'url' => 'admin/settings',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'System User Group',
+            'url' => 'system-user-group',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
