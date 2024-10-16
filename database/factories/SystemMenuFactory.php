@@ -21,4 +21,3 @@ class SystemMenuFactory extends Factory
         ];
     }
 }
-

@@ -11,4 +11,3 @@ class SystemMenu extends Model
     use HasFactory;
 }
 
-}
