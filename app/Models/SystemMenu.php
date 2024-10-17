@@ -9,10 +9,10 @@ class SystemMenu extends Model
 {
     /** @use HasFactory<\Database\Factories\SystemMenuFactory> */
     use HasFactory;
-}
-
     protected $table = 'system_menu';
 
     protected $primaryKey = 'id_menu';
-
 }
+
+  
+
