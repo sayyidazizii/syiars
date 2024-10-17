@@ -8,7 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class SystemUserGroupController extends Controller
 {
-    public function add(){
+    public function index(){
+        $systemmenu         = SystemMenu::get();
+        return view('content.SystemUserGroup.index',compact('systemmenu'));
+    }
+    public function create(){
         $systemmenu         = SystemMenu::get();
         return view('content.SystemUserGroup.FormAddSystemUserGroup',compact('systemmenu'));
     }

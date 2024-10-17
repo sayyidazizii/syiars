@@ -14,5 +14,4 @@ class SystemMenuSeeder extends Seeder
     {
         //
     }
-}
 
