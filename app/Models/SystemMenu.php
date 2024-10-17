@@ -14,5 +14,3 @@ class SystemMenu extends Model
     protected $primaryKey = 'id_menu';
 }
 
-  
-
