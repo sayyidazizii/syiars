@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SystemUserGroupController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CoreBranchController;
 
 Route::get('/', function () {
     return view('welcome');

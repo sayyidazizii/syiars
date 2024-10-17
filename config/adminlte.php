@@ -312,6 +312,11 @@ return [
             'text' => 'search',
         ],
         [
+            'text' => 'Core Branch',
+            'url' => 'core_branch',
+            'icon' => 'fas fa-fw fa-list',
+        ],
+        [
             'text' => 'blog',
             'url' => 'admin/blog',
             'can' => 'manage-blog',
