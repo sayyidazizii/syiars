@@ -9,4 +9,5 @@ class CoreBranch extends Model
 {
     /** @use HasFactory<\Database\Factories\CoreBranchFactory> */
     use HasFactory;
+    protected $primaryKey = 'branch_id';
 }
