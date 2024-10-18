@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('core_branches', function (Blueprint $table) {
+        Schema::create('core_branch', function (Blueprint $table) {
             $table->bigIncrements('branch_id');
             $table->string('branch_code',255)->nullable();
             $table->string('branch_name',255)->nullable();
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('core_branches');
+        Schema::dropIfExists('core_branch');
     }
 };

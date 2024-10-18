@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\CoreBranch;
-use Illuminate\Http\Request;    
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class CoreBranchController extends Controller
@@ -10,11 +10,11 @@ class CoreBranchController extends Controller
     public function index()
     {
         $core_branch = CoreBranch::all();
-        return view('kore.index', compact('core_branch'));
+        return view('CoreBranch.index', compact('core_branch'));
     }
     public function create()
     {
-        return view('kore.add');
+        return view('CoreBranch.add');
     }
     public function submit(Request $request)
     {
@@ -35,7 +35,7 @@ class CoreBranchController extends Controller
     public function update($id)
     {
         $core_branch = CoreBranch::find($id);
-        return view('kore.edit', compact('core_branch'));
+        return view('CoreBranch.edit', compact('core_branch'));
     }
     public function prosesupdate(Request $request, $id)
     {
