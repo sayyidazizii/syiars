@@ -10,13 +10,13 @@ class CoreBranchController extends Controller
     public function index()
     {
         $core_branch = CoreBranch::all();
-        return view('CoreBranch.index', compact('core_branch'));
+        return view('content.CoreBranch.index', compact('core_branch'));
     }
     public function create()
     {
-        return view('CoreBranch.add');
+        return view('content.CoreBranch.add');
     }
-    public function submit(Request $request)
+    public function store(Request $request)
     {
         $core_branc = new CoreBranch();
         $core_branc->branch_code = $request->branch_code;
@@ -35,7 +35,7 @@ class CoreBranchController extends Controller
     public function update($id)
     {
         $core_branch = CoreBranch::find($id);
-        return view('CoreBranch.edit', compact('core_branch'));
+        return view('content.CoreBranch.edit', compact('core_branch'));
     }
     public function prosesupdate(Request $request, $id)
     {
