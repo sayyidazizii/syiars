@@ -24,7 +24,7 @@ class AactCreditController extends Controller
         $aact_credit->credits_number = $request->credits_number;
         $aact_credit->save();
 
-        Session::flash('success', 'Berhasil menambah Aact Credit!');
+        Session::flash('success', 'Berhasil menambah Kode Pembiayaan!');
         return redirect()->route('aact_credit.index');
     }
     public function update($id)
@@ -40,7 +40,7 @@ class AactCreditController extends Controller
         $aact_credit->credits_number = $request->credits_number;
         $aact_credit->update();
 
-        Session::flash('warning', 'Berhasil Mengubah Aact Credit!');
+        Session::flash('warning', 'Berhasil Mengubah Kode Pembiayaan!');
         return redirect()->route('aact_credit.index');
     }
     public function delete($id)
@@ -48,7 +48,7 @@ class AactCreditController extends Controller
         $aact_credits = AactCredit::find($id);
         $aact_credits->delete();
 
-        Session::flash('danger', 'Berhasil Menghapus Aact Credit!');
+        Session::flash('danger', 'Berhasil Menghapus Kode Pembiayaan!');
         return redirect()->route('aact_credit.index');
     }
 }
