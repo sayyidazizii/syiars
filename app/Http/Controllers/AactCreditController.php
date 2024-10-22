@@ -16,7 +16,23 @@ class AactCreditController extends Controller
     {
         return view('content.AactCredit.add');
     }
+    public function creates()
+    {
+        return view('content.AactCredit.add_new');
+    }
     public function store(Request $request)
+    {
+        $aact_credit = new AactCredit();
+        $aact_credit->credits_code = $request->credits_code;
+        $aact_credit->credits_name = $request->credits_name;
+        $aact_credit->credits_number = $request->credits_number;
+        $aact_credit->credits_fine = $request->credits_fine;
+        $aact_credit->save();
+
+        Session::flash('success', 'Berhasil menambah Kode Pembiayaan!');
+        return redirect()->route('aact_credit.index');
+    }
+    public function stores(Request $request)
     {
         $aact_credit = new AactCredit();
         $aact_credit->credits_code = $request->credits_code;

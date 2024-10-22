@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Kode Pembiayaan Tambah | AdminLTE')
+@section('title', 'Kode Pembiayaan Tambah Baru | AdminLTE')
 @section('content_header')
     <h1>Tambah Data</h1>
 @stop
 @section('content')
     <div class="col-md-6">
         <div class="box box-primary">
-            <form role="form" method="post" action="{{ route('aact_credit.store') }}">
+            <form role="form" method="post" action="{{ route('aact_credit.stores') }}">
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
@@ -22,19 +22,13 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nomor Perkiraan</label>
-                        <select name="credits_number" class="form-control" required>
-                            <option value=""></option>
-                        </select>
+                        <input type="number" name="credits_number" class="form-control" placeholder="Enter Nomor Perkiraan" required>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nomor Perkiraan Margin</label>
-                        <select name="credits_fine" class="form-control" required>
+                        <select name="credits_fine" class="form-control">
                             <option value=""></option>
                         </select>
-                    </div>
-                    <div class="form-actions float-right">
-                        <a href="{{ url('/aact_credit/add_new') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
-                            Kode Pembiayaan Baru</a>
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>
