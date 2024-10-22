@@ -317,6 +317,11 @@ return [
             'icon' => 'fas fa-fw fa-list',
         ],
         [
+            'text' => 'Kode Pembiayaan',
+            'url' => 'aact_credit',
+            'icon' => 'fas fa-fw fa-bolt',
+        ],
+        [
             'text' => 'blog',
             'url' => 'admin/blog',
             'can' => 'manage-blog',
