@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\SystemUserGroupController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoreBranchController;
 use App\Http\Controllers\AcctSavingsController;
