@@ -25,19 +25,32 @@ class SystemUserGroupController extends Controller
         $systemmenu = SystemMenu::get();
         try {
         DB::beginTransaction();
-        $group=SystemUserGroup::create([
-            'user_group_name'           => $fields['user_group_name'],
-            'company_id'                => auth()->user()->company_id,
+        $acctSavings = AcctSavings::create([
+            'savings_code'           => $fields['savings_code'],
+            'savings_name'           => $fields['savings_name'],
+            'account_id'             => $fields['account_id'],
+            'account_basil_id'       => $fields['account_basil_id'],
+            'savings_number'         => $fields['savings_number'],
+            'savings_last_balance'   => $fields['savings_last_balance'],
+            'savings_profit_sharing' => $fields['savings_profit_sharing'],
+            'savings_nisbah'         => $fields['savings_nisbah'],
+            'savings_basil'          => $fields['savings_basil'],
+            'savings_status'         => $fields['savings_status'],
+            'branch_id'              => auth()->user()->branch_id,
+            'company_id'             => auth()->user()->company_id,
         ]);
-        foreach($systemmenu as $key => $val){
-            if(isset($request['checkbox_'.$val['id_menu']])){
-                $group->maping()->create([
+        
+        foreach ($systemmenu as $key => $val) {
+            // Memeriksa apakah checkbox untuk menu ini di-check
+            if (isset($request['checkbox_' . $val['id_menu']])) {
+                // Menambahkan pemetaan untuk simpanan
+                $acctSavings->maping()->create([
                     'user_group_level' => $fields['user_group_level'],
                     'id_menu'          => $val['id_menu'],
-                    'company_id'       => auth()->user()->company_id
+                    'company_id'       => auth()->user()->company_id,
                 ]);
             }
-        }
+        }        
         DB::commit();
         return redirect()->route('system-user-group')->success('Tambah System User Group Berhasil');
         } catch (\Exception $e) {
