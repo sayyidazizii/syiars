@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Aact Credit Tambah | AdminLTE')
+@section('title', 'Kode Pembiayaan Tambah | AdminLTE')
 @section('content_header')
     <h1>Tambah Data</h1>
 @stop
@@ -11,18 +11,22 @@
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Kode Credit</label>
-                        <input type="text" name="credits_code" class="form-control" placeholder="Enter Kode Credit"
+                        <label for="exampleInputEmail1">Kode Pembiayaan</label>
+                        <input type="text" name="credits_code" class="form-control" placeholder="Enter Kode Pembiayaan"
                             required>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Nama Credit</label>
-                        <input type="text" name="credits_name" class="form-control" placeholder="Enter Nama Credit"
+                        <label for="exampleInputEmail1">Nama Pembiayaan</label>
+                        <input type="text" name="credits_name" class="form-control" placeholder="Enter Nama Pembiayaan"
                             required>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Nomor Credit</label>
-                        <input type="number" name="credits_number" class="form-control" placeholder="Enter Nomor Credit">
+                        <label for="exampleInputEmail1">Nomor Perkiraan</label>
+                        <input type="number" name="credits_number" class="form-control" placeholder="Enter Nomor Perkiraan" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nomor Perkiraan Margin</label>
+                        <input type="number" name="credits_fine" class="form-control" placeholder="Enter Nomor Perkiraan Margin" required>
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>

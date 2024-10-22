@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Aact Credit | AdminLTE')
+@section('title', 'Kode Pembiayaan | AdminLTE')
 @section('content')
     @if (Session::has('success'))
         <div class="alert alert-success alert-dismissible mt-5">
@@ -32,11 +32,11 @@
     <div class="card border border-dark mt-5">
         <div class="card-header bg-dark clearfix">
             <h5 class="mb-0 float-left">
-                Tabel Aact Credit
+                Tabel Kode Pembiayaan
             </h5>
             <div class="form-actions float-right">
                 <a href="{{ url('/aact_credit/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
-                    Aact Credit</a>
+                    Kode Pembiayaan</a>
             </div>
         </div>
         <div class="card-body">
@@ -46,9 +46,10 @@
                     <thead>
                         <tr>
                             <th width="2%" style='text-align:center'>No</th>
-                            <th width="15%" style='text-align:center'>Kode Credit</th>
-                            <th width="15%" style='text-align:center'>Nama Credit</th>
-                            <th width="15%" style='text-align:center'>Nomor Credit</th>
+                            <th width="15%" style='text-align:center'>Kode Pembiayaan</th>
+                            <th width="15%" style='text-align:center'>Nama Pembiayaan</th>
+                            <th width="15%" style='text-align:center'>Nomor Perkiraan</th>
+                            <th width="15%" style='text-align:center'>Nomor Perkiraan Margin</th>
                             <th width="10%" style='text-align:center'>Aksi</th>
                         </tr>
                     </thead>
@@ -60,6 +61,7 @@
                                 <td>{{ $data->credits_code }}</td>
                                 <td>{{ $data->credits_name }}</td>
                                 <td>{{ $data->credits_number }}</td>
+                                <td>{{ $data->credits_fine }}</td>
                                 <td class="text-center">
                                     <a type="button" class="btn btn-outline-warning btn-sm mb-2"
                                         href="{{ route('aact_credit.update', $data->credits_id) }}">Edit</a>
