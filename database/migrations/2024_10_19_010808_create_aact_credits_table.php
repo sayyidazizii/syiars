@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('credits_code', 255);
             $table->string('credits_name', 255);
             $table->string('credits_number', 255);
-            $table->unsignedBigInteger('receivable_account_id')->nullable();
-            $table->unsignedBigInteger('income_account_id')->nullable();
-            $table->string('credits_fine', 255);
+            $table->unsignedBigInteger('receivable_account_id')->default(0)->nullable();
+            $table->unsignedBigInteger('income_account_id')->default(0)->nullable();
+            $table->string('credits_fine')->default(0)->nullable();
             $table->smallInteger('data_state')->default(0)->nullable();
             $table->unsignedBigInteger('branch_id')->default(1)->nullable();
             $table->unsignedBigInteger('created_id')->nullable();
