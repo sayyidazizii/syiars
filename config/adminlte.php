@@ -345,6 +345,11 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
+            'text' => 'Kode Simpanan Berjangka',
+            'url' => 'AcctDeposito',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
             'text' => 'multilevel',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [

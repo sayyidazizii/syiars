@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class AcctDeposito extends Model
 {
@@ -37,17 +39,17 @@ class AcctDeposito extends Model
 
     public $timestamps = true; 
 
-    protected static function booted(){
-
-        $userid=auth->id();
-        static::creating(function ($model) use($userid) {
+    protected static function booted() {
+        $userid = auth()->id(); // Menggunakan auth() dengan tanda kurung
+    
+        static::creating(function ($model) use ($userid) {
             $model->created_id = $userid;
         });
-        static::updated(function ($model) use($userid) {
+        static::updating(function ($model) use ($userid) { // Mengubah 'updated' menjadi 'updating'
             $model->updated_id = $userid;
         });
-        static::deleting(function ($model) use($userid) {
+        static::deleting(function ($model) use ($userid) {
             $model->deleted_id = $userid;
         });
     }
-}
+}    

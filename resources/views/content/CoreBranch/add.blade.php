@@ -7,7 +7,7 @@
 @section('content')
     <div class="col-md-6">
         <div class="box box-primary">
-            <form role="form" method="post" action="{{ route('core_branch.submit') }}">
+            <form role="form" method="post" action="{{ route('core_branch.store') }}">
                 @csrf
                 <div class="box-body">
                     <div class="form-group">

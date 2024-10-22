@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\SystemUserGroupController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoreBranchController;
+use App\Http\Controllers\AcctDepositoController;
+use App\Http\Controllers\SystemUserGroupController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,4 +27,12 @@ Route::prefix('core_branch')->name('core_branch.')->group(function () {
     Route::get('edit{id}', [CoreBranchController::class, 'update'])->name('update');
     Route::post('prosesedit{id}', [CoreBranchController::class, 'prosesupdate'])->name('prosesupdate');
     Route::post('delete{id}', [CoreBranchController::class, 'delete'])->name('delete');
+});
+Route::prefix('AcctDeposito')->name('AcctDeposito.')->group(function () {
+    Route::get('/', [AcctDepositoController::class, 'index'])->name('index');
+    Route::get('add', [AcctDepositoController::class, 'create'])->name('create');
+    Route::post('add', [AcctDepositoController::class, 'store'])->name('store');
+    Route::get('edit{id}', [AcctDepositoController::class, 'update'])->name('update');
+    Route::put('prosesedit{id}', [AcctDepositoController::class, 'prosesupdate'])->name('prosesupdate');
+    Route::post('delete{id}', [AcctDepositoController::class, 'delete'])->name('delete');
 });
