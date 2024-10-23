@@ -350,8 +350,8 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text' => 'Kode Simpanan Berjangka',
-            'url' => 'AcctDeposito',
+            'text' => 'Kode Simpanan',
+            'url' => 'AcctSavings',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [

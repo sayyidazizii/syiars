@@ -11,25 +11,31 @@
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Kode Pembiayaan</label>
-                        <input type="text" name="credits_code" class="form-control" placeholder="Enter Kode Pembiayaan"
-                            required>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Nama Pembiayaan</label>
-                        <input type="text" name="credits_name" class="form-control" placeholder="Enter Nama Pembiayaan"
-                            required>
-                    </div>
-                    <div class="form-group">
                         <label for="exampleInputEmail1">Nomor Perkiraan</label>
-                        <input type="number" name="credits_number" class="form-control" placeholder="Enter Nomor Perkiraan" required>
+                        <input type="text" name="account_code" class="form-control" placeholder="Enter Nomor Perkiraan"
+                            required>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Nomor Perkiraan Margin</label>
-                        <select name="credits_fine" class="form-control">
+                        <label for="exampleInputEmail1">Nama Perkiraan</label>
+                        <input type="text" name="account_name" class="form-control" placeholder="Enter Nama Perkiraan"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Golongan Perkiraan</label>
+                        <input type="text" name="account_group" class="form-control" placeholder="Enter Golongan Perkiraan" required>
+                    </div>
+                    {{-- <div class="form-group">
+                        <label for="exampleInputEmail1"></label>
+                        <select name="account_status" class="form-control">
                             <option value=""></option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Kelompok Perkiraan</label>
+                        <select name="account_type_id" class="form-control">
+                            <option value=""></option>
+                        </select>
+                    </div> --}}
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>

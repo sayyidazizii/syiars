@@ -12,12 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('aact_credits', function (Blueprint $table) {
-            $table->id('credits_id');
+            $table->id('id');
+            $table->unsignedBigInteger('account_id')->default(0)->nullable();
             $table->string('credits_code', 255);
             $table->string('credits_name', 255);
             $table->unsignedBigInteger('credits_number')->default(0)->nullable();
-            $table->unsignedBigInteger('receivable_account_id')->default(0)->nullable();
-            $table->unsignedBigInteger('income_account_id')->default(0)->nullable();
+            $table->foreignId('receivable_account_id')->constrained(
+                table: 'aact_account',
+                indexName: 'credits_account_id'
+            );
+            $table->foreignId('income_account_id')->constrained(
+                table: 'aact_account',
+                indexName: 'creditss_account_id'
+            );
             $table->unsignedBigInteger('credits_fine')->nullable();
             $table->smallInteger('data_state')->default(0)->nullable();
             $table->unsignedBigInteger('branch_id')->default(1)->nullable();
