@@ -7,7 +7,7 @@
 @section('content')
     <div class="col-md-6">
         <div class="box box-primary">
-            <form role="form" method="post" action="{{ route('aact_credit.prosesupdate', $aact_credits->credits_id) }}">
+            <form role="form" method="post" action="{{ route('aact_credit.prosesupdate', $aact_credits->id) }}">
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
@@ -20,11 +20,21 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nomor Perkiraan</label>
-                        <input type="number" name="credits_number" class="form-control" value="{{$aact_credits->credits_number}}">
+                            <select name="receivable_account_id" class="form-control">
+                                @foreach ($aact_account as $data)
+                                    <option {{ $aact_credits->receivable_account_id == $data->id ? 'selected' : '' }}
+                                        value="{{ $data->id }}">{{ $data->id }} - {{ $data->account_name }}</option>
+                                @endforeach
+                            </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nomor Perkiraan Margin</label>
-                        <input type="text" name="credits_fine" class="form-control" value="{{$aact_credits->credits_fine}}">
+                            <select name="income_account_id" class="form-control">
+                                @foreach ($aact_account as $data)
+                                    <option {{ $aact_credits->income_account_id == $data->id ? 'selected' : '' }}
+                                        value="{{ $data->id }}">{{ $data->id }} - {{ $data->account_name }}</option>
+                                @endforeach
+                            </select>
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>

@@ -60,12 +60,12 @@
                                 <td style='text-align:center'>{{ $no++ }}</td>
                                 <td>{{ $data->credits_code }}</td>
                                 <td>{{ $data->credits_name }}</td>
-                                <td>{{ $data->credits_number }}</td>
-                                <td>{{ $data->credits_fine }}</td>
+                                <td>{{ $data->receivable_account_id }}</td>
+                                <td>{{ $data->income_account_id }}</td>
                                 <td class="text-center">
                                     <a type="button" class="btn btn-outline-warning btn-sm mb-2"
-                                        href="{{ route('aact_credit.update', $data->credits_id) }}">Edit</a>
-                                    <form action="{{ route('aact_credit.delete', $data->credits_id) }}" method="post">
+                                        href="{{ route('aact_credit.update', $data->id) }}">Edit</a>
+                                    <form action="{{ route('aact_credit.delete', $data->id) }}" method="post">
                                         @csrf
                                         <button class="btn btn-outline-danger btn-sm"
                                             onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>
