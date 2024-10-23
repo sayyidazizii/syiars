@@ -82,7 +82,7 @@ class AcctDepositoController extends Controller
     $acct_deposito->save();
 
     // Redirect back to the user list with success message
-    return redirect()->route('AcctDeposito.index')->with('success', 'Data kode simpanan berjangka berhasil diperbarui!');
+    return redirect()->route('AcctDeposito.index')->success('Data simpanan berjangka diperbarui!');
     }
 
     public function delete($id)
@@ -94,7 +94,7 @@ class AcctDepositoController extends Controller
         $acct_deposito->delete();
     
         // Redirect back to the user list with a success message
-        return redirect()->route('ActtDeposito.index')->with('success', 'kode berhasil dihapus!');
+        return redirect()->route('AcctDeposito.index')->success('Data simpanan berjangka berhasil dihapus!');
     }
     
 
