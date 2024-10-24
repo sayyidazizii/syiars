@@ -20,18 +20,18 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nomor Perkiraan</label>
-                            <select name="receivable_account_id" class="form-control">
+                            <select name="account_id" class="form-control">
                                 @foreach ($aact_account as $data)
-                                    <option {{ $aact_credits->receivable_account_id == $data->id ? 'selected' : '' }}
+                                    <option {{ $aact_credits->account_id == $data->id ? 'selected' : '' }}
                                         value="{{ $data->id }}">{{ $data->id }} - {{ $data->account_name }}</option>
                                 @endforeach
                             </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nomor Perkiraan Margin</label>
-                            <select name="income_account_id" class="form-control">
+                            <select name="account_id" class="form-control">
                                 @foreach ($aact_account as $data)
-                                    <option {{ $aact_credits->income_account_id == $data->id ? 'selected' : '' }}
+                                    <option {{ $aact_credits->account_id == $data->id ? 'selected' : '' }}
                                         value="{{ $data->id }}">{{ $data->id }} - {{ $data->account_name }}</option>
                                 @endforeach
                             </select>

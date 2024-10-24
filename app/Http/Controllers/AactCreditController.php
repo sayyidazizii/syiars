@@ -28,8 +28,8 @@ class AactCreditController extends Controller
         $aact_credit = new AactCredit();
         $aact_credit->credits_code = $request->credits_code;
         $aact_credit->credits_name = $request->credits_name;
-        $aact_credit->receivable_account_id = $request->receivable_account_id;
-        $aact_credit->income_account_id = $request->income_account_id;
+        $aact_credit->account_id = $request->account_id;
+        $aact_credit->account_id = $request->account_id;
         $aact_credit->save();
 
         Session::flash('success', 'Berhasil menambah Kode Pembiayaan!');
@@ -59,8 +59,8 @@ class AactCreditController extends Controller
         $aact_credit = AactCredit::find($id);
         $aact_credit->credits_code = $request->credits_code;
         $aact_credit->credits_name = $request->credits_name;
-        $aact_credit->receivable_account_id = $request->receivable_account_id;
-        $aact_credit->income_account_id = $request->income_account_id;
+        $aact_credit->account_id = $request->account_id;
+        $aact_credit->account_id = $request->account_id;
         $aact_credit->update();
 
         Session::flash('warning', 'Berhasil Mengubah Kode Pembiayaan!');

@@ -11,7 +11,7 @@ class AactCredit extends Model
 {
     /** @use HasFactory<\Database\Factories\AactCreditFactory> */
     use HasFactory;
-    public function aactaccount(): BelongsTo
+    public function account(): BelongsTo
     {
         return $this->belongsTo(AactAccount::class, 'account_id');
     }
