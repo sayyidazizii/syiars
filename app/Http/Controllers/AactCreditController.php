@@ -18,11 +18,6 @@ class AactCreditController extends Controller
         $aact_account = AactAccount::all();
         return view('content.AactCredit.add', compact('aact_account'));
     }
-    public function creates()
-    {
-        $aact_account = AactAccount::all();
-        return view('content.AactCredit.add_account', compact('aact_account'));
-    }
     public function store(Request $request)
     {
         $aact_credit = new AactCredit();
@@ -35,20 +30,7 @@ class AactCreditController extends Controller
         Session::flash('success', 'Berhasil menambah Kode Pembiayaan!');
         return redirect()->route('aact_credit.index');
     }
-    public function stores(Request $request)
-    {
-        $aact_accoun = new AactAccount();
-        $aact_accoun->account_code = $request->account_code;
-        $aact_accoun->account_name = $request->account_name;
-        $aact_accoun->account_group = $request->account_group;
-        // $aact_credit->account_status = $request->account_status;
-        // $aact_credit->account_type_id = $request->account_type_id;
-        $aact_accoun->save();
-
-        Session::flash('success', 'Berhasil menambah Nomor Perkiraan Baru!');
-        return redirect()->route('aact_credit.create');
-    }
-    public function update($id)
+        public function update($id)
     {
         $aact_credits = AactCredit::find($id);
         $aact_account = AactAccount::all();

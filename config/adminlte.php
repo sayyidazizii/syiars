@@ -322,6 +322,11 @@ return [
             'icon' => 'fas fa-fw fa-bolt',
         ],
         [
+            'text' => 'Nomor Perkiraan',
+            'url' => 'aact_account',
+            'icon' => 'fas fa-fw fa-bolt',
+        ],
+        [
             'text' => 'blog',
             'url' => 'admin/blog',
             'can' => 'manage-blog',

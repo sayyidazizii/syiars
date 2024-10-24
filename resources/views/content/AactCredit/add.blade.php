@@ -37,7 +37,7 @@
                         </select>
                     </div>
                     <div class="form-actions float-right">
-                        <a href="{{ url('/aact_credit/add_account') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
+                        <a href="{{ url('/aact_account/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
                             Nomor Perkiraan Baru</a>
                     </div>
                     <div class="box-footer">
