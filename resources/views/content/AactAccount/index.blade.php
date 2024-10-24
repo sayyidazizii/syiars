@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Nomor Perkiraan | AdminLTE')
+@section('title', 'Perkiraan | AdminLTE')
 @section('content')
     @if (Session::has('success'))
         <div class="alert alert-success alert-dismissible mt-5">
@@ -32,11 +32,11 @@
     <div class="card border border-dark mt-5">
         <div class="card-header bg-dark clearfix">
             <h5 class="mb-0 float-left">
-                Tabel Nomor Perkiraan
+                Tabel Perkiraan
             </h5>
             <div class="form-actions float-right">
                 <a href="{{ url('/aact_account/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
-                    Nomor Perkiraan</a>
+                    Perkiraan</a>
             </div>
         </div>
         <div class="card-body">

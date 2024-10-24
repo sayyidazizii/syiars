@@ -322,7 +322,7 @@ return [
             'icon' => 'fas fa-fw fa-bolt',
         ],
         [
-            'text' => 'Nomor Perkiraan',
+            'text' => 'Perkiraan',
             'url' => 'aact_account',
             'icon' => 'fas fa-fw fa-beer',
         ],
