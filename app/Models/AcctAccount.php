@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class AactAccount extends Model
+class AcctAccount extends Model
 {
     /** @use HasFactory<\Database\Factories\AactAccountFactory> */
     use HasFactory;
-    protected $table = 'aact_account';
+    protected $table = 'acct_account';
     public function aactcredits(): HasMany
     {
         return $this->hasMany(AactCredit::class);

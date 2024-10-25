@@ -7,20 +7,20 @@
 @section('content')
     <div class="col-md-6">
         <div class="box box-primary">
-            <form role="form" method="post" action="{{ route('aact_account.prosesupdate', $aact_account->id) }}">
+            <form role="form" method="post" action="{{ route('acct_account.prosesupdate', $acct_account->id) }}">
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Kode Pembiayaan</label>
-                        <input type="text" name="account_code" class="form-control" value="{{$aact_account->account_code}}">
+                        <input type="text" name="account_code" class="form-control" value="{{$acct_account->account_code}}">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nama Pembiayaan</label>
-                        <input type="text" name="account_name" class="form-control" value="{{$aact_account->account_name}}">
+                        <input type="text" name="account_name" class="form-control" value="{{$acct_account->account_name}}">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Golongan Perkiraan</label>
-                        <input type="text" name="account_group" class="form-control" value="{{$aact_account->account_group}}">
+                        <input type="text" name="account_group" class="form-control" value="{{$acct_account->account_group}}">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Kelompok Perkiraan</label>

@@ -7,7 +7,7 @@
 @section('content')
     <div class="col-md-6">
         <div class="box box-primary">
-            <form role="form" method="post" action="{{ route('aact_account.store') }}">
+            <form role="form" method="post" action="{{ route('acct_account.store') }}">
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
