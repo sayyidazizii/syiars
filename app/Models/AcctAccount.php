@@ -16,5 +16,9 @@ class AcctAccount extends Model
     {
         return $this->hasMany(AcctCredit::class);
     }
+    public function acctdeposito(): HasMany
+    {
+        return $this->hasMany(AcctDeposito::class);
+    }
     use SoftDeletes;
 }

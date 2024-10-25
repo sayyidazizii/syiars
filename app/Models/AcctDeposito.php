@@ -53,5 +53,9 @@ class AcctDeposito extends Model
             $model->deleted_id = $userid;
         });
     }
+    public function acct_deposito(): BelongsTo
+    {
+        return $this->belongsTo(AcctDeposito::class, 'id');
+    }
     
 }    
