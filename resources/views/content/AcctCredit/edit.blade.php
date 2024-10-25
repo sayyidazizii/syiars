@@ -7,24 +7,34 @@
 @section('content')
     <div class="col-md-6">
         <div class="box box-primary">
-            <form role="form" method="post" action="{{ route('aact_credit.prosesupdate', $aact_credits->credits_id) }}">
+            <form role="form" method="post" action="{{ route('acct_credit.prosesupdate', $acct_credits->id) }}">
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Kode Pembiayaan</label>
-                        <input type="text" name="credits_code" class="form-control" value="{{$aact_credits->credits_code}}">
+                        <input type="text" name="credits_code" class="form-control" value="{{$acct_credits->credits_code}}">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nama Pembiayaan</label>
-                        <input type="text" name="credits_name" class="form-control" value="{{$aact_credits->credits_name}}">
+                        <input type="text" name="credits_name" class="form-control" value="{{$acct_credits->credits_name}}">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nomor Perkiraan</label>
-                        <input type="number" name="credits_number" class="form-control" value="{{$aact_credits->credits_number}}">
+                            <select name="account_id" class="form-control">
+                                @foreach ($acct_account as $data)
+                                    <option {{ $acct_credits->account_id == $data->id ? 'selected' : '' }}
+                                        value="{{ $data->id }}">{{ $data->id }} - {{ $data->account_name }}</option>
+                                @endforeach
+                            </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nomor Perkiraan Margin</label>
-                        <input type="text" name="credits_fine" class="form-control" value="{{$aact_credits->credits_fine}}">
+                            <select name="account_id" class="form-control">
+                                @foreach ($acct_account as $data)
+                                    <option {{ $acct_credits->account_id == $data->id ? 'selected' : '' }}
+                                        value="{{ $data->id }}">{{ $data->id }} - {{ $data->account_name }}</option>
+                                @endforeach
+                            </select>
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>
