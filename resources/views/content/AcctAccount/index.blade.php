@@ -62,8 +62,8 @@
                                 <td>{{ $data->account_code }}</td>
                                 <td>{{ $data->account_name }}</td>
                                 <td>{{ $data->account_group }}</td>
-                                <td>{{ $data->account_type_id }}</td>
-                                <td>{{ $data->account_status }}</td>
+                                <td>{{ $kelompokperkiraan[$data->account_type_id] }}</td>
+                                <td>{{ $accountstatus[$data->account_status] }}</td>
                                 <td class="text-center">
                                     <a type="button" class="btn btn-outline-warning btn-sm mb-2"
                                         href="{{ route('acct_account.update', $data->id) }}">Edit</a>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Configuration;
 use App\Models\AcctAccount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -11,11 +12,16 @@ class AcctAccountController extends Controller
     public function index()
     {
         $acct_account = AcctAccount::all();
-        return view('content.AcctAccount.index', compact('acct_account'));
+        $kelompokperkiraan = Configuration::KelompokPerkiraan();
+        $accountstatus = Configuration::AccountStatus();
+        return view('content.AcctAccount.index', compact('acct_account', 'kelompokperkiraan','accountstatus'));
     }
     public function create()
     {
-        return view('content.AcctAccount.add');
+        $kelompokperkiraan = Configuration::KelompokPerkiraan();
+        $accountstatus = Configuration::AccountStatus();
+
+        return view('content.AcctAccount.add', compact('kelompokperkiraan','accountstatus'));
     }
     public function store(Request $request)
     {
@@ -30,10 +36,12 @@ class AcctAccountController extends Controller
         Session::flash('success', 'Berhasil menambah Akun!');
         return redirect()->route('acct_account.index');
     }
-        public function update($id)
+    public function update($id)
     {
         $acct_account = AcctAccount::find($id);
-        return view('content.AcctAccount.edit', compact('acct_account'));
+        $kelompokperkiraan = Configuration::KelompokPerkiraan();
+        $accountstatus = Configuration::AccountStatus();
+        return view('content.AcctAccount.edit', compact('acct_account', 'kelompokperkiraan','accountstatus'));
     }
     public function prosesupdate(Request $request, $id)
     {

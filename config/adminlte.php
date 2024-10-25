@@ -322,7 +322,13 @@ return [
             'icon' => 'fas fa-fw fa-bolt',
         ],
         [
-            'text' => 'Perkiraan',
+            'text' => 'blog',
+            'url' => 'admin/blog',
+            'can' => 'manage-blog',
+        ],
+        ['header' => 'account_settings'],
+        [
+            'text' => 'No. Perkiraan',
             'url' => 'acct_account',
             'icon' => 'fas fa-fw fa-beer',
         ],
@@ -339,7 +345,7 @@ return [
         [
             'text' => 'Kode Simpanan',
             'url' => 'AcctSavings',
-            'icon' => 'fas fa-fw fa-th',
+            'icon' => 'fas fa-fw fa-lock',
         ],
     ],
 
