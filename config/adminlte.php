@@ -321,6 +321,7 @@ return [
             'url' => 'acct_credit',
             'icon' => 'fas fa-fw fa-bolt',
         ],
+        ['header' => 'account_settings'],
         [
             'text' => 'No. Perkiraan',
             'url' => 'acct_account',
