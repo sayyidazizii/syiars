@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AcctAccount;
 use App\Models\AcctDeposito;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,8 +16,8 @@ class AcctDepositoController extends Controller
     }
     public function create()
     {
-        $acctdeposito = AcctDeposito::get();
-        return view('content.AcctDeposito.add',compact('acctdeposito'));
+        $acct_acount = AcctAccount::get();
+        return view('content.AcctDeposito.add',compact('acct_acount'));
       
 
     }

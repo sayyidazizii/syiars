@@ -43,65 +43,67 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="No Perkiraan">No Perkiraan</label>
-                    <input type="text" name="deposito_number"
-                        class="form-control @error('deposito_number') is-invalid @enderror"
-                        value="{{ old('deposito_number') }}" placeholder="Masukkan nomor deposito">
+                    <label for="no Perkiraan">No Perkiraan</label>
+                    <select name="deposito_number" class="form-control">
+                        @foreach ($acct_acount as $data)
+                        <option value="{{ $data->id }}">{{ $data->account_code }}</option>
+                        @endforeach
+                    </select>
                     @error('deposito_number')
                     <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
+                <!-- Button to trigger the modal -->
+
+
                 <div class="form-group">
                     <label for="account_id">Basil</label>
-                    <select id="account_id" name="account_id"
-                        class="form-control @error('account_id') is-invalid @enderror">
-                        <option value="">Pilih nomor deposito</option>
-                        <option value="1" {{ old('account_id') == '1' ? 'selected' : '' }}>Deposito 1</option>
-                        <option value="2" {{ old('account_id') == '2' ? 'selected' : '' }}>Deposito 2</option>
-                        <option value="3" {{ old('account_id') == '3' ? 'selected' : '' }}>Deposito 3</option>
-                        <!-- Add more options as needed -->
-                    </select>
+                    <input type="text" name="account_id" class="form-control @error('account_id') is-invalid @enderror"
+                        value="{{ old('account_id') }}" placeholder="Masukkan Basil">
                     @error('account_id')
                     <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="akun basil">Akun Basil</label>
-                    <select id="account_basil_id" name="account_basil_id"
-                        class="form-control @error('account_basil_id') is-invalid @enderror">
-                        <option value="">Pilih nomor deposito</option>
-                        <option value="1" {{ old('account_basil_id') == '1' ? 'selected' : '' }}>Deposito 1</option>
-                        <option value="2" {{ old('account_basil_id') == '2' ? 'selected' : '' }}>Deposito 2</option>
-                        <option value="3" {{ old('account_basil_id') == '3' ? 'selected' : '' }}>Deposito 3</option>
-                        <!-- Add more options as needed -->
+                    <label for="no Perkiraan">Akun Basil</label>
+                    <select name="account_basil_id" class="form-control">
+                        @foreach ($acct_acount as $data)
+                        <option value="{{ $data->id }}">{{ $data->account_name }}</option>
+                        @endforeach
                     </select>
-                    @error('account_basil_id')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
+
+                    <div class="form-group">
+                        <label for="No Perkiraan">Jangka Waktu</label>
+                        <input type="text" name="deposito_period"
+                            class="form-control @error('deposito_period') is-invalid @enderror"
+                            value="{{ old('deposito_period') }}" placeholder="Masukkan jangka waktu">
+                        @error('deposito_period')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="bagi hasil/th">bagi hasil/th</label>
+                        <input type="text" name="deposito_profit_sharing"
+                            class="form-control @error('deposito_profit_sharing') is-invalid @enderror"
+                            value="{{ old('deposito_profit_sharing') }}" placeholder="Masukkan bagi hasil/th ">
+                        @error('deposito_profit_sharing')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-actions float-left">
+                        <a href="{{ route('acct_account.create') }}" class="btn btn-sm btn-info"><i
+                                class="fa fa-plus"></i> Tambah
+                            Nomor Perkiraan Baru</a>
+                    </div>
+                    <div class="box-footer float-right">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+
                 </div>
-                <div class="form-group">
-                    <label for="No Perkiraan">Jangka Waktu</label>
-                    <input type="text" name="deposito_period"
-                        class="form-control @error('deposito_period') is-invalid @enderror"
-                        value="{{ old('deposito_period') }}" placeholder="Masukkan jangka waktu">
-                    @error('deposito_period')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="bagi hasil/th">bagi hasil/th</label>
-                    <input type="text" name="deposito_profit_sharing"
-                        class="form-control @error('deposito_profit_sharing') is-invalid @enderror"
-                        value="{{ old('deposito_profit_sharing') }}" placeholder="Masukkan bagi hasil/th ">
-                    @error('deposito_profit_sharing')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </div>
         </form>
+
+        <!-- Modal -->
+
     </div>
 </div>
 @stop
