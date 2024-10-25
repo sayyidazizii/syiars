@@ -318,7 +318,7 @@ return [
         ],
         [
             'text' => 'Kode Pembiayaan',
-            'url' => 'aact_credit',
+            'url' => 'acct_credit',
             'icon' => 'fas fa-fw fa-bolt',
         ],
         [

@@ -35,7 +35,7 @@
                 Tabel Kode Pembiayaan
             </h5>
             <div class="form-actions float-right">
-                <a href="{{ url('/aact_credit/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
+                <a href="{{ url('/acct_credit/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
                     Kode Pembiayaan</a>
             </div>
         </div>
@@ -55,7 +55,7 @@
                     </thead>
                     <tbody>
                         <?php $no = 1; ?>
-                        @foreach ($aact_credits as $data)
+                        @foreach ($acct_credits as $data)
                             <tr>
                                 <td style='text-align:center'>{{ $no++ }}</td>
                                 <td>{{ $data->credits_code }}</td>
@@ -64,8 +64,8 @@
                                 <td>{{ $data->id }} - {{ $data->account->account_name }}</td>
                                 <td class="text-center">
                                     <a type="button" class="btn btn-outline-warning btn-sm mb-2"
-                                        href="{{ route('aact_credit.update', $data->id) }}">Edit</a>
-                                    <form action="{{ route('aact_credit.delete', $data->id) }}" method="post">
+                                        href="{{ route('acct_credit.update', $data->id) }}">Edit</a>
+                                    <form action="{{ route('acct_credit.delete', $data->id) }}" method="post">
                                         @csrf
                                         <button class="btn btn-outline-danger btn-sm"
                                             onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>

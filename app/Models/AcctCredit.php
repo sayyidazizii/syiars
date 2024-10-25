@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class AactCredit extends Model
+class AcctCredit extends Model
 {
-    /** @use HasFactory<\Database\Factories\AactCreditFactory> */
+    /** @use HasFactory<\Database\Factories\AcctCreditFactory> */
     use HasFactory;
     public function account(): BelongsTo
     {
-        return $this->belongsTo(AactAccount::class, 'account_id');
+        return $this->belongsTo(AcctAccount::class, 'account_id');
     }
     use SoftDeletes;
 }

@@ -9,12 +9,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AcctAccount extends Model
 {
-    /** @use HasFactory<\Database\Factories\AactAccountFactory> */
+    /** @use HasFactory<\Database\Factories\AcctAccountFactory> */
     use HasFactory;
     protected $table = 'acct_account';
-    public function aactcredits(): HasMany
+    public function acctcredits(): HasMany
     {
-        return $this->hasMany(AactCredit::class);
+        return $this->hasMany(AcctCredit::class);
     }
     use SoftDeletes;
 }
