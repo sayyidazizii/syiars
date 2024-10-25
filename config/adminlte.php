@@ -322,9 +322,9 @@ return [
             'icon' => 'fas fa-fw fa-bolt',
         ],
         [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
+            'text' => 'Perkiraan',
+            'url' => 'acct_account',
+            'icon' => 'fas fa-fw fa-beer',
         ],
         ['header' => 'account_settings'],
         [

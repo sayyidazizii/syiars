@@ -61,91 +61,14 @@
                         <select name="savings_number" class="form-control">
                             <option value="" selected disabled>Select</option>
                             @foreach ($acct_acount as $data)
-                            <option value="{{ $data->id }}">{{ $data->acount_code }}</option>
+                            <option value="{{ $data->id }}">{{ $data->account_code }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <button class="btn btn-success mt-4" type="button" data-toggle="modal"
-                            data-target="#modalNomorPerkiraan">
-                            + Tambah Nomor Perkiraan Baru
-                        </button>
-
-                    </div>
-                </div>
-                <!-- Modal Tambah Nomor Perkiraan Baru -->
-                <div class="modal fade" id="modalNomorPerkiraan" tabindex="-1"
-                    aria-labelledby="modalNomorPerkiraanLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <!-- modal-lg untuk lebar ekstra -->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalNomorPerkiraanLabel">Nomor Perkiraan Baru</h5>
-                                <button type="button" class="btn-close" data-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="formNomorPerkiraan">
-                                    <div class="row">
-                                        <!-- Nomor Perkiraan -->
-                                        <div class="col-md-6 mb-3">
-                                            <label for="nomorPerkiraan" class="form-label">Nomor Perkiraan</label>
-                                            <input type="text" class="form-control" id="nomorPerkiraan"
-                                                placeholder="Masukkan Nomor Perkiraan" required>
-                                        </div>
-
-                                        <!-- Nama Perkiraan -->
-                                        <div class="col-md-6 mb-3">
-                                            <label for="namaPerkiraan" class="form-label">Nama Perkiraan</label>
-                                            <input type="text" class="form-control" id="namaPerkiraan"
-                                                placeholder="Masukkan Nama Perkiraan" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <!-- Golongan Perkiraan -->
-                                        <div class="col-md-6 mb-3">
-                                            <label for="golonganPerkiraan" class="form-label">Golongan Perkiraan</label>
-                                            <input type="text" class="form-control" id="golonganPerkiraan"
-                                                placeholder="Masukkan Golongan Perkiraan">
-                                        </div>
-
-                                        <!-- Saldo Awal -->
-                                        <div class="col-md-6 mb-3">
-                                            <label for="saldoAwal" class="form-label">Saldo Awal</label>
-                                            <select class="form-select" id="saldoAwal" required>
-                                                <option value="debit">Debit</option>
-                                                <option value="kredit">Kredit</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <!-- Kelompok Perkiraan -->
-                                        <div class="col-md-12 mb-3">
-                                            <label for="kelompokPerkiraan" class="form-label">Kelompok Perkiraan</label>
-                                            <select class="form-select" id="kelompokPerkiraan" required>
-                                                <option value="NA">NA - Neraca Aktiva</option>
-                                                <option value="NP">NP - Neraca Pasiva</option>
-                                                <option value="RA">RA - Rugi Laba (A)</option>
-                                                <option value="RP">RP - Rugi Laba (B)</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-flex justify-content-end mt-4">
-                                        <button type="button" class="btn btn-danger me-2" data-dismiss="modal">
-                                            <i class="fa fa-times"></i> Tutup
-                                        </button>
-                                        <button type="submit" class="btn btn-success">
-                                            <i class="fa fa-check"></i> Simpan
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                        <button class="btn btn-success mt-4" type="button" id="addRowBtn">+ Tambah Nomor Perkiraan Baru</button>
                     </div>
                 </div>
             </div>
@@ -165,7 +88,9 @@
                         <label for="account_basil_id">Nomor Perkiraan Bagi Hasil</label>
                         <select name="account_basil_id" class="form-control">
                             <option value="" selected disabled>Select</option>
-                            <!-- Add options here -->
+                            @foreach ($acct_acount as $data)
+                            <option value="{{ $data->id }}"> {{ $data->account_name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -199,6 +124,10 @@
 
 @section('js')
 <script>
+    document.getElementById('addRowBtn').addEventListener('click', function () {
+        window.location.href = "{{ url('/acct_account/add') }}"; // Mengarahkan ke URL yang diinginkan
+    });
+
     $(document).ready(function () {
         setTimeout(function () {
             $('[class*="alert"]').each(function () {
