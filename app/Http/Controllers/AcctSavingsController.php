@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AcctAccount;
 use Illuminate\Http\Request;
 use App\Models\AcctSavings;
 use Illuminate\Support\Facades\DB;
@@ -18,8 +19,8 @@ class AcctSavingsController extends Controller
 
     public function create()
     {
-        $acct_savings = AcctSavings::get(); 
-        return view('content.AcctSavings.add', compact('acct_savings'));
+        $acct_acount = AcctAccount::get(); 
+        return view('content.AcctSavings.add', compact('acct_acount'));
     }
 
     // public function store(Request $request)

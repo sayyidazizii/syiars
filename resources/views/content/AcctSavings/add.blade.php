@@ -60,7 +60,9 @@
                         <label for="savings_number">Nomor Perkiraan</label>
                         <select name="savings_number" class="form-control">
                             <option value="" selected disabled>Select</option>
-                            <!-- Add options here -->
+                            @foreach ($acct_acount as $data)
+                            <option value="{{ $data->id }}">{{ $data->acount_code }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -90,13 +92,15 @@
                                         <!-- Nomor Perkiraan -->
                                         <div class="col-md-6 mb-3">
                                             <label for="nomorPerkiraan" class="form-label">Nomor Perkiraan</label>
-                                            <input type="text" class="form-control" id="nomorPerkiraan" placeholder="Masukkan Nomor Perkiraan" required>
+                                            <input type="text" class="form-control" id="nomorPerkiraan"
+                                                placeholder="Masukkan Nomor Perkiraan" required>
                                         </div>
 
                                         <!-- Nama Perkiraan -->
                                         <div class="col-md-6 mb-3">
                                             <label for="namaPerkiraan" class="form-label">Nama Perkiraan</label>
-                                            <input type="text" class="form-control" id="namaPerkiraan" placeholder="Masukkan Nama Perkiraan" required>
+                                            <input type="text" class="form-control" id="namaPerkiraan"
+                                                placeholder="Masukkan Nama Perkiraan" required>
                                         </div>
                                     </div>
 
@@ -104,7 +108,8 @@
                                         <!-- Golongan Perkiraan -->
                                         <div class="col-md-6 mb-3">
                                             <label for="golonganPerkiraan" class="form-label">Golongan Perkiraan</label>
-                                            <input type="text" class="form-control" id="golonganPerkiraan" placeholder="Masukkan Golongan Perkiraan">
+                                            <input type="text" class="form-control" id="golonganPerkiraan"
+                                                placeholder="Masukkan Golongan Perkiraan">
                                         </div>
 
                                         <!-- Saldo Awal -->
@@ -208,16 +213,17 @@
         }.bind(this), 5000);
     });
 
-    document.getElementById('formNomorPerkiraan').addEventListener('submit', function(event) {
-    event.preventDefault();
-    // Cek jika form valid
-    if (this.checkValidity()) {
-        // Lakukan sesuatu setelah validasi berhasil
-        alert("Form is valid and ready to submit!");
-    } else {
-        // Jika ada isian yang belum diisi
-        alert("Please fill in all the required fields!");
-    }
+    document.getElementById('formNomorPerkiraan').addEventListener('submit', function (event) {
+        event.preventDefault();
+        // Cek jika form valid
+        if (this.checkValidity()) {
+            // Lakukan sesuatu setelah validasi berhasil
+            alert("Form is valid and ready to submit!");
+        } else {
+            // Jika ada isian yang belum diisi
+            alert("Please fill in all the required fields!");
+        }
     });
+
 </script>
 @stop
