@@ -317,11 +317,6 @@ return [
             'icon' => 'fas fa-fw fa-list',
         ],
         [
-            'text' => 'Kode Pembiayaan',
-            'url' => 'acct_credit',
-            'icon' => 'fas fa-fw fa-bolt',
-        ],
-        [
             'text' => 'No. Perkiraan',
             'url' => 'acct_account',
             'icon' => 'fas fa-fw fa-beer',

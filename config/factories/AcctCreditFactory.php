@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\AactAccount>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\AcctCredit>
  */
-class AactAccountFactory extends Factory
+class AcctCreditFactory extends Factory
 {
     /**
      * Define the model's default state.
