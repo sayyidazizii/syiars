@@ -24,38 +24,46 @@
                         <label for="exampleInputEmail1">Golongan Perkiraan</label>
                         <input type="text" name="account_group" class="form-control" placeholder="Enter Golongan Perkiraan" required>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="account_type_id">Kelompok Perkiraan</label>
-                            <select name="account_type_id" id="account_type_id" class="form-control select2me">
-                                <option value="">1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
-                                <option value="">4</option>
-                                @if(isset($kelompokperkiraan))
-                                    @foreach($kelompokperkiraan as $key => $value)
-                                        <option value="{{ $key }}" {{ (old('account_type_id', $data['account_type_id'] ?? '') == $key) ? 'selected' : '' }}>{{ $value }}</option>
-                                    @endforeach
-                                @endif
+                    <div>
+                        {{-- <label class="col-lg-4 col-form-label fw-bold fs-6 required">{{ __('Kelompok Perkiraan') }}</label> --}}
+                        <label for="exampleInputEmail1">Kelompok Perkiraan</label>
+                        <div class="col-lg-8 fv-row">
+                            {{-- <select name="account_type_id" id="account_type_id" aria-label="{{ __('Pilih Kelompok Perkiraan') }}" data-control="select2" data-placeholder="{{ __('Pilih Kelompok Perkiraan') }}" data-allow-clear="true" class="form-select form-select-solid form-select-lg"> --}}
+                            <select name="account_type_id" id="account_type_id" class="form-control">
+                                {{-- <option value="">{{ __('Pilih') }}</option> --}}
+                                @foreach($kelompokperkiraan as $key => $value)
+                                    <option data-kt-flag="{{ $key }}" value="{{ $key }}" {{ $key === old('account_type_id', '' ?? '') ? 'selected' :'' }}>{{ $value }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="account_status">D/K</label>
-                            <select name="account_status" id="account_status" class="form-control select2me">
-                                <option value="">Debit</option>
-                                <option value="">Kredit</option>
-                                @if(isset($accountstatus))
-                                    @foreach($accountstatus as $key => $value)
-                                        <option value="{{ $key }}" {{ (old('account_status', $data['account_status'] ?? '') == $key) ? 'selected' : '' }}>{{ $value }}</option>
-                                    @endforeach
-                                @endif
+                    <div>
+                        {{-- <label class="col-lg-4 col-form-label fw-bold fs-6 required">{{ __('Kelompok Perkiraan') }}</label> --}}
+                        <label for="exampleInputEmail1">Akun Status</label>
+                        <div class="col-lg-8 fv-row">
+                            {{-- <select name="account_type_id" id="account_type_id" aria-label="{{ __('Pilih Kelompok Perkiraan') }}" data-control="select2" data-placeholder="{{ __('Pilih Kelompok Perkiraan') }}" data-allow-clear="true" class="form-select form-select-solid form-select-lg"> --}}
+                            <select name="account_status" id="account_status" class="form-control">
+                                {{-- <option value="">{{ __('Pilih') }}</option> --}}
+                                @foreach($accountstatus as $key => $value)
+                                    <option data-kt-flag="{{ $key }}" value="{{ $key }}" {{ $key === old('account_type_id', '' ?? '') ? 'selected' :'' }}>{{ $value }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
-                    <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    {{-- <div class="row mb-6">
+                        <label class="col-lg-4 col-form-label fw-bold fs-6 required"></label>
+                        <div class="col-lg-8 fv-row">
+                            <select name="account_status" id="account_status" data-control="select2" data-allow-clear="true" class="form-select form-select-solid form-select-lg">
+                                <option value="1">{{ __('Pilih') }}</option>
+                                <option value="0">{{ __('Pilih') }}</option>
+                                @foreach($accountstatus as $key => $value)
+                                    <option data-kt-flag="{{ $key }}" value="{{ $key }}" {{ $key === old('account_status', '' ?? '') ? 'selected' :'' }}>{{ $value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div> --}}
+                    </div class="box-footer">
+                        <button type="submit" class="btn btn-primary m-2">Simpan</button>
                     </div>
             </form>
         </div>

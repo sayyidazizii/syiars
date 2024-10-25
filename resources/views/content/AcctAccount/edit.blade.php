@@ -22,20 +22,34 @@
                         <label for="exampleInputEmail1">Golongan Perkiraan</label>
                         <input type="text" name="account_group" class="form-control" value="{{$acct_account->account_group}}">
                     </div>
-                    <div class="form-group">
+                    <div>
+                        {{-- <label class="col-lg-4 col-form-label fw-bold fs-6 required">{{ __('Kelompok Perkiraan') }}</label> --}}
                         <label for="exampleInputEmail1">Kelompok Perkiraan</label>
-                        <select name="account_type_id" class="form-control">
-                            <option value=""></option>
-                        </select>
+                        <div class="col-lg-8 fv-row">
+                            {{-- <select name="account_type_id" id="account_type_id" aria-label="{{ __('Pilih Kelompok Perkiraan') }}" data-control="select2" data-placeholder="{{ __('Pilih Kelompok Perkiraan') }}" data-allow-clear="true" class="form-select form-select-solid form-select-lg"> --}}
+                            <select name="account_type_id" id="account_type_id" class="form-control">
+                                {{-- <option value="">{{ __('Pilih') }}</option> --}}
+                                @foreach($kelompokperkiraan as $key => $value)
+                                    <option data-kt-flag="{{ $key }}" value="{{ $key }}" {{ $key === old('account_type_id', '' ?? '') ? 'selected' :'' }}>{{ $value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">D/K</label>
-                        <select name="account_status" class="form-control">
-                            <option value=""></option>
-                        </select>
+                    <div>
+                        {{-- <label class="col-lg-4 col-form-label fw-bold fs-6 required">{{ __('Kelompok Perkiraan') }}</label> --}}
+                        <label for="exampleInputEmail1">Akun Status</label>
+                        <div class="col-lg-8 fv-row">
+                            {{-- <select name="account_type_id" id="account_type_id" aria-label="{{ __('Pilih Kelompok Perkiraan') }}" data-control="select2" data-placeholder="{{ __('Pilih Kelompok Perkiraan') }}" data-allow-clear="true" class="form-select form-select-solid form-select-lg"> --}}
+                            <select name="account_status" id="account_status" class="form-control">
+                                {{-- <option value="">{{ __('Pilih') }}</option> --}}
+                                @foreach($accountstatus as $key => $value)
+                                    <option data-kt-flag="{{ $key }}" value="{{ $key }}" {{ $key === old('account_type_id', '' ?? '') ? 'selected' :'' }}>{{ $value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-primary m-2">Simpan</button>
                     </div>
             </form>
         </div>
