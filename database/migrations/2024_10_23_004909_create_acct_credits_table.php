@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('aact_credits', function (Blueprint $table) {
+        Schema::create('acct_credits', function (Blueprint $table) {
             $table->id('id');
             $table->foreignId('account_id')->constrained(
-                table: 'aact_account',
+                table: 'acct_account',
                 indexName: 'credits_account_id'
             );
             $table->string('credits_code', 255);
@@ -39,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('aact_credits');
+        Schema::dropIfExists('acct_credits');
     }
 };

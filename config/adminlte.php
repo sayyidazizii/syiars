@@ -318,32 +318,29 @@ return [
         ],
         [
             'text' => 'Kode Pembiayaan',
-            'url' => 'aact_credit',
+            'url' => 'acct_credit',
             'icon' => 'fas fa-fw fa-bolt',
         ],
         [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
+            'text' => 'Perkiraan',
+            'url' => 'acct_account',
+            'icon' => 'fas fa-fw fa-beer',
         ],
-        ['header' => 'account_settings'],
         [
             'text' => 'System User Group',
             'url' => 'system-user-group',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text' => 'Kode simpanan berjangka',
+            'text' => 'Kode Simpanan Berjangka',
             'url' => 'AcctDeposito',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-gavel',
         ],
         [
             'text' => 'Kode Simpanan',
             'url' => 'AcctSavings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-th',
         ],
-        
-        
     ],
 
     /*

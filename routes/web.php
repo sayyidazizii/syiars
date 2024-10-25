@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\AcctAccountController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AactCreditController;
+use App\Http\Controllers\AcctCreditController;
 use App\Http\Controllers\CoreBranchController;
 use App\Http\Controllers\AcctSavingsController;
 use App\Http\Controllers\AcctDepositoController;
@@ -31,15 +32,13 @@ Route::prefix('core_branch')->name('core_branch.')->group(function () {
     Route::post('delete{id}', [CoreBranchController::class, 'delete'])->name('delete');
 });
 
-Route::prefix('aact_credit')->name('aact_credit.')->group(function () {
-    Route::get('/', [AactCreditController::class, 'index'])->name('index');
-    Route::get('add', [AactCreditController::class, 'create'])->name('create');
-    Route::post('add', [AactCreditController::class, 'store'])->name('store');
-    Route::get('add_account', [AactCreditController::class, 'creates'])->name('creates');
-    Route::post('add_account', [AactCreditController::class, 'stores'])->name('stores');
-    Route::get('edit{id}', [AactCreditController::class, 'update'])->name('update');
-    Route::post('prosesedit{id}', [AactCreditController::class, 'prosesupdate'])->name('prosesupdate');
-    Route::post('delete{id}', [AactCreditController::class, 'delete'])->name('delete');
+Route::prefix('acct_credit')->name('acct_credit.')->group(function () {
+    Route::get('/', [AcctCreditController::class, 'index'])->name('index');
+    Route::get('add', [AcctCreditController::class, 'create'])->name('create');
+    Route::post('add', [AcctCreditController::class, 'store'])->name('store');
+    Route::get('edit{id}', [AcctCreditController::class, 'update'])->name('update');
+    Route::post('prosesedit{id}', [AcctCreditController::class, 'prosesupdate'])->name('prosesupdate');
+    Route::post('delete{id}', [AcctCreditController::class, 'delete'])->name('delete');
 });
 
 Route::prefix('AcctSavings')->name('AcctSavings.')->group(function () {
@@ -57,4 +56,12 @@ Route::prefix('AcctDeposito')->name('AcctDeposito.')->group(function () {
     Route::get('edit{id}', [AcctDepositoController::class, 'update'])->name('update');
     Route::put('prosesedit{id}', [AcctDepositoController::class, 'prosesupdate'])->name('prosesupdate');
     Route::post('delete{id}', [AcctDepositoController::class, 'delete'])->name('delete');
+});
+Route::prefix('acct_account')->name('acct_account.')->group(function () {
+    Route::get('/', [AcctAccountController::class, 'index'])->name('index');
+    Route::get('add', [AcctAccountController::class, 'create'])->name('create');
+    Route::post('add', [AcctAccountController::class, 'store'])->name('store');
+    Route::get('edit{id}', [AcctAccountController::class, 'update'])->name('update');
+    Route::post('prosesedit{id}', [AcctAccountController::class, 'prosesupdate'])->name('prosesupdate');
+    Route::post('delete{id}', [AcctAccountController::class, 'delete'])->name('delete');
 });
