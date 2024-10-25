@@ -322,11 +322,6 @@ return [
             'icon' => 'fas fa-fw fa-bolt',
         ],
         [
-            'text' => 'Perkiraan',
-            'url' => 'acct_account',
-            'icon' => 'fas fa-fw fa-beer',
-        ],
-        [
             'text' => 'No. Perkiraan',
             'url' => 'acct_account',
             'icon' => 'fas fa-fw fa-beer',
