@@ -328,6 +328,11 @@ return [
         ],
         ['header' => 'account_settings'],
         [
+            'text' => 'No. Perkiraan',
+            'url' => 'acct_account',
+            'icon' => 'fas fa-fw fa-beer',
+        ],
+        [
             'text' => 'System User Group',
             'url' => 'system-user-group',
             'icon' => 'fas fa-fw fa-lock',
