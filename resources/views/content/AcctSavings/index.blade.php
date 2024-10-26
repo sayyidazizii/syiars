@@ -32,7 +32,7 @@
     <div class="card border border-dark mt-5">
         <div class="card-header bg-dark clearfix">
             <h5 class="mb-0 float-left">
-                Tabel Kode Simpanan 
+                Tabel Kode Simpanan
             </h5>
             <div class="form-actions float-right">
                 <a href="{{ route('AcctSavings.create') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah Kode Simpanan </a>

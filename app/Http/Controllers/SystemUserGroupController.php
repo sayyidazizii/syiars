@@ -39,7 +39,7 @@ class SystemUserGroupController extends Controller
             'branch_id'              => auth()->user()->branch_id,
             'company_id'             => auth()->user()->company_id,
         ]);
-        
+
         foreach ($systemmenu as $key => $val) {
             // Memeriksa apakah checkbox untuk menu ini di-check
             if (isset($request['checkbox_' . $val['id_menu']])) {
@@ -50,7 +50,7 @@ class SystemUserGroupController extends Controller
                     'company_id'       => auth()->user()->company_id,
                 ]);
             }
-        }        
+        }
         DB::commit();
         return redirect()->route('system-user-group')->success('Tambah System User Group Berhasil');
         } catch (\Exception $e) {
