@@ -339,7 +339,7 @@ return [
         [
             'text' => 'Kode Simpanan',
             'url' => 'AcctSavings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-code',
         ],
     ],
 

@@ -18,7 +18,7 @@ class AcctDepositoController extends Controller
     {
         $acct_acount = AcctAccount::get();
         return view('content.AcctDeposito.add',compact('acct_acount'));
-      
+
 
     }
 
@@ -32,7 +32,7 @@ class AcctDepositoController extends Controller
             'deposito_period' => 'required|string|max:255',
             'deposito_profit_sharing' => 'required|string|max:255',
         ]);
-    
+
         try {
             DB::beginTransaction();
             AcctDeposito::create([
@@ -61,7 +61,7 @@ class AcctDepositoController extends Controller
     {
     // Validate the incoming data
     $request->validate([
-       
+
         'deposito_code' => 'required|string|max:255',
         'deposito_name' => 'required|string|max:255',
         'deposito_number' => 'required|string|max:255',
@@ -79,7 +79,7 @@ class AcctDepositoController extends Controller
     $acct_deposito->deposito_number = $request->input('deposito_number');
     $acct_deposito->deposito_period = $request->input('deposito_period');
     $acct_deposito->deposito_profit_sharing = $request->input('deposito_profit_sharing');
-    
+
     $acct_deposito->save();
 
     // Redirect back to the user list with success message
@@ -90,14 +90,14 @@ class AcctDepositoController extends Controller
     {
         // Find the user by ID
         $acct_deposito = AcctDeposito::findOrFail($id);
-    
+
         // Delete the user
         $acct_deposito->delete();
-    
+
         // Redirect back to the user list with a success message
         return redirect()->route('AcctDeposito.index')->success('Data simpanan berjangka berhasil dihapus!');
     }
-    
+
 
 }
 

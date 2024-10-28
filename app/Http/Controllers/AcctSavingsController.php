@@ -19,7 +19,7 @@ class AcctSavingsController extends Controller
 
     public function create()
     {
-        $acct_acount = AcctAccount::get(); 
+        $acct_acount = AcctAccount::get();
         return view('content.AcctSavings.add', compact('acct_acount'));
     }
 

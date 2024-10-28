@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Request;
 use App\Models\SystemMenu;
 use App\Models\SystemUserGroup;
+use App\Models\AcctSavings;
 use Illuminate\Support\Facades\DB;
 
 class SystemUserGroupController extends Controller
@@ -39,7 +40,7 @@ class SystemUserGroupController extends Controller
             'branch_id'              => auth()->user()->branch_id,
             'company_id'             => auth()->user()->company_id,
         ]);
-        
+
         foreach ($systemmenu as $key => $val) {
             // Memeriksa apakah checkbox untuk menu ini di-check
             if (isset($request['checkbox_' . $val['id_menu']])) {
@@ -50,7 +51,7 @@ class SystemUserGroupController extends Controller
                     'company_id'       => auth()->user()->company_id,
                 ]);
             }
-        }        
+        }
         DB::commit();
         return redirect()->route('system-user-group')->success('Tambah System User Group Berhasil');
         } catch (\Exception $e) {
