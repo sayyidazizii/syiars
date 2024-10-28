@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\AcctAccount;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class AcctSavings extends Model
 {
@@ -52,6 +53,11 @@ class AcctSavings extends Model
     public function AcctSavings()
     {
         return $this->belongsTo(AcctSavings::class, 'id');
+    }
+
+    public function account(): BelongsTo
+    {
+        return $this->belongsTo(AcctAccount::class, 'account_id');
     }
 
     public function branch()

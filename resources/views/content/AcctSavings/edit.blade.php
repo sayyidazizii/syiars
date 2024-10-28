@@ -43,9 +43,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="savings_number">Nomor Perkiraan</label>
-                            <input type="text" name="savings_number" class="form-control" value="{{ old('savings_number', $acct_savings->savings_number) }}">
-                            @error('savings_number')
+                            <label for="account_id">Nomor Perkiraan</label>
+                            <input type="text" name="account_id" class="form-control" value="{{ old('account_id', $acct_savings->account_id) }}">
+                            @error('account_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>

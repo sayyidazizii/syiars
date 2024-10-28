@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\AcctSavings;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AcctAccount extends Model
 {
@@ -16,6 +17,12 @@ class AcctAccount extends Model
     {
         return $this->hasMany(AcctCredit::class);
     }
+
+    public function acctsavings(): HasMany
+    {
+        return $this->hasMany(AcctSavings::class);
+    }
+
     public function acctdeposito(): HasMany
     {
         return $this->hasMany(AcctDeposito::class);

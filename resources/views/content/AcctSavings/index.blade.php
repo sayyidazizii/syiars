@@ -62,7 +62,7 @@
                                 <td style='text-align:center'>{{ $no++ }}</td>
                                 <td>{{ $saving->savings_code }}</td>
                                 <td>{{ $saving->savings_name }}</td>
-                                <td>{{ $saving->savings_number }}</td>
+                                <td>{{ $saving->account->account_code }} - {{ $saving->account->account_name }}</td>
                                 <td>{{ $saving->savings_profit_sharing }}</td>
                                 <td>{{ $saving->account_basil_id }}</td>
                                 <td>{{ $saving->savings_nisbah }}</td>
