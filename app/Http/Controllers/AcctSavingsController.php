@@ -60,7 +60,8 @@ class AcctSavingsController extends Controller
     public function update($id)
     {
         $acct_savings = AcctSavings::find($id);
-        return view('content.AcctSavings.edit', compact('acct_savings'));
+        $acct_account = AcctAccount::all(); // Mendapatkan semua data dari AcctAccount
+        return view('content.AcctSavings.edit', compact('acct_savings', 'acct_account'));
     }
 
     // Method untuk memproses update data

@@ -4,10 +4,10 @@
 
 @section('content')
     @if (Session::has('success'))
-    <div class="alert alert-success alert-dismissible mt-5">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="icon fa fa-check"></i> {{ Session::get('success') }}</h4>
-    </div>
+        <div class="alert alert-success alert-dismissible mt-5">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-check"></i> {{ Session::get('success') }}</h4>
+        </div>
     @endif
 
     <div class="card border border-dark mt-5">
@@ -44,7 +44,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="account_id">Nomor Perkiraan</label>
-                            <input type="text" name="account_id" class="form-control" value="{{ old('account_id', $acct_savings->account_id) }}">
+                            <select name="account_id" class="form-control">
+                                <option value="" selected disabled>Pilih Nomor Perkiraan</option>
+                                @foreach ($acct_account as $account)
+                                    <option value="{{ $account->id }}" {{ old('account_id', $acct_savings->account_id) == $account->id ? 'selected' : '' }}>
+                                        {{ $account->account_name }}
+                                    </option>
+                                @endforeach
+                            </select>
                             @error('account_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -65,7 +72,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="account_basil_id">Nomor Perkiraan Hasil</label>
-                            <input type="text" name="account_basil_id" class="form-control" value="{{ old('account_basil_id', $acct_savings->account_basil_id) }}">
+                            <select name="account_basil_id" class="form-control">
+                                <option value="" selected disabled>Pilih Nomor Perkiraan Hasil</option>
+                                @foreach ($acct_account as $account)
+                                    <option value="{{ $account->id }}" {{ old('account_basil_id', $acct_savings->account_basil_id) == $account->id ? 'selected' : '' }}>
+                                        {{ $account->account_name }}
+                                    </option>
+                                @endforeach
+                            </select>
                             @error('account_basil_id')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -102,11 +116,11 @@
 @stop
 
 @section('css')
-<link rel="stylesheet" href="/css/admin.custom.css">
+    <link rel="stylesheet" href="/css/admin.custom.css">
 @stop
 
 @section('js')
-<script>
-    console.log('Edit form loaded');
-</script>
+    <script>
+        console.log('Edit form loaded');
+    </script>
 @stop
