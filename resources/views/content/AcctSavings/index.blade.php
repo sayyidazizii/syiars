@@ -32,7 +32,7 @@
     <div class="card border border-dark mt-5">
         <div class="card-header bg-dark clearfix">
             <h5 class="mb-0 float-left">
-                Tabel Kode Simpanan 
+                Tabel Kode Simpanan
             </h5>
             <div class="form-actions float-right">
                 <a href="{{ route('AcctSavings.create') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah Kode Simpanan </a>
@@ -62,7 +62,7 @@
                                 <td style='text-align:center'>{{ $no++ }}</td>
                                 <td>{{ $saving->savings_code }}</td>
                                 <td>{{ $saving->savings_name }}</td>
-                                <td>{{ $saving->savings_number }}</td>
+                                <td>{{ $saving->account->account_code }} - {{ $saving->account->account_name }}</td>
                                 <td>{{ $saving->savings_profit_sharing }}</td>
                                 <td>{{ $saving->account_basil_id }}</td>
                                 <td>{{ $saving->savings_nisbah }}</td>
