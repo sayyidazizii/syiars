@@ -341,6 +341,11 @@ return [
             'url' => 'AcctSavings',
             'icon' => 'fas fa-fw fa-code',
         ],
+        [
+            'text' => 'Data Provinsi',
+            'url' => 'core_province',
+            'icon' => 'fas fa-fw fa-globe',
+        ],
     ],
 
     /*
