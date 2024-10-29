@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Core Branch | AdminLTE')
+@section('title', 'Business Office | AdminLTE')
 @section('content')
     @if (Session::has('success'))
         <div class="alert alert-success alert-dismissible mt-5">
@@ -32,11 +32,11 @@
     <div class="card border border-dark mt-5">
         <div class="card-header bg-dark clearfix">
             <h5 class="mb-0 float-left">
-                Tabel Core Branch
+                Tabel Business Office
             </h5>
             <div class="form-actions float-right">
-                <a href="{{ url('/core_branch/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
-                    Core Branch</a>
+                <a href="{{ url('/core_office/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
+                    Business Office</a>
             </div>
         </div>
         <div class="card-body">
@@ -46,34 +46,24 @@
                     <thead>
                         <tr>
                             <th width="2%" style='text-align:center'>No</th>
-                            <th width="15%" style='text-align:center'>Kode Branch</th>
-                            <th width="15%" style='text-align:center'>Nama Branch</th>
-                            <th width="15%" style='text-align:center'>Alamat Branch</th>
-                            <th width="15%" style='text-align:center'>Kota Branch</th>
-                            <th width="15%" style='text-align:center'>Contact Person</th>
-                            <th width="15%" style='text-align:center'>Email</th>
-                            <th width="15%" style='text-align:center'>Phone1</th>
-                            <th width="15%" style='text-align:center'>Phone2</th>
+                            <th width="15%" style='text-align:center'>Kode BO</th>
+                            <th width="15%" style='text-align:center'>Nama BO</th>
+                            <th width="15%" style='text-align:center'>Cabang</th>
                             <th width="10%" style='text-align:center'>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $no = 1; ?>
-                        @foreach ($core_branch as $data)
+                        @foreach ($core_office as $data)
                             <tr>
                                 <td style='text-align:center'>{{ $no++ }}</td>
-                                <td>{{ $data->branch_code }}</td>
-                                <td>{{ $data->branch_name }}</td>
-                                <td>{{ $data->branch_address }}</td>
-                                <td>{{ $data->branch_city }}</td>
-                                <td>{{ $data->branch_contact_person }}</td>
-                                <td>{{ $data->branch_email }}</td>
-                                <td>{{ $data->branch_phone1 }}</td>
-                                <td>{{ $data->branch_phone2 }}</td>
+                                <td>{{ $data->office_code }}</td>
+                                <td>{{ $data->office_name }}</td>
+                                <td>{{ $data->branch->branch_name }}</td>
                                 <td class="text-center">
                                     <a type="button" class="btn btn-outline-warning btn-sm mb-2"
-                                        href="{{ route('core_branch.update', $data->id) }}">Edit</a>
-                                    <form action="{{ route('core_branch.delete', $data->id) }}" method="post">
+                                        href="{{ route('core_office.update', $data->office_id) }}">Edit</a>
+                                    <form action="{{ route('core_office.delete', $data->office_id) }}" method="post">
                                         @csrf
                                         <button class="btn btn-outline-danger btn-sm"
                                             onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>

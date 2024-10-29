@@ -5,24 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
-class CoreBranch extends Model
+class CoreOffice extends Model
 {
-     /** @use HasFactory<\Database\Factories\CoreBranchFactory> */
-     use HasFactory, SoftDeletes;
-     use Notifiable;
-    protected $table = 'core_branch';
+    /** @use HasFactory<\Database\Factories\CoreOfficeFactory> */
+    use HasFactory, SoftDeletes;
+    use Notifiable;
+
+    protected $table = 'core_office'; // Specify the table name
+
+    protected $primaryKey = 'office_id'; // Primary key column
+
     protected $fillable = [
-        'branch_code',
-        'branch_name',
-        'branch_address',
-        'branch_city',
-        'branch_contact_person',
-        'branch_email',
-        'branch_phone1',
-        'branch_phone2',
+        'office_id',
+        'branch_id',
+        'user_id',
+        'office_code',
+        'office_name',
         'data_state',
     ];
 
@@ -46,8 +47,8 @@ class CoreBranch extends Model
             $model->deleted_id = $userid;
         });
     }
-    public function office(): HasMany
+    public function branch(): BelongsTo
     {
-        return $this->hasMany(CoreOffice::class);
+        return $this->belongsTo(CoreBranch::class, 'branch_id');
     }
 }

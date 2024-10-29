@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AcctAccountController;
+use App\Http\Controllers\CoreOfficeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AcctCreditController;
 use App\Http\Controllers\CoreBranchController;
@@ -68,10 +69,18 @@ Route::prefix('acct_account')->name('acct_account.')->group(function () {
     Route::post('delete{id}', [AcctAccountController::class, 'delete'])->name('delete');
 });
 Route::prefix('core_province')->name('core_province.')->group(function () {
-    Route::get('/', [CoreProvinceController::class, 'index'])->name('index'); // List all provinces
-    Route::get('add', [CoreProvinceController::class, 'create'])->name('create'); // Show form to add a new province
-    Route::post('add', [CoreProvinceController::class, 'store'])->name('store'); // Store a new province
-    Route::get('edit/{id}', [CoreProvinceController::class, 'update'])->name('update'); // Show form to edit a province
-    Route::put('prosesedit/{id}', [CoreProvinceController::class, 'prosesupdate'])->name('prosesupdate'); // Update an existing province
+    Route::get('/', [CoreProvinceController::class, 'index'])->name('index'); 
+    Route::get('add', [CoreProvinceController::class, 'create'])->name('create');
+    Route::post('add', [CoreProvinceController::class, 'store'])->name('store'); 
+    Route::get('edit/{id}', [CoreProvinceController::class, 'update'])->name('update'); 
+    Route::put('prosesedit/{id}', [CoreProvinceController::class, 'prosesupdate'])->name('prosesupdate'); 
     Route::delete('delete/{id}', [CoreProvinceController::class, 'delete'])->name('delete');
+});
+Route::prefix('core_office')->name('core_office.')->group(function () {
+    Route::get('/', [CoreOfficeController::class, 'index'])->name('index');
+    Route::get('add', [CoreOfficeController::class, 'create'])->name('create');
+    Route::post('add', [CoreOfficeController::class, 'store'])->name('store');
+    Route::get('edit{id}', [CoreOfficeController::class, 'update'])->name('update');
+    Route::post('prosesedit{id}', [CoreOfficeController::class, 'prosesupdate'])->name('prosesupdate');
+    Route::post('delete{id}', [CoreOfficeController::class, 'delete'])->name('delete');
 });

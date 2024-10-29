@@ -11,22 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('core_branch', function (Blueprint $table) {
-            $table->id();
-            $table->string('branch_code',255)->nullable();
-            $table->string('branch_name',255)->nullable();
-            $table->string('branch_address',255)->nullable();
-            $table->string('branch_city',255)->nullable();
-            $table->string('branch_contact_person',255)->nullable();
-            $table->string('branch_email',255)->nullable();
-            $table->string('branch_phone1',255)->nullable();
-            $table->string('branch_phone2',255)->nullable();
+        Schema::create('core_office', function (Blueprint $table) {
+            $table->increments('office_id');
+            $table->foreignId('branch_id')->constrained(
+                table: 'core_branch',
+                indexName: 'office_branch_id'
+            );
+            $table->unsignedBigInteger('user_id')->default(0);
+            $table->string('office_code', 20)->nullable();
+            $table->string('office_name', 50)->nullable();
             $table->smallInteger('data_state')->default(0)->nullable();
             $table->unsignedBigInteger('created_id')->nullable();
             $table->unsignedBigInteger('updated_id')->nullable();
             $table->uuid('uuid')->nullable();
             $table->unsignedBigInteger('deleted_id')->nullable();
-            $table->softDeletes(); // Menambahkan kolom deleted_at
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -36,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('core_branch');
+        Schema::dropIfExists('core_office');
     }
 };

@@ -346,6 +346,11 @@ return [
             'url' => 'core_province',
             'icon' => 'fas fa-fw fa-globe',
         ],
+        [
+            'text' => 'Kode BO',
+            'url' => 'core_office',
+            'icon' => 'fas fa-fw fa-hammer',
+        ],
     ],
 
     /*
