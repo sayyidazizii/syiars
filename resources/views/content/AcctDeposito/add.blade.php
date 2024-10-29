@@ -58,7 +58,7 @@
 
                 <div class="form-group">
                     <label for="account_id">Basil</label>
-                    <input type="text" name="account_id" class="form-control @error('account_id') is-invalid @enderror"
+                    <input type="number" name="account_id" class="form-control @error('account_id') is-invalid @enderror"
                         value="{{ old('account_id') }}" placeholder="Masukkan Basil">
                     @error('account_id')
                     <span class="invalid-feedback">{{ $message }}</span>
@@ -74,7 +74,7 @@
 
                     <div class="form-group">
                         <label for="No Perkiraan">Jangka Waktu</label>
-                        <input type="text" name="deposito_period"
+                        <input type="number" name="deposito_period"
                             class="form-control @error('deposito_period') is-invalid @enderror"
                             value="{{ old('deposito_period') }}" placeholder="Masukkan jangka waktu">
                         @error('deposito_period')
@@ -83,26 +83,27 @@
                     </div>
                     <div class="form-group">
                         <label for="bagi hasil/th">bagi hasil/th</label>
-                        <input type="text" name="deposito_profit_sharing"
+                        <input type="number" name="deposito_profit_sharing"
                             class="form-control @error('deposito_profit_sharing') is-invalid @enderror"
                             value="{{ old('deposito_profit_sharing') }}" placeholder="Masukkan bagi hasil/th ">
                         @error('deposito_profit_sharing')
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="form-actions float-left">
-                        <a href="{{ route('acct_account.create') }}" class="btn btn-sm btn-info"><i
-                                class="fa fa-plus"></i> Tambah
-                            Nomor Perkiraan Baru</a>
-                    </div>
+
                     <div class="box-footer float-right">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
 
                 </div>
         </form>
+        <div class="form-actions float-left">
+            <a href="{{ route('acct_account.create') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
+                Nomor Perkiraan Baru</a>
+        </div>
 
-        <!-- Modal -->
+
+
 
     </div>
 </div>

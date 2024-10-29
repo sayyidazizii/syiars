@@ -342,6 +342,11 @@ return [
             'url' => 'AcctSavings',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        [
+            'text' => 'Core City',
+            'url' => 'CoreCity',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
     ],
 
     /*
