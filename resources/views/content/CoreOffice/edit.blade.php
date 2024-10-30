@@ -14,15 +14,15 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nama Business Office</label>
-                        <input type="text" name="office_name" class="form-control" value="{{ $core_office->office_name }}">
+                        <input type="text" name="office_name" class="form-control"
+                            value="{{ $core_office->office_name }}">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Cabang</label>
                         <select name="branch_id" class="form-control">
                             @foreach ($core_branch as $data)
-                            <option
-                                {{ $core_office->branch_id == $data->id ? 'selected' : '' }}
-                                value="{{ $data->id }}">{{ $data->branch_name }}</option>
+                                <option {{ $core_office->branch_id == $data->id ? 'selected' : '' }}
+                                    value="{{ $data->id }}">{{ $data->branch_name }}</option>
                             @endforeach
                         </select>
                     </div>
