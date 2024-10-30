@@ -76,3 +76,11 @@ Route::prefix('CoreCity')->name('CoreCity.')->group(function () {
     Route::put('prosesedit{id}', [CoreCityController::class, 'prosesupdate'])->name('prosesupdate');
     Route::post('delete{id}', [CoreCityController::class, 'delete'])->name('delete');
 });
+Route::prefix('core_province')->name('core_province.')->group(function () {
+    Route::get('/', [CoreProvinceController::class, 'index'])->name('index');
+    Route::get('add', [CoreProvinceController::class, 'create'])->name('create');
+    Route::post('add', [CoreProvinceController::class, 'store'])->name('store');
+    Route::get('edit{id}', [CoreProvinceController::class, 'update'])->name('update');
+    Route::put('prosesedit{id}', [CoreProvinceController::class, 'prosesupdate'])->name('prosesupdate');
+    Route::post('delete{id}', [CoreProvinceController::class, 'delete'])->name('delete');
+});
