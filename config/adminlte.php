@@ -342,9 +342,19 @@ return [
             'icon' => 'fas fa-fw fa-code',
         ],
         [
+            'text' => 'Data Provinsi',
+            'url' => 'core_province',
+            'icon' => 'fas fa-fw fa-globe',
+        ],
+        [
             'text' => 'Kode BO',
             'url' => 'core_office',
             'icon' => 'fas fa-fw fa-hammer',
+        ],
+        [
+            'text' => 'Core City',
+            'url' => 'CoreCity',
+            'icon' => 'fas fa-fw fa-lock',
         ],
     ],
 

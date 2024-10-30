@@ -54,63 +54,54 @@
     </div>
     <!-- Button to trigger the modal -->
 
-    <div class="form-group">
-        <label for="account_id">Basil</label>
-        <input
-            type="text"
-            name="account_id"
-            class="form-control @error('account_id') is-invalid @enderror"
-            value="{{ old('account_id') }}"
-            placeholder="Masukkan Basil">
-            @error('account_id')
-            <span class="invalid-feedback">{{ $message }}</span>
-            @enderror
-        </div>
-        <div class="form-group">
-            <label for="no Perkiraan">Akun Basil</label>
-            <select name="account_basil_id" class="form-control">
-                @foreach ($acct_acount as $data)
-                <option value="{{ $data->id }}">{{ $data->account_name }}</option>
-                @endforeach
-            </select>
-
-            <div class="form-group">
-                <label for="No Perkiraan">Jangka Waktu</label>
-                <input
-                    type="text"
-                    name="deposito_period"
-                    class="form-control @error('deposito_period') is-invalid @enderror"
-                    value="{{ old('deposito_period') }}"
-                    placeholder="Masukkan jangka waktu">
-                    @error('deposito_period')
+                <div class="form-group">
+                    <label for="account_id">Basil</label>
+                    <input type="number" name="account_id" class="form-control @error('account_id') is-invalid @enderror"
+                        value="{{ old('account_id') }}" placeholder="Masukkan Basil">
+                    @error('account_id')
                     <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="bagi hasil/th">bagi hasil/th</label>
-                    <input
-                        type="text"
-                        name="deposito_profit_sharing"
-                        class="form-control @error('deposito_profit_sharing') is-invalid @enderror"
-                        value="{{ old('deposito_profit_sharing') }}"
-                        placeholder="Masukkan bagi hasil/th ">
+                    <label for="no Perkiraan">Akun Basil</label>
+                    <select name="account_basil_id" class="form-control">
+                        @foreach ($acct_acount as $data)
+                        <option value="{{ $data->id }}">{{ $data->account_name }}</option>
+                        @endforeach
+                    </select>
+
+                    <div class="form-group">
+                        <label for="No Perkiraan">Jangka Waktu</label>
+                        <input type="number" name="deposito_period"
+                            class="form-control @error('deposito_period') is-invalid @enderror"
+                            value="{{ old('deposito_period') }}" placeholder="Masukkan jangka waktu">
+                        @error('deposito_period')
+                        <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="bagi hasil/th">bagi hasil/th</label>
+                        <input type="number" name="deposito_profit_sharing"
+                            class="form-control @error('deposito_profit_sharing') is-invalid @enderror"
+                            value="{{ old('deposito_profit_sharing') }}" placeholder="Masukkan bagi hasil/th ">
                         @error('deposito_profit_sharing')
                         <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="form-actions float-left">
-                        <a href="{{ route('acct_account.create') }}" class="btn btn-sm btn-info">
-                            <i class="fa fa-plus"></i>
-                            Tambah Nomor Perkiraan Baru</a>
-                    </div>
+
                     <div class="box-footer float-right">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
 
                 </div>
-            </form>
+        </form>
+        <div class="form-actions float-left">
+            <a href="{{ route('acct_account.create') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
+                Nomor Perkiraan Baru</a>
+        </div>
 
-            <!-- Modal -->
+
+
 
         </div>
     </div>

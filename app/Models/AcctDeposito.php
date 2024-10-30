@@ -20,18 +20,23 @@ class AcctDeposito extends Model
     protected $primaryKey = 'deposito_id'; // Primary key column
 
     protected $fillable = [
-        'deposito_id',
-        'account_id',
         'account_basil_id',
         'deposito_code',
         'deposito_name',
         'deposito_number',
+        'account_id',
         'deposito_period',
-        'deposito_interest_rate',
         'deposito_profit_sharing',
+        'deposito_interest_rate',
         'data_state',
         'branch_id',
+        'created_id',
+        'created_on',
+        'updated_id',
+        'uuid',
+        'deleted_id',
     ];
+    
 
     protected $dates = [
         'created_on',
