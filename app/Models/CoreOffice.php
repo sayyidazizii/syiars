@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class CoreOffice extends Model
@@ -45,5 +46,9 @@ class CoreOffice extends Model
         static::deleting(function ($model) use ($userid) {
             $model->deleted_id = $userid;
         });
+    }
+    public function branch(): BelongsTo
+    {
+        return $this->belongsTo(CoreBranch::class, 'branch_id');
     }
 }

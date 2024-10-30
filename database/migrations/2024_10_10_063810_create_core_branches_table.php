@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('core_branch', function (Blueprint $table) {
-            $table->bigIncrements('branch_id');
+            $table->id();
             $table->string('branch_code',255)->nullable();
             $table->string('branch_name',255)->nullable();
             $table->string('branch_address',255)->nullable();

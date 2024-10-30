@@ -341,6 +341,11 @@ return [
             'url' => 'AcctSavings',
             'icon' => 'fas fa-fw fa-code',
         ],
+        [
+            'text' => 'Kode BO',
+            'url' => 'core_office',
+            'icon' => 'fas fa-fw fa-hammer',
+        ],
     ],
 
     /*

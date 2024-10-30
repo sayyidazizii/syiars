@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('core_office', function (Blueprint $table) {
             $table->increments('office_id');
-            $table->unsignedBigInteger('branch_id')->default(0);
+            $table->foreignId('branch_id')->constrained(
+                table: 'core_branch',
+                indexName: 'office_branch_id'
+            );
             $table->unsignedBigInteger('user_id')->default(0);
             $table->string('office_code', 20)->nullable();
             $table->string('office_name', 50)->nullable();
