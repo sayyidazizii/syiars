@@ -37,14 +37,14 @@ class AcctDeposito extends Model
 
     protected $dates = [
         'created_on',
-        'deleted_at', 
+        'deleted_at',
     ];
 
-    public $timestamps = true; 
+    public $timestamps = true;
 
     protected static function booted() {
         $userid = Auth::id(); // Use Auth facade directly
-    
+
         static::creating(function ($model) use ($userid) {
             $model->created_id = $userid;
         });
@@ -65,6 +65,6 @@ class AcctDeposito extends Model
 
     public function branch(): BelongsTo
     {
-        return $this->belongsTo(Branch::class, 'branch_id', 'branch_id');
+        return $this->belongsTo(CoreBranch::class, 'branch_id', 'branch_id');
     }
 }
