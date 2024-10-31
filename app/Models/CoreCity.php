@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class CoreCity extends Model
 {
@@ -48,4 +49,15 @@ class CoreCity extends Model
     // Konstanta untuk kolom timestamps
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
+
+    public function core_city(): BelongsTo
+    {
+        return $this->belongsTo(CoreCity::class, 'province_id');
+    }
+    public function core_provinces(): BelongsTo
+    {
+        return $this->belongsTo(CoreProvince::class, 'province_id');
+    }
+
+    
 }

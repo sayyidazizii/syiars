@@ -11,7 +11,7 @@ class AcctDepositoController extends Controller
 {
     //
     public function index(){
-        $acct_depositos         = AcctDeposito::get();
+        $acct_depositos         = AcctDeposito::with('account')->get();
         return view('content.AcctDeposito.index',compact('acct_depositos'));
     }
     public function create()

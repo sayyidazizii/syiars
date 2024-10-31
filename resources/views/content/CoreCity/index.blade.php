@@ -35,11 +35,11 @@
                     <tr>
                         <th width="2%" style='text-align:center'>No</th>
                         <th width="15%" style='text-align:center'>Kode Kota</th>
-                        <th width="15%" style='text-align:center'>ID Provinsi </th>
+                        <th width="15%" style='text-align:center'>Nama Provinsi</th>
                         <th width="15%" style='text-align:center'>Kode Provinsi</th>
                         <th width="15%" style='text-align:center'>Nama Kota</th>
+                        <th width="15%" style='text-align:center'>Nama Kota</th>
                         <th width="15%" style='text-align:center'>Nomor Provinsi</th>
-                        <th width="15%" style='text-align:center'>Nomor Kota</th>
                         <th width="10%" style='text-align:center'>Aksi</th>
                     </tr>
                 </thead>
@@ -48,10 +48,10 @@
                     <tr>
                         <td style='text-align:center'>{{ $index + 1 }}</td>
                         <td style='text-align:center'>{{ $core_city->city_code }}</td>
-                        <td style='text-align:center'></td>
-                        <td style='text-align:center'>{{ $core_city->province_code }}</td>
+                        <td style='text-align:center'>{{ $core_city->core_provinces->province_name }}</td>
+                        <td style='text-align:center'>{{ $core_city->core_provinces->province_code }}</td>
                         <td style='text-align:center'>{{ $core_city->city_name }}</td>
-                        <td style='text-align:center'>{{ $core_city->province_no }}</td>
+                        <td style='text-align:center'>{{ $core_city->core_provinces->province_no }}</td>
                         <td style='text-align:center'>{{ $core_city->city_no }}</td>
                         <td class="text-center">
                         <a type="button" class="btn btn-outline-warning btn-sm mb-2"

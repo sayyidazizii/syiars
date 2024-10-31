@@ -28,8 +28,7 @@
                 <!-- City Code -->
                 <div class="form-group">
                     <label for="city_code">Kode Kota</label>
-                    <input type="text" name="city_code"
-                        class="form-control @error('city_code') is-invalid @enderror"
+                    <input type="text" name="city_code" class="form-control @error('city_code') is-invalid @enderror"
                         value="{{ old('city_code') }}" placeholder="Masukkan kode kota">
                     @error('city_code')
                     <span class="invalid-feedback">{{ $message }}</span>
@@ -37,30 +36,36 @@
                 </div>
 
                 <!-- Province ID -->
-                <!-- <div class="form-group">
-                    <label for="province_id">ID Provinsi</label>
-                    
+                <div class="form-group">
+                    <label for="no Perkiraan">Nama Province</label>
+                    <select name="province_id" class="form-control">
+                        @foreach ($core_provinces as $data)
+                        <option value="{{ $data->province_id }}">{{ $data->province_name }}</option>
+                        @endforeach
+                    </select>
                     @error('province_id')
                     <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
-                </div> -->
-
+                </div>
+                
                 <!-- Province Code -->
                 <div class="form-group">
-                    <label for="province_code">Kode Provinsi</label>
-                    <input type="text" name="province_code"
-                        class="form-control @error('province_code') is-invalid @enderror"
-                        value="{{ old('province_code') }}" placeholder="Masukkan kode provinsi">
+                    <label for="no Perkiraan">Kode Province</label>
+                    <select name="province_code" class="form-control">
+                        @foreach ($core_provinces as $data)
+                        <option value="{{ $data->province_id }}">{{ $data->province_code }}</option>
+                        @endforeach
+                    </select>
                     @error('province_code')
                     <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
+               
 
                 <!-- City Name -->
                 <div class="form-group">
                     <label for="city_name">Nama Kota</label>
-                    <input type="text" name="city_name"
-                        class="form-control @error('city_name') is-invalid @enderror"
+                    <input type="text" name="city_name" class="form-control @error('city_name') is-invalid @enderror"
                         value="{{ old('city_name') }}" placeholder="Masukkan nama kota">
                     @error('city_name')
                     <span class="invalid-feedback">{{ $message }}</span>
@@ -69,20 +74,22 @@
 
                 <!-- Province No -->
                 <div class="form-group">
-                    <label for="province_no">Nomor Provinsi</label>
-                    <input type="text" name="province_no"
-                        class="form-control @error('province_no') is-invalid @enderror"
-                        value="{{ old('province_no') }}" placeholder="Masukkan nomor provinsi">
+                    <label for="no Perkiraan">Nomor Province</label>
+                    <select name="province_no" class="form-control">
+                        @foreach ($core_provinces as $data)
+                        <option value="{{ $data->province_id }}">{{ $data->province_no }}</option>
+                        @endforeach
+                    </select>
                     @error('province_no')
                     <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
+                
 
                 <!-- City No -->
                 <div class="form-group">
                     <label for="city_no">Nomor Kota</label>
-                    <input type="text" name="city_no"
-                        class="form-control @error('city_no') is-invalid @enderror"
+                    <input type="text" name="city_no" class="form-control @error('city_no') is-invalid @enderror"
                         value="{{ old('city_no') }}" placeholder="Masukkan nomor kota">
                     @error('city_no')
                     <span class="invalid-feedback">{{ $message }}</span>
@@ -106,5 +113,6 @@
 @section('js')
 <script>
     console.log('Form tambah data kota siap!');
+
 </script>
 @stop

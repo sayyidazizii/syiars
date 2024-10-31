@@ -2,18 +2,16 @@
 
 namespace App\Models;
 
-use auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
+use Illuminate\Support\Facades\Auth;
 
 class AcctDeposito extends Model
 {
-    use HasFactory, SoftDeletes;
-    use Notifiable;
+    use HasFactory, SoftDeletes, Notifiable;
 
     protected $table = 'acct_deposito'; // Specify the table name
 
@@ -36,7 +34,6 @@ class AcctDeposito extends Model
         'uuid',
         'deleted_id',
     ];
-    
 
     protected $dates = [
         'created_on',
@@ -46,21 +43,28 @@ class AcctDeposito extends Model
     public $timestamps = true; 
 
     protected static function booted() {
-        $userid = auth()->id(); // Menggunakan auth() dengan tanda kurung
+        $userid = Auth::id(); // Use Auth facade directly
     
         static::creating(function ($model) use ($userid) {
             $model->created_id = $userid;
         });
-        static::updating(function ($model) use ($userid) { // Mengubah 'updated' menjadi 'updating'
+        static::updating(function ($model) use ($userid) {
             $model->updated_id = $userid;
         });
         static::deleting(function ($model) use ($userid) {
             $model->deleted_id = $userid;
         });
     }
-    public function acct_deposito(): BelongsTo
+
+    // If this relationship is intended, ensure the foreign key is correct
+    // Otherwise, you might want to remove it
+    public function account(): BelongsTo
     {
-        return $this->belongsTo(AcctDeposito::class, 'id');
+        return $this->belongsTo(AcctAccount::class, 'account_id');
     }
-    
-}    
+
+    public function branch(): BelongsTo
+    {
+        return $this->belongsTo(Branch::class, 'branch_id', 'branch_id');
+    }
+}
