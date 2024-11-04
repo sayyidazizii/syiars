@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Configuration;
 use App\Models\AcctAccount;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class AcctAccountController extends Controller
 {
@@ -25,16 +25,30 @@ class AcctAccountController extends Controller
     }
     public function store(Request $request)
     {
-        $acct_accoun = new AcctAccount();
-        $acct_accoun->account_code = $request->account_code;
-        $acct_accoun->account_name = $request->account_name;
-        $acct_accoun->account_group = $request->account_group;
-        $acct_accoun->account_type_id = $request->account_type_id;
-        $acct_accoun->account_status = $request->account_status;
-        $acct_accoun->save();
+        $request->validate([
+            'account_code' => 'required|string|max:255',
+            'account_name' => 'required|string|max:255',
+            'account_group' => 'required|string|max:255',
+            'account_type_id' => 'required|integer',
+            'account_status' => 'required|numeric',
+        ]);
 
-        Session::flash('success', 'Berhasil menambah Akun!');
-        return redirect()->route('acct_account.index');
+        try {
+            DB::beginTransaction();
+            AcctAccount::create([
+                'account_code' => $request->input('account_code'),
+                'account_name' => $request->input('account_name'),
+                'account_group' => $request->input('account_group'),
+                'account_type_id' => $request->input('account_type_id'),
+                'account_status' => $request->input('account_status'),
+            ]);
+            DB::commit();
+            return redirect()->route('acct_account.index')->success( 'Data No Perkiraan berhasil ditambahkan!');
+        }catch (\Exception $e){
+            DB::rollBack();
+            report($e);
+            return redirect()->route('acct_account.index')->danger('Data No Perkiraan gagal diperbarui!');
+        }
     }
     public function update($id)
     {
@@ -45,23 +59,32 @@ class AcctAccountController extends Controller
     }
     public function prosesupdate(Request $request, $id)
     {
-        $acct_accoun = AcctAccount::find($id);
-        $acct_accoun->account_code = $request->account_code;
-        $acct_accoun->account_name = $request->account_name;
-        $acct_accoun->account_group = $request->account_group;
-        $acct_accoun->account_type_id = $request->account_type_id;
-        $acct_accoun->account_status = $request->account_status;
-        $acct_accoun->update();
+        $request->validate([
+            'account_code' => 'required|string|max:255',
+            'account_name' => 'required|string|max:255',
+            'account_group' => 'required|string|max:255',
+            'account_type_id' => 'required|integer',
+            'account_status' => 'required|numeric',
+        ]);
 
-        Session::flash('warning', 'Berhasil Mengubah Akun!');
-        return redirect()->route('acct_account.index');
+        $acct_account = AcctAccount::findOrFail($id);
+
+    $acct_account->account_code = $request->input('account_code');
+    $acct_account->account_name = $request->input('account_name');
+    $acct_account->account_group = $request->input('account_group');
+    $acct_account->account_type_id = $request->input('account_type_id');
+    $acct_account->account_status = $request->input('account_status');
+
+
+    $acct_account->save();
+
+    return redirect()->route('acct_account.index')->warning('Data No Perkiraan diperbarui!');
     }
     public function delete($id)
     {
         $acct_account = AcctAccount::find($id);
         $acct_account->delete();
 
-        Session::flash('danger', 'Berhasil Menghapus Akun!');
-        return redirect()->route('acct_account.index');
+        return redirect()->route('acct_account.index')->danger('Data No Perkiraan dihapus!');
     }
 }

@@ -47,7 +47,7 @@
                                 {{-- <option value="">{{ __('Pilih') }}</option> --}}
                                 @foreach ($accountstatus as $key => $value)
                                     <option data-kt-flag="{{ $key }}" value="{{ $key }}"
-                                        {{ $key === old('account_type_id', '' ?? '') ? 'selected' : '' }}>{{ $value }}
+                                        {{ $key === old('account_status', '' ?? '') ? 'selected' : '' }}>{{ $value }}
                                     </option>
                                 @endforeach
                             </select>
