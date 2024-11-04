@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\CoreBranch;
 use App\Models\CoreOffice;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 
 class CoreOfficeController extends Controller
@@ -58,7 +57,6 @@ class CoreOfficeController extends Controller
 
         $core_office = CoreOffice::findOrFail($id);
 
-    // Update user data
     $core_office->office_code = $request->input('office_code');
     $core_office->office_name = $request->input('office_name');
     $core_office->branch_id = $request->input('branch_id');
@@ -66,7 +64,6 @@ class CoreOfficeController extends Controller
 
     $core_office->save();
 
-    // Redirect back to the user list with success message
     return redirect()->route('core_office.index')->warning('Data Business Office diperbarui!');
     }
     public function delete($id)

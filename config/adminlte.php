@@ -312,7 +312,7 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'Core Branch',
+            'text' => 'Cabang',
             'url' => 'core_branch',
             'icon' => 'fas fa-fw fa-list',
         ],
