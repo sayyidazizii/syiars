@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\DB;
 class AcctDepositoController extends Controller
 {
     //
-        public function index(){
-        $acct_depositos         = AcctDeposito::get();
+    public function index(){
+        $acct_depositos         = AcctDeposito::with('account')->get();
         return view('content.AcctDeposito.index',compact('acct_depositos'));
     }
     public function create()
@@ -26,11 +26,13 @@ class AcctDepositoController extends Controller
     {
         // Validate the input data
         $request->validate([
-            'deposito_code' => 'required|string|max:255',
-            'deposito_name' => 'required|string|max:255',
-            'deposito_number' => 'required|string|max:255',
-            'deposito_period' => 'required|string|max:255',
-            'deposito_profit_sharing' => 'required|string|max:255',
+            'deposito_code' => 'required|string|max:20',
+            'deposito_name' => 'required|string|max:50',
+            'deposito_number' => 'required|integer', // sesuaikan tipe datanya
+            'account_id' => 'required|integer', // sesuaikan tipe datanya
+            'account_basil_id' => 'required|integer', // sesuaikan tipe datanya
+            'deposito_period' => 'required|integer', // sesuaikan tipe datanya
+            'deposito_profit_sharing' => 'required|integer', // sesuaikan tipe datanya
         ]);
     
         try {
@@ -40,6 +42,7 @@ class AcctDepositoController extends Controller
                 'deposito_code' => $request->input('deposito_code'),
                 'deposito_name' => $request->input('deposito_name'),
                 'deposito_number' => $request->input('deposito_number'),
+                'account_id' => $request->input('account_id'),
                 'deposito_period' => $request->input('deposito_period'),
                 'deposito_profit_sharing' => $request->input('deposito_profit_sharing'),
             ]);

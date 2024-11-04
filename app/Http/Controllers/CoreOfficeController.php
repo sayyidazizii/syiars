@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\CoreBranch;
 use App\Models\CoreOffice;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class CoreOfficeController extends Controller
 {
@@ -20,14 +20,26 @@ class CoreOfficeController extends Controller
     }
     public function store(Request $request)
     {
-        $core_offic = new CoreOffice();
-        $core_offic->office_code = $request->office_code;
-        $core_offic->office_name = $request->office_name;
-        $core_offic->branch_id = $request->branch_id;
-        $core_offic->save();
+        $request->validate([
+            'office_code' => 'required|string|max:20',
+            'office_name' => 'required|string|max:50',
+            'branch_id' => 'required|integer',
+        ]);
 
-        Session::flash('success', 'Berhasil Menambah Business Office!');
-        return redirect()->route('core_office.index');
+        try {
+            DB::beginTransaction();
+            CoreOffice::create([
+                'office_code' => $request->input('office_code'),
+                'office_name' => $request->input('office_name'),
+                'branch_id' => $request->input('branch_id'),
+            ]);
+            DB::commit();
+            return redirect()->route('core_office.index')->success( 'Data Business Office berhasil ditambahkan!');
+        }catch (\Exception $e){
+            DB::rollBack();
+            report($e);
+            return redirect()->route('core_office.index')->danger('Data Business Office gagal diperbarui!');
+        }
     }
     public function update($id)
     {
@@ -37,21 +49,28 @@ class CoreOfficeController extends Controller
     }
     public function prosesupdate(Request $request, $id)
     {
-        $core_branc = CoreOffice::find($id);
-        $core_branc->office_code = $request->office_code;
-        $core_branc->office_name = $request->office_name;
-        $core_branc->branch_id = $request->branch_id;
-        $core_branc->update();
+        $request->validate([
+            'office_code' => 'required|string|max:20',
+            'office_name' => 'required|string|max:50',
+            'branch_id' => 'required|integer',
+        ]);
 
-        Session::flash('warning', 'Berhasil Mengubah Business Office!');
-        return redirect()->route('core_office.index');
+        $core_office = CoreOffice::findOrFail($id);
+
+    $core_office->office_code = $request->input('office_code');
+    $core_office->office_name = $request->input('office_name');
+    $core_office->branch_id = $request->input('branch_id');
+
+
+    $core_office->save();
+
+    return redirect()->route('core_office.index')->warning('Data Business Office diperbarui!');
     }
     public function delete($id)
     {
         $core_office = CoreOffice::find($id);
         $core_office->delete();
 
-        Session::flash('danger', 'Berhasil Menghapus Business Office!');
-        return redirect()->route('core_office.index');
+        return redirect()->route('core_office.index')->danger('Data Business Office dihapus!');
     }
 }

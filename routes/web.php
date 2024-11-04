@@ -1,12 +1,13 @@
 <?php
 
 use App\Http\Controllers\AcctAccountController;
-use App\Http\Controllers\CoreOfficeController;
+use App\Http\Controllers\CoreCityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AcctCreditController;
 use App\Http\Controllers\CoreBranchController;
 use App\Http\Controllers\AcctSavingsController;
 use App\Http\Controllers\CoreProvinceController;
+use App\Http\Controllers\CoreOfficeController;
 
 use App\Http\Controllers\AcctDepositoController;
 use App\Http\Controllers\SystemUserGroupController;
@@ -68,13 +69,21 @@ Route::prefix('acct_account')->name('acct_account.')->group(function () {
     Route::post('prosesedit{id}', [AcctAccountController::class, 'prosesupdate'])->name('prosesupdate');
     Route::post('delete{id}', [AcctAccountController::class, 'delete'])->name('delete');
 });
+Route::prefix('CoreCity')->name('CoreCity.')->group(function () {
+    Route::get('/', [CoreCityController::class, 'index'])->name('index');
+    Route::get('add', [CoreCityController::class, 'create'])->name('create');
+    Route::post('add', [CoreCityController::class, 'store'])->name('store');
+    Route::get('edit{id}', [CoreCityController::class, 'update'])->name('update');
+    Route::put('prosesedit{id}', [CoreCityController::class, 'prosesupdate'])->name('prosesupdate');
+    Route::post('delete{id}', [CoreCityController::class, 'delete'])->name('delete');
+});
 Route::prefix('core_province')->name('core_province.')->group(function () {
-    Route::get('/', [CoreProvinceController::class, 'index'])->name('index'); 
+    Route::get('/', [CoreProvinceController::class, 'index'])->name('index');
     Route::get('add', [CoreProvinceController::class, 'create'])->name('create');
-    Route::post('add', [CoreProvinceController::class, 'store'])->name('store'); 
-    Route::get('edit/{id}', [CoreProvinceController::class, 'update'])->name('update'); 
-    Route::put('prosesedit/{id}', [CoreProvinceController::class, 'prosesupdate'])->name('prosesupdate'); 
-    Route::delete('delete/{id}', [CoreProvinceController::class, 'delete'])->name('delete');
+    Route::post('add', [CoreProvinceController::class, 'store'])->name('store');
+    Route::get('edit{id}', [CoreProvinceController::class, 'update'])->name('update');
+    Route::put('prosesedit{id}', [CoreProvinceController::class, 'prosesupdate'])->name('prosesupdate');
+    Route::post('delete{id}', [CoreProvinceController::class, 'delete'])->name('delete');
 });
 Route::prefix('core_office')->name('core_office.')->group(function () {
     Route::get('/', [CoreOfficeController::class, 'index'])->name('index');

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\AcctAccount;
-use Illuminate\Support\Facades\Session;
 use App\Models\AcctCredit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AcctCreditController extends Controller
 {
@@ -20,15 +20,26 @@ class AcctCreditController extends Controller
     }
     public function store(Request $request)
     {
-        $acct_credit = new AcctCredit();
-        $acct_credit->credits_code = $request->credits_code;
-        $acct_credit->credits_name = $request->credits_name;
-        $acct_credit->account_id = $request->account_id;
-        $acct_credit->account_id = $request->account_id;
-        $acct_credit->save();
+        $request->validate([
+            'credits_code' => 'required|string|max:255',
+            'credits_name' => 'required|string|max:255',
+            'account_id' => 'required|integer',
+        ]);
 
-        Session::flash('success', 'Berhasil menambah Kode Pembiayaan!');
-        return redirect()->route('acct_credit.index');
+        try {
+            DB::beginTransaction();
+            AcctCredit::create([
+                'credits_code' => $request->input('credits_code'),
+                'credits_name' => $request->input('credits_name'),
+                'account_id' => $request->input('account_id'),
+            ]);
+            DB::commit();
+            return redirect()->route('acct_credit.index')->success( 'Data Kode Pembiayaan berhasil ditambahkan!');
+        }catch (\Exception $e){
+            DB::rollBack();
+            report($e);
+            return redirect()->route('acct_credit.index')->danger('Data Kode Pembiayaan gagal diperbarui!');
+        }
     }
         public function update($id)
     {
@@ -38,22 +49,28 @@ class AcctCreditController extends Controller
     }
     public function prosesupdate(Request $request, $id)
     {
-        $acct_credit = AcctCredit::find($id);
-        $acct_credit->credits_code = $request->credits_code;
-        $acct_credit->credits_name = $request->credits_name;
-        $acct_credit->account_id = $request->account_id;
-        $acct_credit->account_id = $request->account_id;
-        $acct_credit->update();
+        $request->validate([
+            'credits_code' => 'required|string|max:255',
+            'credits_name' => 'required|string|max:255',
+            'account_id' => 'required|integer',
+        ]);
 
-        Session::flash('warning', 'Berhasil Mengubah Kode Pembiayaan!');
-        return redirect()->route('acct_credit.index');
+        $acct_credits = AcctCredit::findOrFail($id);
+
+    $acct_credits->credits_code = $request->input('credits_code');
+    $acct_credits->credits_name = $request->input('credits_name');
+    $acct_credits->account_id = $request->input('account_id');
+
+
+    $acct_credits->save();
+
+    return redirect()->route('acct_credit.index')->warning('Data Kode Pembiayaan diperbarui!');
     }
     public function delete($id)
     {
         $acct_credits = AcctCredit::find($id);
         $acct_credits->delete();
 
-        Session::flash('danger', 'Berhasil Menghapus Kode Pembiayaan!');
-        return redirect()->route('acct_credit.index');
+        return redirect()->route('acct_credit.index')->danger('Data Kode Pembiayaan dihapus!');
     }
 }

@@ -55,7 +55,6 @@
                             <a class="btn btn-outline-warning btn-sm mb-2" href="{{ route('core_province.update', $province->province_id) }}">Edit</a>
                             <form action="{{ route('core_province.delete', $province->province_id) }}" method="POST" class="d-inline">
                                 @csrf
-                                @method('DELETE')
                                 <button class="btn btn-outline-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus provinsi ini?')">Hapus</button>
                             </form>
                         </td>

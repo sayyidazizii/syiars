@@ -312,7 +312,7 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'Core Branch',
+            'text' => 'Cabang',
             'url' => 'core_branch',
             'icon' => 'fas fa-fw fa-list',
         ],
@@ -350,6 +350,11 @@ return [
             'text' => 'Kode BO',
             'url' => 'core_office',
             'icon' => 'fas fa-fw fa-hammer',
+        ],
+        [
+            'text' => 'Core City',
+            'url' => 'CoreCity',
+            'icon' => 'fas fa-fw fa-lock',
         ],
     ],
 

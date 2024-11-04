@@ -21,8 +21,8 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Cabang</label>
                         <select name="branch_id" class="form-control">
-                            @foreach($core_branch as $data)
-                            <option value="{{ $data->id }}">{{ $data->branch_name }}</option>
+                            @foreach ($core_branch as $data)
+                                <option value="{{ $data->id }}">{{ $data->branch_name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -31,11 +31,11 @@
                     </div>
             </form>
         </div>
-        </div>
-        @stop @section('css')
-        <link rel="stylesheet" href="/css/admin.custom.css">
-        @stop @section('js')
-        <script>
-            console.log('Hi!');
-        </script>
-    @stop
+    </div>
+    @stop @section('css')
+    <link rel="stylesheet" href="/css/admin.custom.css">
+    @stop @section('js')
+    <script>
+        console.log('Hi!');
+    </script>
+@stop

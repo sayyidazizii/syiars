@@ -2,34 +2,21 @@
 
 @section('title', 'Kode Pembiayaan | AdminLTE')
 @section('content')
-    @if (Session::has('success'))
-        <div class="alert alert-success alert-dismissible mt-5">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4>
-                <i class="icon fa fa-check"></i>
-                {{ Session::get('success') }}
-            </h4>
-        </div>
-    @endif
-    @if (Session::has('warning'))
-        <div class="alert alert-warning alert-dismissible mt-5">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4>
-                <i class="icon fa fa-check"></i>
-                {{ Session::get('warning') }}
-            </h4>
-        </div>
-    @endif
-    @if (Session::has('danger'))
-        <div class="alert alert-danger alert-dismissible mt-5">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4>
-                <i class="icon fa fa-check"></i>
-                {{ Session::get('danger') }}
-            </h4>
-        </div>
-    @endif
-    <div class="card border border-dark mt-5">
+@if (session('msg'))
+<div class="alert alert-{{ session('type') ?? 'info' }}" role="alert">
+    {{ session('msg') }}
+</div>
+@endif
+
+
+@if (count($errors) > 0)
+<div class="alert alert-danger" role="alert">
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+</div>
+@endif
+    <div class="card border border-dark">
         <div class="card-header bg-dark clearfix">
             <h5 class="mb-0 float-left">
                 Tabel Kode Pembiayaan
@@ -84,19 +71,20 @@
     <link rel="stylesheet" href="/css/admin.custom.css">
 @stop
 @section('js')
-    <script>
-        $(document).ready(function() {
-            setTimeout(function() {
-                $('[class*="alert"]').each(function() {
-                    $(this).alert('close');
-                });
-            }, 5000);
-        });
-
-        $(document).on('DOMNodeInserted', '[class*="alert"]', function() {
-            setTimeout(function() {
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $('[class*="alert"]').each(function () {
                 $(this).alert('close');
-            }.bind(this), 5000);
-        });
-    </script>
+            });
+        }, 5000);
+    });
+
+    $(document).on('DOMNodeInserted', '[class*="alert"]', function () {
+        setTimeout(function () {
+            $(this).alert('close');
+        }.bind(this), 5000);
+    });
+
+</script>
 @stop
