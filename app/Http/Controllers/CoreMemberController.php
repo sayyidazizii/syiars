@@ -2,28 +2,35 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\CoreCity;
+use App\Models\CoreDusun;
 use App\Models\CoreMember;
+use App\Models\CoreProvince;
 use Illuminate\Http\Request;
+use App\Helpers\Configuration;
 use Illuminate\Support\Facades\DB;
 
 class CoreMemberController extends Controller
 {
     public function index()
     {
+        $core_dusun = CoreDusun::all();
         $core_city = CoreCity::all();
         $core_province = CoreProvince::all();
         $core_kelurahan = CoreKelurahan::all();
         $core_kecamatan = CoreKecamatan::all();
         $core_member = CoreMember::all();
-        return view('content.CoreMember.index', compact('core_member', 'core_kecamatan'));
+        return view('content.CoreMember.index', compact('core_member', 'core_kecamatan', 'core_kelurahan', 'core_province', 'core_city', 'core_dusun'));
     }
     public function create()
     {
+        $core_dusun = CoreDusun::all();
         $core_city = CoreCity::all();
         $core_province = CoreProvince::all();
         $core_kelurahan = CoreKelurahan::all();
         $core_kecamatan = CoreKecamatan::all();
-        return view('content.CoreMember.add', compact('core_kecamatan'));
+        return view('content.CoreMember.add', compact('core_kecamatan', 'core_kelurahan', 'core_province', 'core_city', 'core_dusun'));
     }
     public function store(Request $request)
     {

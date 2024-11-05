@@ -23,67 +23,67 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="nama">Nama Anggota *</label>
-                            <input type="text" name="nama" id="nama" class="form-control" value="{{ old('nama', $member->nama) }}" required>
+                            <input type="text" name="member_name" id="member_name" class="form-control" value="{{ old('member_name', $member->member_name) }}" required>
                         </div>
                         <div class="form-group">
                             <label for="jenis_kelamin">Jenis Kelamin *</label>
-                            <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" required>
+                            <select name="member_gender" id="member_gender" class="form-control" required>
                                 <option value="">--- Pilih Salah Satu ---</option>
-                                <option value="Laki-Laki" {{ old('jenis_kelamin', $member->jenis_kelamin) == 'Laki-Laki' ? 'selected' : '' }}>Laki-Laki</option>
-                                <option value="Perempuan" {{ old('jenis_kelamin', $member->jenis_kelamin) == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                                <option value="Laki-Laki" {{ old('member_gender', $member->member_gender) == 'Laki-Laki' ? 'selected' : '' }}>Laki-Laki</option>
+                                <option value="Perempuan" {{ old('member_gender', $member->member_gender) == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="provinsi">Provinsi *</label>
-                            <select name="provinsi" id="provinsi" class="form-control" required>
+                            <select name="province_id" id="province_id" class="form-control" required>
                                 <option value="">--- Pilih Salah Satu ---</option>
-                                <!-- Options for provinsi should be populated dynamically -->
-                                <option value="Provinsi 1" {{ old('provinsi', $member->provinsi) == 'Provinsi 1' ? 'selected' : '' }}>Provinsi 1</option>
-                                <option value="Provinsi 2" {{ old('provinsi', $member->provinsi) == 'Provinsi 2' ? 'selected' : '' }}>Provinsi 2</option>
+                                <!-- Options for province_id should be populated dynamically -->
+                                <option value="province_id 1" {{ old('province_id', $member->province_id) == 'province_id 1' ? 'selected' : '' }}>province_id 1</option>
+                                <option value="province_id 2" {{ old('province_id', $member->province_id) == 'province_id 2' ? 'selected' : '' }}>province_id 2</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="kabupaten">Kabupaten *</label>
-                            <select name="kabupaten" id="kabupaten" class="form-control" required>
+                            <select name="city_id" id="city_id" class="form-control" required>
                                 <option value="">--- Pilih Salah Satu ---</option>
-                                <!-- Options for kabupaten should be populated dynamically -->
-                                <option value="Kabupaten 1" {{ old('kabupaten', $member->kabupaten) == 'Kabupaten 1' ? 'selected' : '' }}>Kabupaten 1</option>
-                                <option value="Kabupaten 2" {{ old('kabupaten', $member->kabupaten) == 'Kabupaten 2' ? 'selected' : '' }}>Kabupaten 2</option>
+                                <!-- Options for city_id should be populated dynamically -->
+                                <option value="city_id 1" {{ old('city_id', $member->city_id) == 'city_id 1' ? 'selected' : '' }}>city_id 1</option>
+                                <option value="city_id 2" {{ old('city_id', $member->city_id) == 'city_id 2' ? 'selected' : '' }}>Kabupaten 2</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="kecamatan">Kecamatan *</label>
-                            <select name="kecamatan" id="kecamatan" class="form-control" required>
+                            <select name="kecamatan_id" id="kecamatan_id" class="form-control" required>
                                 <option value="">--- Pilih Salah Satu ---</option>
-                                <!-- Options for kecamatan should be populated dynamically -->
-                                <option value="Kecamatan 1" {{ old('kecamatan', $member->kecamatan) == 'Kecamatan 1' ? 'selected' : '' }}>Kecamatan 1</option>
-                                <option value="Kecamatan 2" {{ old('kecamatan', $member->kecamatan) == 'Kecamatan 2' ? 'selected' : '' }}>Kecamatan 2</option>
+                                <!-- Options for kecamatan_id should be populated dynamically -->
+                                <option value="kecamatan_id 1" {{ old('kecamatan_id', $member->kecamatan_id) == 'kecamatan_id 1' ? 'selected' : '' }}>kecamatan_id 1</option>
+                                <option value="kecamatan_id 2" {{ old('kecamatan_id', $member->kecamatan_id) == 'kecamatan_id 2' ? 'selected' : '' }}>Kecamatan 2</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="kelurahan">Kelurahan *</label>
-                            <select name="kelurahan" id="kelurahan" class="form-control" required>
+                            <select name="kelurahan_id" id="kelurahan_id" class="form-control" required>
                                 <option value="">--- Pilih Salah Satu ---</option>
-                                <!-- Options for kelurahan should be populated dynamically -->
-                                <option value="Kelurahan 1" {{ old('kelurahan', $member->kelurahan) == 'Kelurahan 1' ? 'selected' : '' }}>Kelurahan 1</option>
-                                <option value="Kelurahan 2" {{ old('kelurahan', $member->kelurahan) == 'Kelurahan 2' ? 'selected' : '' }}>Kelurahan 2</option>
+                                <!-- Options for kelurahan_id should be populated dynamically -->
+                                <option value="kelurahan_id 1" {{ old('kelurahan_id', $member->kelurahan_id) == 'kelurahan_id 1' ? 'selected' : '' }}>kelurahan_id 1</option>
+                                <option value="kelurahan_id 2" {{ old('kelurahan_id', $member->kelurahan_id) == 'kelurahan_id 2' ? 'selected' : '' }}>Kelurahan 2</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="dusun">Dusun *</label>
-                            <input type="text" name="dusun" id="dusun" class="form-control" value="{{ old('dusun', $member->dusun) }}" required>
+                            <input type="text" name="dusun_id" id="dusun_id" class="form-control" value="{{ old('dusun_id', $member->dusun_id) }}" required>
                         </div>
                         <div class="form-group">
                             <label for="tempat_lahir">Tempat Lahir *</label>
-                            <input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control" value="{{ old('tempat_lahir', $member->tempat_lahir) }}" required>
+                            <input type="text" name="member_place_of_birth" id="member_place_of_birth" class="form-control" value="{{ old('member_place_of_birth', $member->member_place_of_birth) }}" required>
                         </div>
                         <div class="form-group">
                             <label for="tanggal_lahir">Tanggal Lahir *</label>
-                            <input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control" value="{{ old('tanggal_lahir', $member->tanggal_lahir) }}" required>
+                            <input type="date" name="member_date_of_birth" id="member_date_of_birth" class="form-control" value="{{ old('member_date_of_birth', $member->member_date_of_birth) }}" required>
                         </div>
                         <div class="form-group">
                             <label for="alamat">Alamat *</label>
-                            <textarea name="alamat" id="alamat" class="form-control" required>{{ old('alamat', $member->alamat) }}</textarea>
+                            <textarea name="member_address" id="member_address" class="form-control" required>{{ old('member_address', $member->member_address) }}</textarea>
                         </div>
                     </div>
 
@@ -91,39 +91,39 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="kode_pos">Kode Pos</label>
-                            <input type="text" name="kode_pos" id="kode_pos" class="form-control" value="{{ old('kode_pos', $member->kode_pos) }}">
+                            <input type="text" name="member_postal_code" id="member_postal_code" class="form-control" value="{{ old('member_postal_code', $member->member_postal_code) }}">
                         </div>
                         <div class="form-group">
                             <label for="no_telp">Nomor Telp *</label>
-                            <input type="text" name="no_telp" id="no_telp" class="form-control" value="{{ old('no_telp', $member->no_telp) }}" required>
+                            <input type="text" name="member_phone" id="member_phone" class="form-control" value="{{ old('member_phone', $member->member_phone) }}" required>
                         </div>
                         <div class="form-group">
-                            <label for="sifat_anggota">Sifat Anggota *</label>
-                            <select name="sifat_anggota" id="sifat_anggota" class="form-control" required>
+                            <label for="member_character">Sifat Anggota *</label>
+                            <select name="member_character" id="member_character" class="form-control" required>
                                 <option value="">--- Pilih Salah Satu ---</option>
-                                <option value="Sifat 1" {{ old('sifat_anggota', $member->sifat_anggota) == 'Sifat 1' ? 'selected' : '' }}>Sifat 1</option>
-                                <option value="Sifat 2" {{ old('sifat_anggota', $member->sifat_anggota) == 'Sifat 2' ? 'selected' : '' }}>Sifat 2</option>
+                                <option value="Sifat 1" {{ old('member_character', $member->member_character) == 'Sifat 1' ? 'selected' : '' }}>Sifat 1</option>
+                                <option value="Sifat 2" {{ old('member_character', $member->member_character) == 'Sifat 2' ? 'selected' : '' }}>Sifat 2</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="pekerjaan">Pekerjaan</label>
-                            <input type="text" name="pekerjaan" id="pekerjaan" class="form-control" value="{{ old('pekerjaan', $member->pekerjaan) }}">
+                            <input type="text" name="member_job" id="member_job" class="form-control" value="{{ old('member_job', $member->member_job) }}">
                         </div>
                         <div class="form-group">
-                            <label for="identitas">Identitas</label>
-                            <select name="identitas" id="identitas" class="form-control">
+                            <label for="member_identity">Identitas</label>
+                            <select name="member_identity" id="member_identity" class="form-control">
                                 <option value="">--- Pilih Salah Satu ---</option>
-                                <option value="KTP" {{ old('identitas', $member->identitas) == 'KTP' ? 'selected' : '' }}>KTP</option>
-                                <option value="SIM" {{ old('identitas', $member->identitas) == 'SIM' ? 'selected' : '' }}>SIM</option>
+                                <option value="KTP" {{ old('member_identity', $member->member_identity) == 'KTP' ? 'selected' : '' }}>KTP</option>
+                                <option value="SIM" {{ old('member_identity', $member->member_identity) == 'SIM' ? 'selected' : '' }}>SIM</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="no_identitas">Nomor Identitas</label>
-                            <input type="text" name="no_identitas" id="no_identitas" class="form-control" value="{{ old('no_identitas', $member->no_identitas) }}">
+                            <label for="member_identity_no">Nomor Identitas</label>
+                            <input type="text" name="member_identity_no" id="member_identity_no" class="form-control" value="{{ old('member_identity_no', $member->member_identity_no) }}">
                         </div>
                         <div class="form-group">
-                            <label for="nama_ibu_kandung">Nama Ibu Kandung</label>
-                            <input type="text" name="nama_ibu_kandung" id="nama_ibu_kandung" class="form-control" value="{{ old('nama_ibu_kandung', $member->nama_ibu_kandung) }}">
+                            <label for="member_mother">Nama Ibu Kandung</label>
+                            <input type="text" name="member_mother" id="member_mother" class="form-control" value="{{ old('nama_ibu_kandung', $member->member_mother) }}">
                         </div>
                     </div>
                 </div>

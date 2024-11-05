@@ -74,7 +74,13 @@
                         </div>
                         <div class="form-group">
                             <label for="dusun_id">Dusun *</label>
-                            <input type="text" name="dusun_id" id="dusun_id" class="form-control" required>
+                            <select name="dusun_id" id="dusun_id" class="form-control" required>
+                            @foreach ($core_dusun as $data)
+                                <option value="{{ $data->id }}">{{ $data->dusun_name }}</option>
+                            @endforeach
+                                <option value="">--- Pilih Salah Satu ---</option>
+                                <!-- Options for kelurahan go here -->
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="member_place_of_birth">Tempat Lahir *</label>

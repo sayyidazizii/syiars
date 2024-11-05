@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\CoreCity;
+use App\Models\CoreDusun;
+use App\Models\CoreKecamatan;
+use App\Models\CoreKelurahan;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class CoreMember extends Model
 {
@@ -83,4 +89,25 @@ class CoreMember extends Model
             $model->deleted_id = $userid;
         });
     }
+
+    public function CoreDusun(): HasMany
+    {
+        return $this->hasMany(CoreDusun::class);
+    }
+    public function CoreKelurahan(): HasMany
+    {
+        return $this->hasMany(CoreKelurahan::class);
+    }
+    public function CoreKecamatan(): HasMany
+    {
+        return $this->hasMany(CoreKecamatan::class);
+    }
+    public function CoreCity(): HasMany
+    {
+        return $this->hasMany(CoreCity::class);
+    }
+    
+    
+    
+
 }
