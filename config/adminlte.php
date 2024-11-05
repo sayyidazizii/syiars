@@ -312,7 +312,7 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'Core Branch',
+            'text' => 'Cabang',
             'url' => 'core_branch',
             'icon' => 'fas fa-fw fa-list',
         ],
@@ -342,7 +342,7 @@ return [
             'icon' => 'fas fa-fw fa-code',
         ],
         [
-            'text' => 'Data Provinsi',
+            'text' => 'Core Province',
             'url' => 'core_province',
             'icon' => 'fas fa-fw fa-globe',
         ],
@@ -354,6 +354,16 @@ return [
         [
             'text' => 'Core City',
             'url' => 'CoreCity',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'Core Member',
+            'url' => 'core_member',
+            'icon' => 'fas fa-fw fa-home',
+        ],
+        [
+            'text' => 'Core Kecamatan',
+            'url' => 'core_kecamatan',
             'icon' => 'fas fa-fw fa-lock',
         ],
     ],
