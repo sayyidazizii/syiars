@@ -356,6 +356,11 @@ return [
             'url' => 'CoreCity',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        [
+            'text' => 'Core Member',
+            'url' => 'core_member',
+            'icon' => 'fas fa-fw fa-home',
+        ],
     ],
 
     /*

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AcctAccountController;
 use App\Http\Controllers\CoreCityController;
+use App\Http\Controllers\CoreMemberController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AcctCreditController;
 use App\Http\Controllers\CoreBranchController;
@@ -92,4 +93,12 @@ Route::prefix('core_office')->name('core_office.')->group(function () {
     Route::get('edit{id}', [CoreOfficeController::class, 'update'])->name('update');
     Route::post('prosesedit{id}', [CoreOfficeController::class, 'prosesupdate'])->name('prosesupdate');
     Route::post('delete{id}', [CoreOfficeController::class, 'delete'])->name('delete');
+});
+Route::prefix('core_member')->name('core_member.')->group(function () {
+    Route::get('/', [CoreMemberController::class, 'index'])->name('index');
+    Route::get('add', [CoreMemberController::class, 'create'])->name('create');
+    Route::post('add', [CoreMemberController::class, 'store'])->name('store');
+    Route::get('edit{id}', [CoreMemberController::class, 'update'])->name('update');
+    Route::post('prosesedit{id}', [CoreMemberController::class, 'prosesupdate'])->name('prosesupdate');
+    Route::post('delete{id}', [CoreMemberController::class, 'delete'])->name('delete');
 });
