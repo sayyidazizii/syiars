@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Core City | AdminLTE')
+@section('title', 'Core Member | AdminLTE')
 
 @section('content')
 @if (session('msg'))
