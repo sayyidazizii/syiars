@@ -342,7 +342,7 @@ return [
             'icon' => 'fas fa-fw fa-code',
         ],
         [
-            'text' => 'Data Provinsi',
+            'text' => 'Core Province',
             'url' => 'core_province',
             'icon' => 'fas fa-fw fa-globe',
         ],
@@ -354,6 +354,11 @@ return [
         [
             'text' => 'Core City',
             'url' => 'CoreCity',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'Core Kecamatan',
+            'url' => 'core_kecamatan',
             'icon' => 'fas fa-fw fa-lock',
         ],
     ],
