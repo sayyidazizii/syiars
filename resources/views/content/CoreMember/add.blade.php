@@ -16,7 +16,7 @@
         <div class="card-body">
             <form action="{{ route('core_member.store') }}" method="POST">
                 @csrf
-                
+
                 <div class="row">
                     <!-- Left Column -->
                     <div class="col-md-6">
@@ -36,6 +36,9 @@
                             <label for="province_id">Provinsi *</label>
                             <select name="province_id" id="province_id" class="form-control" required>
                                 <option value="">--- Pilih Salah Satu ---</option>
+                                @foreach ($core_province as $data)
+                                <option value="{{ $data->id }}">{{ $data->province_name }}</option>
+                                @endforeach
                                 <!-- Options for provinsi go here -->
                             </select>
                         </div>
@@ -43,6 +46,9 @@
                             <label for="city_id">Kabupaten *</label>
                             <select name="city_id" id="city_id" class="form-control" required>
                                 <option value="">--- Pilih Salah Satu ---</option>
+                                @foreach ($core_city as $data)
+                                <option value="{{ $data->id }}">{{ $data->city_name }}</option>
+                                @endforeach
                                 <!-- Options for city_id go here -->
                             </select>
                         </div>
@@ -50,6 +56,9 @@
                             <label for="kecamatan_id">Kecamatan *</label>
                             <select name="kecamatan_id" id="kecamatan_id" class="form-control" required>
                                 <option value="">--- Pilih Salah Satu ---</option>
+                                @foreach ($core_kecamatan as $data)
+                                <option value="{{ $data->id }}">{{ $data->kecamatan_name }}</option>
+                                @endforeach
                                 <!-- Options for kecamatan go here -->
                             </select>
                         </div>
@@ -57,6 +66,9 @@
                             <label for="kelurahan_id">Kelurahan *</label>
                             <select name="kelurahan_id" id="kelurahan_id" class="form-control" required>
                                 <option value="">--- Pilih Salah Satu ---</option>
+                                @foreach ($core_kelurahan as $data)
+                                <option value="{{ $data->id }}">{{ $data->kelurahan_name }}</option>
+                                @endforeach
                                 <!-- Options for kelurahan go here -->
                             </select>
                         </div>
@@ -72,15 +84,18 @@
                         </div>
                         <div class="form-group">
                             <label for="member_place_of_birth">Tempat Lahir *</label>
-                            <input type="text" name="member_place_of_birth" id="member_place_of_birth" class="form-control" required>
+                            <input type="text" name="member_place_of_birth" id="member_place_of_birth"
+                                class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="member_date_of_birth">Tanggal Lahir *</label>
-                            <input type="date" name="member_date_of_birth" id="member_date_of_birth" class="form-control" required>
+                            <input type="date" name="member_date_of_birth" id="member_date_of_birth"
+                                class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="member_address">Alamat *</label>
-                            <textarea name="member_address" id="member_address" class="form-control" required></textarea>
+                            <textarea name="member_address" id="member_address" class="form-control"
+                                required></textarea>
                         </div>
                     </div>
 
@@ -153,5 +168,6 @@
             $(this).alert('close');
         }.bind(this), 5000);
     });
+
 </script>
 @stop
