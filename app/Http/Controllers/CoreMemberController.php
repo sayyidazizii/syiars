@@ -10,6 +10,7 @@ use App\Models\CoreProvince;
 use Illuminate\Http\Request;
 use App\Models\CoreKecamatan;
 use App\Models\CoreKelurahan;
+use App\Helpers\Configuration;
 use Illuminate\Support\Facades\DB;
 
 class CoreMemberController extends Controller
