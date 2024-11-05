@@ -10,12 +10,20 @@ class CoreMemberController extends Controller
 {
     public function index()
     {
+        $core_city = CoreCity::all();
+        $core_province = CoreProvince::all();
+        $core_kelurahan = CoreKelurahan::all();
+        $core_kecamatan = CoreKecamatan::all();
         $core_member = CoreMember::all();
-        return view('content.CoreMember.index', compact('core_member'));
+        return view('content.CoreMember.index', compact('core_member', 'core_kecamatan'));
     }
     public function create()
     {
-        return view('content.CoreMember.add');
+        $core_city = CoreCity::all();
+        $core_province = CoreProvince::all();
+        $core_kelurahan = CoreKelurahan::all();
+        $core_kecamatan = CoreKecamatan::all();
+        return view('content.CoreMember.add', compact('core_kecamatan'));
     }
     public function store(Request $request)
     {
