@@ -113,6 +113,9 @@
                             <label for="member_character">Sifat Anggota *</label>
                             <select name="member_character" id="member_character" class="form-control" required>
                                 <option value="">--- Pilih Salah Satu ---</option>
+                                <option value="Pendiri">Pendiri</option>
+                                <option value="Biasa">Biasa</option>
+                                <option value="Luar_Biasa">Luar Biasa</option>
                                 <!-- Options for sifat anggota go here -->
                             </select>
                         </div>
@@ -124,6 +127,10 @@
                             <label for="member_identity">Identitas</label>
                             <select name="member_identity" id="member_identity" class="form-control">
                                 <option value="">--- Pilih Salah Satu ---</option>
+                                <option value="KTP">KTP</option>
+                                <option value="KK">KK</option>
+                                <option value="SIM">SIM</option>
+                                <option value="AKTA">AKTA</option>
                                 <!-- Options for member_identity go here -->
                             </select>
                         </div>

@@ -8,9 +8,10 @@ use App\Models\CoreDusun;
 use App\Models\CoreMember;
 use App\Models\CoreProvince;
 use Illuminate\Http\Request;
+use App\Models\CoreKecamatan;
+use App\Models\CoreKelurahan;
 use App\Helpers\Configuration;
 use Illuminate\Support\Facades\DB;
-use App\Models\CoreKelurahan;
 
 class CoreMemberController extends Controller
 {
