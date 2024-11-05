@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 
@@ -45,5 +46,15 @@ class CoreDusun extends Model
         static::deleting(function ($model) use ($userid) {
             $model->deleted_id = $userid;
         });
+    }
+
+    public function CoreDusun(): BelongsTo
+    {
+        return $this->belongsTo(CoreDusun::class, 'dusun_id');
+    }
+
+    public function branch(): BelongsTo
+    {
+        return $this->belongsTo(CoreDusun::class, 'branch_id', 'branch_id');
     }
 }

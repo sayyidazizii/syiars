@@ -36,6 +36,11 @@ class CoreProvince extends Model
     {
         return $this->hasMany(AcctDeposito::class,'city_id');
     }
+
+    public function CoreProvince(): BelongsTo
+    {
+        return $this->belongsTo(CoreProvince::class, 'province_id');
+    }
 }
 
 

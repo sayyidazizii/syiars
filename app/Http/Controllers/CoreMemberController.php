@@ -2,20 +2,25 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\CoreDusun;
 use App\Models\CoreMember;
 use Illuminate\Http\Request;
+use App\Helpers\Configuration;
 use Illuminate\Support\Facades\DB;
 
 class CoreMemberController extends Controller
 {
     public function index()
     {
+        $core_dusun = CoreDusun::all();
         $core_member = CoreMember::all();
-        return view('content.CoreMember.index', compact('core_member'));
+        return view('content.CoreMember.index', compact('core_member','core_dusun'));
     }
     public function create()
     {
-        return view('content.CoreMember.add');
+        $core_dusun = CoreDusun::all();
+        return view('content.CoreMember.add', compact('core_dusun'));
     }
     public function store(Request $request)
     {
