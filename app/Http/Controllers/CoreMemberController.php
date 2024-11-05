@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use App\Models\CoreDusun;
 use App\Models\CoreMember;
 use Illuminate\Http\Request;
-use App\Helpers\Configuration;
 use Illuminate\Support\Facades\DB;
 
 class CoreMemberController extends Controller
