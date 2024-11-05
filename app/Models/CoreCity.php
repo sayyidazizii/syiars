@@ -59,5 +59,14 @@ class CoreCity extends Model
         return $this->belongsTo(CoreProvince::class, 'province_id');
     }
 
+    public function CoreCity(): BelongsTo
+    {
+        return $this->belongsTo(CoreCity::class, 'city_id');
+    }
+    public function branch(): BelongsTo
+    {
+        return $this->belongsTo(CoreDusun::class, 'branch_id', 'branch_id');
+    }
+
     
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\CoreCity;
 use App\Models\CoreDusun;
 use App\Models\CoreKecamatan;
 use App\Models\CoreKelurahan;
@@ -93,18 +94,19 @@ class CoreMember extends Model
     {
         return $this->hasMany(CoreDusun::class);
     }
-    public function CoreKelurahan(): BelongsTo
+    public function CoreKelurahan(): HasMany
     {
-        return $this->belongsTo(CoreKelurahan::class, 'kelurahan_id');
+        return $this->hasMany(CoreKelurahan::class);
     }
-    public function CoreKecamatan(): BelongsTo
+    public function CoreKecamatan(): HasMany
     {
-        return $this->belongsTo(CoreKecamatan::class, 'kecamatan_id');
+        return $this->hasMany(CoreKecamatan::class);
     }
-    public function CoreCity(): BelongsTo
+    public function CoreCity(): HasMany
     {
-        return $this->belongsTo(CoreCity::class, 'city_id');
+        return $this->hasMany(CoreCity::class);
     }
+    
     
     
 
