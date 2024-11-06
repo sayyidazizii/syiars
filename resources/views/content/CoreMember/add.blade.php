@@ -16,7 +16,6 @@
         <div class="card-body">
             <form action="{{ route('core_member.store') }}" method="POST">
                 @csrf
-
                 <div class="row">
                     <!-- Left Column -->
                     <div class="col-md-6">
@@ -28,8 +27,11 @@
                             <label for="member_gender">Jenis Kelamin *</label>
                             <select name="member_gender" id="member_gender" class="form-control" required>
                                 <option value="">--- Pilih Salah Satu ---</option>
-                                <option value="Laki-Laki">Laki-Laki</option>
-                                <option value="Perempuan">Perempuan</option>
+                                @foreach ($membergender as $key => $value)
+                                <option data-kt-flag="{{ $key }}" value="{{ $key }}"
+                                    {{ $key === old('member_gender', '' ?? '') ? 'selected' : '' }}>{{ $value }}
+                                </option>
+                            @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -75,10 +77,10 @@
                         <div class="form-group">
                             <label for="dusun_id">Dusun *</label>
                             <select name="dusun_id" id="dusun_id" class="form-control" required>
-                            @foreach ($core_dusun as $data)
-                                <option value="{{ $data->id }}">{{ $data->dusun_name }}</option>
-                            @endforeach
                                 <option value="">--- Pilih Salah Satu ---</option>
+                                @foreach ($core_dusun as $data)
+                                <option value="{{ $data->id }}">{{ $data->dusun_name }}</option>
+                                @endforeach
                                 <!-- Options for kelurahan go here -->
                             </select>
                         </div>
@@ -103,7 +105,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="member_postal_code">Kode Pos</label>
-                            <input type="text" name="member_postal_code" id="member_postal_code" class="form-control">
+                            <input type="text" name="member_postal_code" id="member_postal_code" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="member_phone">Nomor Telp *</label>
@@ -113,34 +115,35 @@
                             <label for="member_character">Sifat Anggota *</label>
                             <select name="member_character" id="member_character" class="form-control" required>
                                 <option value="">--- Pilih Salah Satu ---</option>
-                                <option value="Pendiri">Pendiri</option>
-                                <option value="Biasa">Biasa</option>
-                                <option value="Luar_Biasa">Luar Biasa</option>
-                                <!-- Options for sifat anggota go here -->
+                                @foreach ($membercharacter as $key => $value)
+                                <option data-kt-flag="{{ $key }}" value="{{ $key }}"
+                                    {{ $key === old('member_character', '' ?? '') ? 'selected' : '' }}>{{ $value }}
+                                </option>
+                            @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="member_job">Pekerjaan</label>
-                            <input type="text" name="member_job" id="member_job" class="form-control">
+                            <input type="text" name="member_job" id="member_job" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="member_identity">Identitas</label>
-                            <select name="member_identity" id="member_identity" class="form-control">
+                            <select name="member_identity" id="member_identity" class="form-control" required>
                                 <option value="">--- Pilih Salah Satu ---</option>
-                                <option value="KTP">KTP</option>
-                                <option value="KK">KK</option>
-                                <option value="SIM">SIM</option>
-                                <option value="AKTA">AKTA</option>
-                                <!-- Options for member_identity go here -->
+                                @foreach ($memberidentity as $key => $value)
+                                <option data-kt-flag="{{ $key }}" value="{{ $key }}"
+                                    {{ $key === old('member_identity', '' ?? '') ? 'selected' : '' }}>{{ $value }}
+                                </option>
+                            @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="member_identity_no">Nomor Identitas</label>
-                            <input type="text" name="member_identity_no" id="member_identity_no" class="form-control">
+                            <input type="text" name="member_identity_no" id="member_identity_no" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="member_mother">Nama Ibu Kandung</label>
-                            <input type="text" name="member_mother" id="member_mother" class="form-control">
+                            <input type="text" name="member_mother" id="member_mother" class="form-control" required>
                         </div>
                     </div>
                 </div>
@@ -148,8 +151,8 @@
                 <!-- Buttons -->
                 <div class="d-flex justify-content-end">
                     <a href="{{ route('core_member.index') }}" class="btn btn-danger mr-2">Batal</a>
-                    <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
+                <button type="submit" class="btn btn-success">Simpan</button>
             </form>
         </div>
     </div>

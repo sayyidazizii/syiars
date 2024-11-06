@@ -27,7 +27,8 @@ class CoreKelurahan extends Model
     ];
 
     protected $casts = [
-        'created_on' => 'datetime',
+        'created_on',
+        'deleted_at',
     ];
 
     /**
@@ -58,5 +59,5 @@ class CoreKelurahan extends Model
         return $this->belongsTo(CoreDusun::class, 'branch_id', 'branch_id');
     }
 
-    
+
 }

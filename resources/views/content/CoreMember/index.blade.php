@@ -32,23 +32,62 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>No Anggota</th>
                         <th>Nama</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Provinsi</th>
+                        <th>Kabupaten</th>
+                        <th>Kecamatan</th>
+                        <th>Kelurahan</th>
+                        <th>Dusun</th>
+                        <th>Tempat Lahir</th>
+                        <th>Tanggal Lahir</th>
                         <th>Alamat</th>
-                        <th>Status</th>
+                        <th>Kode Pos</th>
+                        <th>No Telepon</th>
                         <th>Sifat</th>
-                        <th>No. Telp</th>
-                        <th>Simp Pokok</th>
-                        <th>Simp Khusus</th>
-                        <th>Simp Wajib</th>
+                        <th>Pekerjaan</th>
+                        <th>Identitas</th>
+                        <th>Nomor Identitas</th>
+                        <th>Ibu Kandung</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <?php $no = 1; ?>
+                    @foreach ($core_member as $data)
+                        <tr>
+                            <td style='text-align:center'>{{ $no++ }}</td>
+                            <td>{{ $data->member_name }}</td>
+                            <td>{{ $membergender[$data->member_gender] }}</td>
+                            <td>{{ $data->CoreProvince->province_name }}</td>
+                            <td>{{ $data->CoreCity->city_name }}</td>
+                            <td>{{ $data->CoreKecamatan->kecamatan_name }}</td>
+                            <td>{{ $data->CoreKelurahan->kelurahan_name }}</td>
+                            <td>{{ $data->CoreDusun->dusun_name }}</td>
+                            <td>{{ $data->member_place_of_birth }}</td>
+                            <td>{{ $data->member_date_of_birth }}</td>
+                            <td>{{ $data->member_address }}</td>
+                            <td>{{ $data->member_postal_code }}</td>
+                            <td>{{ $data->member_phone }}</td>
+                            <td>{{ $membercharacter[$data->member_character] }}</td>
+                            <td>{{ $data->member_job }}</td>
+                            <td>{{ $memberidentity[$data->member_identity] }}</td>
+                            <td>{{ $data->member_identity_no }}</td>
+                            <td>{{ $data->member_mother }}</td>
+                            <td class="text-center">
+                                <a type="button" class="btn btn-outline-warning btn-sm mb-2"
+                                    href="{{ route('core_member.update', $data->member_id) }}">Edit</a>
+                                <form action="{{ route('core_member.delete', $data->member_id) }}" method="post">
+                                    @csrf
+                                    <button class="btn btn-outline-danger btn-sm"
+                                        onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
-           
+
         </div>
     </div>
 </div>

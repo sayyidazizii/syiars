@@ -106,8 +106,12 @@ class CoreMember extends Model
     {
         return $this->hasMany(CoreCity::class);
     }
-    
-    
-    
+    public function CoreProvince(): HasMany
+    {
+        return $this->hasMany(CoreProvince::class);
+    }
+
+
+
 
 }

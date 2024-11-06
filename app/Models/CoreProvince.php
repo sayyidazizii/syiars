@@ -32,7 +32,10 @@ class CoreProvince extends Model
     {
         return $this->belongsTo(CoreBranch::class, 'branch_id');
     }
-
+    public function member(): BelongsTo
+    {
+        return $this->belongsTo(CoreMember::class);
+    }
     public function corecity(): HasMany
     {
         return $this->hasMany(AcctDeposito::class,'city_id');
