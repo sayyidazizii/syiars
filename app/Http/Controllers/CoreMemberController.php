@@ -71,7 +71,6 @@ class CoreMemberController extends Controller
         ]);
 
         $core_member = CoreMember::findOrFail($id);
-
     $core_member->office_code = $request->input('office_code');
     $core_member->office_name = $request->input('office_name');
     $core_member->branch_id = $request->input('branch_id');
