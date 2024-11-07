@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Business Office Edit | AdminLTE')
+@section('title', 'Edit Business Office | AdminLTE')
 @section('content_header')<h1>Edit Data</h1>
 @stop
 @section('content')<div class="col-md-6">
