@@ -21,11 +21,11 @@ return new class extends Migration
             $table->string('kelurahan_no', 20)->nullable();
             $table->smallInteger('data_state')->default(0)->nullable();
             $table->unsignedBigInteger('created_id')->nullable();
-            $table->dateTime('created_on')->nullable(); 
+            $table->dateTime('created_on')->nullable();
             $table->unsignedBigInteger('updated_id')->nullable();
             $table->uuid('uuid')->nullable();
             $table->unsignedBigInteger('deleted_id')->nullable();
-            $table->softDeletes(); 
+            $table->softDeletes();
             $table->timestamps();
             });
     }
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('core_kelurahans');
+        Schema::dropIfExists('core_kelurahan');
     }
 };

@@ -48,13 +48,13 @@ class CoreDusun extends Model
         });
     }
 
-    public function CoreDusun(): BelongsTo
+    public function Member(): BelongsTo
     {
-        return $this->belongsTo(CoreDusun::class, 'dusun_id');
+        return $this->belongsTo(CoreMember::class, 'member_id');
     }
 
     public function branch(): BelongsTo
     {
-        return $this->belongsTo(CoreDusun::class, 'branch_id', 'branch_id');
+        return $this->belongsTo(CoreBranch::class, 'branch_id');
     }
 }

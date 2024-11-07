@@ -31,7 +31,7 @@ class CoreCityController extends Controller
             'province_no' => 'nullable|string|max:20',
             'city_no' => 'nullable|string|max:20',
         ]);
-    
+
         try {
             DB::beginTransaction();
             CoreCity::create([
@@ -59,7 +59,7 @@ class CoreCityController extends Controller
     public function prosesupdate(Request $request, $id){
 
         $request->validate([
-       
+
             'city_code' => 'required|string|max:4',
             'province_code' => 'required|string|max:2',
             'city_name' => 'required|string|max:255',
@@ -75,7 +75,7 @@ class CoreCityController extends Controller
     $core_city->city_name = $request->input('city_name');
     $core_city->province_no = $request->input('province_no');
     $core_city->city_no = $request->input('city_no');
-    
+
     $core_city->save();
 
     // Redirect back to the user list with success message
@@ -86,10 +86,10 @@ class CoreCityController extends Controller
     {
         // Find the user by ID
         $core_city = CoreCity::findOrFail($id);
-    
+
         // Delete the user
         $core_city->delete();
-    
+
         // Redirect back to the user list with a success message
         return redirect()->route('CoreCity.index')->success('Data core city berhasil dihapus!');
     }

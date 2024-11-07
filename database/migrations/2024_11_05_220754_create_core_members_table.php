@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('core_member', function (Blueprint $table) {
             $table->increments('member_id');
-            $table->unsignedBigInteger('branch_id')->default(0)->nullable();
-            $table->unsignedBigInteger('province_id')->default(0)->nullable();
-            $table->unsignedBigInteger('city_id')->default(0)->nullable();
-            $table->unsignedBigInteger('kecamatan_id')->default(0)->nullable();
-            $table->unsignedBigInteger('kelurahan_id')->default(0)->nullable();
-            $table->unsignedBigInteger('dusun_id')->default(0)->nullable();
+            $table->integer('branch_id')->default(0)->nullable();
+            $table->integer('province_id')->default(0)->nullable();
+            $table->integer('city_id')->default(0)->nullable();
+            $table->integer('kecamatan_id')->default(0)->nullable();
+            $table->integer('kelurahan_id')->default(0)->nullable();
+            $table->integer('dusun_id')->default(0)->nullable();
             $table->string('member_no', 50)->nullable();
             $table->string('member_name', 100)->nullable();
             $table->decimal('member_gender', 1,0)->default(0)->nullable();
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('member_postal_code', 10)->nullable();
             $table->string('member_phone', 20)->nullable();
             $table->string('member_job', 100)->nullable();
-            $table->unsignedBigInteger('identity_id')->default(0)->nullable();
+            $table->integer('identity_id')->default(0)->nullable();
             $table->decimal('member_identity', 1,0)->default(0)->nullable();
             $table->string('member_identity_no', 50)->nullable();
             $table->decimal('member_character', 1,0)->default(0)->nullable();
@@ -48,12 +48,12 @@ return new class extends Migration
             $table->decimal('saldo_khusus_old', 20,2)->default(0.00)->nullable();
             $table->string('member_token', 50)->nullable();
             $table->string('member_token_edit', 50)->nullable();
-            $table->unsignedBigInteger('member_last_number')->default(0);
+            $table->integer('member_last_number')->default(0);
             $table->string('member_password_default', 200)->nullable();
             $table->string('member_password', 200)->nullable();
-            $table->unsignedBigInteger('savings_account_id')->default(0)->nullable();
+            $table->integer('savings_account_id')->default(0)->nullable();
             $table->string('member_no_old', 50)->nullable();
-            $table->unsignedBigInteger('member_no_status')->default(0)->nullable();
+            $table->integer('member_no_status')->default(0)->nullable();
             $table->smallInteger('data_state')->default(0)->nullable();
             $table->unsignedBigInteger('created_id')->nullable();
             $table->unsignedBigInteger('updated_id')->nullable();

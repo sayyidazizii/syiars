@@ -49,14 +49,14 @@ class CoreKelurahan extends Model
         });
     }
 
-    public function CoreKelurahan(): BelongsTo
+    public function Member(): BelongsTo
     {
-        return $this->belongsTo(CoreKelurahan::class, 'kelurahan_id');
+        return $this->belongsTo(CoreMember::class, 'member_id');
     }
 
-    public function branch(): BelongsTo
+    public function Branch(): BelongsTo
     {
-        return $this->belongsTo(CoreDusun::class, 'branch_id', 'branch_id');
+        return $this->belongsTo(CoreBranch::class, 'branch_id');
     }
 
 

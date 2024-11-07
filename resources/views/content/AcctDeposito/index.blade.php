@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Acct Deposito | AdminLTE')
+@section('title', 'Kode Simpanan Berjangka | AdminLTE')
 
 @section('content')
 @if(session('msg')) <div class="alert alert-{{ session('type') ?? 'info' }}" role="alert"> {{ session('msg') }} </div>
@@ -10,12 +10,12 @@
             <li>{{ $error }}</li> @endforeach </div> @endif <div class="card border border-dark mt-5">
                 <div class="card-header bg-dark clearfix">
                     <h5 class="mb-0 float-left">
-                        Tabel Kode simpanan Berjangka
+                        Tabel Kode Simpanan Berjangka
                     </h5>
                     <div class="form-actions float-right">
                         <a href="{{ route('AcctDeposito.create') }}" class="btn btn-sm btn-info">
                             <i class="fa fa-plus"></i>
-                            Tambah Kode simp berjangka</a>
+                            Tambah Kode Simpanan Berjangka</a>
                     </div>
                 </div>
                 <div class="card-body">

@@ -151,8 +151,8 @@
                 <!-- Buttons -->
                 <div class="d-flex justify-content-end">
                     <a href="{{ route('core_member.index') }}" class="btn btn-danger mr-2">Batal</a>
+                    <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
-                <button type="submit" class="btn btn-success">Simpan</button>
             </form>
         </div>
     </div>

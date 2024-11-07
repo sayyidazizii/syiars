@@ -110,8 +110,4 @@ class CoreMember extends Model
     {
         return $this->hasMany(CoreProvince::class);
     }
-
-
-
-
 }

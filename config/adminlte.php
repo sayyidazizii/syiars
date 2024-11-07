@@ -357,9 +357,15 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text' => 'Core Member',
-            'url' => 'core_member',
-            'icon' => 'fas fa-fw fa-home',
+            'text' => 'Anggota',
+            'icon' => 'fas fa-fw fa-child',
+            'submenu' => [
+                [
+                    'text' => 'Data Anggota',
+                    'url' => 'core_member',
+                    'icon' => 'fas fa-fw fa-list',
+                ],
+            ],
         ],
     ],
 

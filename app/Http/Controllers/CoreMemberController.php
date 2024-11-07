@@ -12,16 +12,16 @@ use App\Models\CoreKecamatan;
 use App\Models\CoreKelurahan;
 use App\Helpers\Configuration;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class CoreMemberController extends Controller
 {
     public function index()
     {
         $core_member = CoreMember::all();
-        $membergender = Configuration::MemberGender();
+        $memberstatus = Configuration::MemberStatus();
         $membercharacter = Configuration::MemberCharacter();
-        $memberidentity = Configuration::Member();
-        return view('content.CoreMember.index', compact('core_member', 'membergender', 'membercharacter', 'memberidentity'));
+        return view('content.CoreMember.index', compact('core_member', 'memberstatus', 'membercharacter'));
     }
     public function create()
     {
@@ -36,55 +36,82 @@ class CoreMemberController extends Controller
         return view('content.CoreMember.add', compact('core_province', 'core_city', 'core_kecamatan', 'core_kelurahan', 'core_dusun','membergender', 'membercharacter', 'memberidentity'));
     }
     public function store(Request $request)
-    {
-        $request->validate([
-            'member_name' => 'required|string|max:100',
-            'member_gender' => 'required|numeric',
-            'province_id' => 'required|integer',
-            'city_id' => 'required|integer',
-            'kecamatan_id' => 'required|integer',
-            'kelurahan_id' => 'required|integer',
-            'dusun_id' => 'required|integer',
-            'member_place_of_birth' => 'required|string|max:100',
-            'member_date_of_birth' => 'required|date',
-            'member_address' => 'required|string',
-            'member_postal_code' => 'required|string|max:10',
-            'member_phone' => 'required|string|max:20',
-            'member_character' => 'required|numeric',
-            'member_job' => 'required|string|max:100',
-            'member_identity' => 'required|numeric',
-            'member_identity_no' => 'required|string|max:50',
-            'member_mother' => 'required|string|max:50',
-        ]);
+{
+//     $request->validate([
+//         'member_name' => 'required|string|max:100',
+//         'member_gender' => 'required|numeric',
+//         'province_id' => 'required|integer',
+//         'city_id' => 'required|integer',
+//         'kecamatan_id' => 'required|integer',
+//         'kelurahan_id' => 'required|integer',
+//         'dusun_id' => 'required|integer',
+//         'member_place_of_birth' => 'required|string|max:100',
+//         'member_date_of_birth' => 'required|date',
+//         'member_address' => 'required|string',
+//         'member_postal_code' => 'required|string|max:10',
+//         'member_phone' => 'required|string|max:20',
+//         'member_character' => 'required|numeric',
+//         'member_job' => 'required|string|max:100',
+//         'member_identity' => 'required|numeric',
+//         'member_identity_no' => 'required|string|max:50',
+//         'member_mother' => 'required|string|max:50',
+//     ]);
 
-        try {
-            DB::beginTransaction();
-            CoreMember::create([
-                'member_name' => $request->input('member_name'),
-                'member_gender' => $request->input('member_gender'),
-                'province_id' => $request->input('province_id'),
-                'city_id' => $request->input('city_id'),
-                'kecamatan_id' => $request->input('kecamatan_id'),
-                'kelurahan_id' => $request->input('kelurahan_id'),
-                'dusun_id' => $request->input('dusun_id'),
-                'member_place_of_birth' => $request->input('member_place_of_birth'),
-                'member_date_of_birth' => $request->input('member_date_of_birth'),
-                'member_address' => $request->input('member_address'),
-                'member_postal_code' => $request->input('member_postal_code'),
-                'member_phone' => $request->input('member_phone'),
-                'member_character' => $request->input('member_character'),
-                'member_job' => $request->input('member_job'),
-                'member_identity' => $request->input('member_identity'),
-                'member_identity_no' => $request->input('member_identity_no'),
-                'member_mother' => $request->input('member_mother'),
-            ]);
-            DB::commit();
-            return redirect()->route('core_member.index')->success( 'Data Member berhasil ditambahkan!');
-        }catch (\Exception $e){
-            DB::rollBack();
-            report($e);
-            return redirect()->route('core_member.index')->danger('Data Member gagal diperbarui!');
-        }
+//     try {
+//         DB::beginTransaction();
+
+//         CoreMember::create([
+//             'member_name' => $request->input('member_name'),
+//             'member_gender' => $request->input('member_gender'),
+//             'province_id' => $request->input('province_id'),
+//             'city_id' => $request->input('city_id'),
+//             'kecamatan_id' => $request->input('kecamatan_id'),
+//             'kelurahan_id' => $request->input('kelurahan_id'),
+//             'dusun_id' => $request->input('dusun_id'),
+//             'member_place_of_birth' => $request->input('member_place_of_birth'),
+//             'member_date_of_birth' => $request->input('member_date_of_birth'),
+//             'member_address' => $request->input('member_address'),
+//             'member_postal_code' => $request->input('member_postal_code'),
+//             'member_phone' => $request->input('member_phone'),
+//             'member_character' => $request->input('member_character'),
+//             'member_job' => $request->input('member_job'),
+//             'member_identity' => $request->input('member_identity'),
+//             'member_identity_no' => $request->input('member_identity_no'),
+//             'member_mother' => $request->input('member_mother'),
+//         ]);
+
+//         DB::commit();
+
+//         return redirect()->route('core_member.index')->with('success', 'Data Anggota berhasil ditambahkan!');
+
+//     } catch (\Exception $e) {
+//         DB::rollBack();
+//         report($e);
+
+//         return redirect()->route('core_member.index')->with('danger', 'Data Anggota gagal diperbarui!');
+//     }
+        $core_membe = new CoreMember();
+        $core_membe->member_name = $request->member_name;
+        $core_membe->member_gender = $request->member_gender;
+        $core_membe->province_id = $request->province_id;
+        $core_membe->city_id = $request->city_id;
+        $core_membe->kecamatan_id = $request->kecamatan_id;
+        $core_membe->kelurahan_id = $request->kelurahan_id;
+        $core_membe->dusun_id = $request->dusun_id;
+        $core_membe->member_place_of_birth = $request->member_place_of_birth;
+        $core_membe->member_date_of_birth = $request->member_date_of_birth;
+        $core_membe->member_address = $request->member_address;
+        $core_membe->member_postal_code = $request->member_postal_code;
+        $core_membe->member_phone = $request->member_phone;
+        $core_membe->member_character = $request->member_character;
+        $core_membe->member_job = $request->member_job;
+        $core_membe->member_identity = $request->member_identity;
+        $core_membe->member_identity_no = $request->member_identity_no;
+        $core_membe->member_mother = $request->member_mother;
+        $core_membe->save();
+
+        Session::flash('success', 'Berhasil menambah Anggota!');
+        return redirect()->route('core_member.index');
     }
     public function update($id)
     {
@@ -115,6 +142,6 @@ class CoreMemberController extends Controller
         $core_member = CoreMember::find($id);
         $core_member->delete();
 
-        return redirect()->route('core_member.index')->danger('Data Business Office dihapus!');
+        return redirect()->route('core_member.index')->danger('Data Anggota dihapus!');
     }
 }

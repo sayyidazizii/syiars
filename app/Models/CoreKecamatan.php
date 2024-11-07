@@ -26,14 +26,12 @@ class CoreKecamatan extends Model
         'data_state',
     ];
 
-    public function CoreKecamatan(): BelongsTo
+    public function Member(): BelongsTo
     {
-        return $this->belongsTo(CoreKecamatan::class, 'kecamatan_id');
+        return $this->belongsTo(CoreMember::class, 'member_id');
     }
-    public function branch(): BelongsTo
+    public function Branch(): BelongsTo
     {
-        return $this->belongsTo(CoreDusun::class, 'branch_id', 'branch_id');
+        return $this->belongsTo(CoreBranch::class, 'branch_id',);
     }
-
-    
 }

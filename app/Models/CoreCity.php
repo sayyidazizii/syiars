@@ -50,9 +50,9 @@ class CoreCity extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-    public function core_city(): BelongsTo
+    public function Member(): BelongsTo
     {
-        return $this->belongsTo(CoreCity::class, 'province_id');
+        return $this->belongsTo(CoreMember::class, 'member_id');
     }
     public function core_provinces(): BelongsTo
     {
@@ -63,10 +63,10 @@ class CoreCity extends Model
     {
         return $this->belongsTo(CoreCity::class, 'city_id');
     }
-    public function branch(): BelongsTo
+    public function Branch(): BelongsTo
     {
-        return $this->belongsTo(CoreDusun::class, 'branch_id', 'branch_id');
+        return $this->belongsTo(CoreBranch::class, 'branch_id');
     }
 
-    
+
 }

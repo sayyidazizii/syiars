@@ -47,8 +47,8 @@
                                 <td style='text-align:center'>{{ $no++ }}</td>
                                 <td>{{ $data->credits_code }}</td>
                                 <td>{{ $data->credits_name }}</td>
-                                <td>{{ $data->id }} - {{ $data->account->account_name }}</td>
-                                <td>{{ $data->id }} - {{ $data->account->account_name }}</td>
+                                <td>{{ $data->account->account_code }} - {{ $data->account->account_name }}</td>
+                                <td>{{ $data->account->account_code }} - {{ $data->account->account_name }}</td>
                                 <td class="text-center">
                                     <a type="button" class="btn btn-outline-warning btn-sm mb-2"
                                         href="{{ route('acct_credit.update', $data->id) }}">Edit</a>

@@ -76,12 +76,12 @@ class Configuration
 	}
 
 	public static function MemberStatus(){
-		$member_status = array (
+		$memberstatus = array (
             0 => 'Calon Anggota',
             1 => 'Anggota'
         );
 
-		return $member_status;
+		return $memberstatus;
 	}
 
 	public static function MemberStatusAktif(){
