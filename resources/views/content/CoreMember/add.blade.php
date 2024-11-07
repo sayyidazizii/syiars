@@ -17,6 +17,10 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="member_no">No Anggota</label>
+                                <input type="text" class="form-control" id="member_no" name="member_no" value="{{ $newMemberNo }}" readonly>
+                            </div>
+                            <div class="form-group">
                                 <label for="member_name">Nama Anggota *</label>
                                 <input type="text" name="member_name" id="member_name" class="form-control" required>
                             </div>

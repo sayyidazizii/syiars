@@ -21,6 +21,9 @@ class CoreMemberController extends Controller
     }
     public function create()
     {
+        $lastMember = CoreMember::orderBy('member_no', 'desc')->first();
+        $newMemberNo = $lastMember ? $lastMember->member_no + 1 : 1; // Jika tidak ada anggota, mulai dari 1
+        $newMemberNo = str_pad($newMemberNo, 3, '0', STR_PAD_LEFT); // Menambahkan nol di depan jika kurang dari 3 digit
         $core_province = CoreProvince::all();
         $core_city = CoreCity::all();
         $core_kecamatan = CoreKecamatan::all();
@@ -29,11 +32,12 @@ class CoreMemberController extends Controller
         $membergender = Configuration::MemberGender();
         $membercharacter = Configuration::MemberCharacter();
         $memberidentity = Configuration::Member();
-        return view('content.CoreMember.add', compact('core_province', 'core_city', 'core_kecamatan', 'core_kelurahan', 'core_dusun','membergender', 'membercharacter', 'memberidentity'));
+        return view('content.CoreMember.add', compact('newMemberNo','core_province', 'core_city', 'core_kecamatan', 'core_kelurahan', 'core_dusun','membergender', 'membercharacter', 'memberidentity'));
     }
     public function store(Request $request)
     {
         $request->validate([
+            'member_no' => 'required|string|max:50',
             'member_name' => 'required|string|max:100',
             'member_gender' => 'required|numeric',
             'province_id' => 'required|integer',
@@ -55,6 +59,7 @@ class CoreMemberController extends Controller
         try {
             DB::beginTransaction();
             CoreMember::create([
+                'member_no' => $request->input('member_no'),
                 'member_name' => $request->input('member_name'),
                 'member_gender' => $request->input('member_gender'),
                 'province_id' => $request->input('province_id'),
