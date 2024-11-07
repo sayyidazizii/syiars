@@ -34,7 +34,7 @@ class CoreOfficeController extends Controller
                 'branch_id' => $request->input('branch_id'),
             ]);
             DB::commit();
-            return redirect()->route('core_office.index')->success( 'Data Business Office berhasil ditambahkan!');
+            return redirect()->route('core_office.index')->success('Data Business Office berhasil ditambahkan!');
         }catch (\Exception $e){
             DB::rollBack();
             report($e);

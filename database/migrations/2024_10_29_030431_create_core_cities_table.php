@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('core_city', function (Blueprint $table) {
-            $table->increments('city_id'); // Primary key, auto increment
+            $table->id(); // Primary key, auto increment
             $table->char('city_code', 4); // Char, length 4
-            $table->integer('province_id')->default(0); // Integer, default 0
-            $table->char('province_code', 2); // Char, length 2
+            $table->foreignId('province_id')->constrained(
+                table: 'core_province',
+                indexName: 'city_province_id'
+            );
             $table->string('city_name', 255); // Varchar, length 255
-            $table->string('province_no', 20)->default(''); // Varchar, length 20, default ''
             $table->string('city_no', 20)->default(''); // Varchar, length 20, default ''
             $table->smallInteger('data_state')->default(0)->nullable();
             $table->unsignedBigInteger('branch_id')->default(1)->nullable();

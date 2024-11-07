@@ -11,36 +11,32 @@ class CoreCityController extends Controller
 {
     //
     public function index(){
-        $core_citys         = CoreCity::with('core_provinces')->get();
-        return view('content.CoreCity.index',compact('core_citys'));
+        $core_city       = CoreCity::all();
+        return view('content.CoreCity.index',compact('core_city'));
     }
 
     public function create()
     {
-        $core_provinces = CoreProvince::get();
-        return view('content.CoreCity.add',compact('core_provinces'));
+        $core_province = CoreProvince::all();
+        return view('content.CoreCity.add',compact('core_province'));
     }
     public function store(Request $request)
     {
         // Validate the input data
         $request->validate([
-            'province_id' => 'required|integer',
             'city_code' => 'required|string|max:4',
-            'province_code' => 'required|string|max:2',
             'city_name' => 'required|string|max:255',
-            'province_no' => 'nullable|string|max:20',
             'city_no' => 'nullable|string|max:20',
+            'province_id' => 'required|integer',
         ]);
 
         try {
             DB::beginTransaction();
             CoreCity::create([
                 'city_code' => $request->input('city_code'),
-                'province_id' => $request->input('province_id'),
-                'province_code' => $request->input('province_code'),
                 'city_name' => $request->input('city_name'),
-                'province_no' => $request->input('province_no'),
                 'city_no' => $request->input('city_no'),
+                'province_id' => $request->input('province_id'),
             ]);
             DB::commit();
             return redirect()->route('CoreCity.index')->success( 'Data core city berhasil ditambahkan!');

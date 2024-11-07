@@ -12,13 +12,28 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('core_member', function (Blueprint $table) {
-            $table->increments('member_id');
+            $table->id('id');
             $table->integer('branch_id')->default(0)->nullable();
-            $table->integer('province_id')->default(0)->nullable();
-            $table->integer('city_id')->default(0)->nullable();
-            $table->integer('kecamatan_id')->default(0)->nullable();
-            $table->integer('kelurahan_id')->default(0)->nullable();
-            $table->integer('dusun_id')->default(0)->nullable();
+            $table->foreignId('province_id')->constrained(
+                table: 'core_province',
+                indexName: 'member_province_id'
+            );
+            $table->foreignId('city_id')->constrained(
+                table: 'core_city',
+                indexName: 'member_city_id'
+            );
+            $table->foreignId('kecamatan_id')->constrained(
+                table: 'core_kecamatan',
+                indexName: 'member_kecamatan_id'
+            );
+            $table->foreignId('kelurahan_id')->constrained(
+                table: 'core_kelurahan',
+                indexName: 'member_kelurahan_id'
+            );
+            $table->foreignId('dusun_id')->constrained(
+                table: 'core_dusun',
+                indexName: 'member_dusun_id'
+            );
             $table->string('member_no', 50)->nullable();
             $table->string('member_name', 100)->nullable();
             $table->decimal('member_gender', 1,0)->default(0)->nullable();

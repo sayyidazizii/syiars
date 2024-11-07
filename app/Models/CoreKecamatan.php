@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CoreKecamatan extends Model
 {
@@ -28,7 +29,15 @@ class CoreKecamatan extends Model
 
     public function Member(): BelongsTo
     {
-        return $this->belongsTo(CoreMember::class, 'member_id');
+        return $this->belongsTo(CoreMember::class);
+    }
+    public function City(): BelongsTo
+    {
+        return $this->belongsTo(CoreCity::class, 'city_id');
+    }
+    public function Kelurahan(): HasMany
+    {
+        return $this->hasMany(CoreKelurahan::class);
     }
     public function Branch(): BelongsTo
     {

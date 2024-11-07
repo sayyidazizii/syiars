@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Core Member | AdminLTE')
+@section('title', 'Data Anggota | AdminLTE')
 
 @section('content')
 @if (session('msg'))
@@ -17,37 +17,10 @@
     @endforeach
 </div>
 @endif
-{{-- @if (Session::has('success'))
-        <div class="alert alert-success alert-dismissible mt-5">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4>
-                <i class="icon fa fa-check"></i>
-                {{ Session::get('success') }}
-            </h4>
-        </div>
-    @endif
-    @if (Session::has('warning'))
-        <div class="alert alert-warning alert-dismissible mt-5">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4>
-                <i class="icon fa fa-check"></i>
-                {{ Session::get('warning') }}
-            </h4>
-        </div>
-    @endif
-    @if (Session::has('danger'))
-        <div class="alert alert-danger alert-dismissible mt-5">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4>
-                <i class="icon fa fa-check"></i>
-                {{ Session::get('danger') }}
-            </h4>
-        </div>
-    @endif --}}
     <div class="card">
         <div class="card-header bg-dark clearfix">
             <h5 class="mb-0 float-left">
-                Tabel Master Data Anggota
+                Tabel Data Anggota
             </h5>
             <div class="form-actions float-right">
                 <a href="{{ url('/core_member/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
@@ -82,7 +55,7 @@
                                     <td>{{ $data->member_no }}</td>
                                     <td>{{ $data->member_name }}</td>
                                     <td>{{ $data->member_address }}</td>
-                                    <td>{{ $data->member_status }}</td>
+                                    <td>{{ $memberstatus[$data->member_status] }}</td>
                                     <td>{{ $membercharacter[$data->member_character] }}</td>
                                     <td>{{ $data->member_phone }}</td>
                                     <td>{{ $data->saldo_pokok_old }}</td>
@@ -90,8 +63,8 @@
                                     <td>{{ $data->saldo_wajib_old }}</td>
                                     <td class="text-center">
                                         <a type="button" class="btn btn-outline-warning btn-sm mb-2"
-                                            href="{{ route('core_member.update', $data->member_id) }}">Edit</a>
-                                        <form action="{{ route('core_member.delete', $data->member_id) }}" method="post">
+                                            href="{{ route('core_member.update', $data->id) }}">Edit</a>
+                                        <form action="{{ route('core_member.delete', $data->id) }}" method="post">
                                             @csrf
                                             <button class="btn btn-outline-danger btn-sm"
                                                 onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>
@@ -128,19 +101,4 @@
     });
 
 </script>
-{{-- <script>
-    $(document).ready(function() {
-        setTimeout(function() {
-            $('[class*="alert"]').each(function() {
-                $(this).alert('close');
-            });
-        }, 5000);
-    });
-
-    $(document).on('DOMNodeInserted', '[class*="alert"]', function() {
-        setTimeout(function() {
-            $(this).alert('close');
-        }.bind(this), 5000);
-    });
-</script> --}}
 @stop

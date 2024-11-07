@@ -90,24 +90,24 @@ class CoreMember extends Model
         });
     }
 
-    public function CoreDusun(): HasMany
+    public function Dusun(): HasMany
     {
-        return $this->hasMany(CoreDusun::class);
+        return $this->hasMany(CoreDusun::class, 'dusun_id');
     }
-    public function CoreKelurahan(): HasMany
+    public function Kelurahan(): HasMany
     {
-        return $this->hasMany(CoreKelurahan::class);
+        return $this->hasMany(CoreKelurahan::class, 'kelurahan_id');
     }
-    public function CoreKecamatan(): HasMany
+    public function Kecamatan(): HasMany
     {
-        return $this->hasMany(CoreKecamatan::class);
+        return $this->hasMany(CoreKecamatan::class, 'kecamatan_id');
     }
-    public function CoreCity(): HasMany
+    public function City(): HasMany
     {
-        return $this->hasMany(CoreCity::class);
+        return $this->hasMany(CoreCity::class, 'city_id');
     }
-    public function CoreProvince(): HasMany
+    public function Province(): HasMany
     {
-        return $this->hasMany(CoreProvince::class);
+        return $this->hasMany(CoreProvince::class, 'province_id');
     }
 }

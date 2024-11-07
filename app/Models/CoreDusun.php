@@ -50,7 +50,11 @@ class CoreDusun extends Model
 
     public function Member(): BelongsTo
     {
-        return $this->belongsTo(CoreMember::class, 'member_id');
+        return $this->belongsTo(CoreMember::class);
+    }
+    public function Kelurahan(): BelongsTo
+    {
+        return $this->belongsTo(CoreKelurahan::class, 'kelurahan_id');
     }
 
     public function branch(): BelongsTo

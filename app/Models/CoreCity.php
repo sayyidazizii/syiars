@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -52,16 +53,15 @@ class CoreCity extends Model
 
     public function Member(): BelongsTo
     {
-        return $this->belongsTo(CoreMember::class, 'member_id');
+        return $this->belongsTo(CoreMember::class);
     }
-    public function core_provinces(): BelongsTo
+    public function Province(): BelongsTo
     {
         return $this->belongsTo(CoreProvince::class, 'province_id');
     }
-
-    public function CoreCity(): BelongsTo
+    public function Kecamatan(): HasMany
     {
-        return $this->belongsTo(CoreCity::class, 'city_id');
+        return $this->hasMany(CoreKecamatan::class);
     }
     public function Branch(): BelongsTo
     {

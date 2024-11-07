@@ -51,7 +51,15 @@ class CoreKelurahan extends Model
 
     public function Member(): BelongsTo
     {
-        return $this->belongsTo(CoreMember::class, 'member_id');
+        return $this->belongsTo(CoreMember::class);
+    }
+    public function Kecamatan(): BelongsTo
+    {
+        return $this->belongsTo(CoreKecamatan::class, 'kecamatan_id');
+    }
+    public function Dusun(): HasMany
+    {
+        return $this->hasMany(CoreDusun::class);
     }
 
     public function Branch(): BelongsTo
