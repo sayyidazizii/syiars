@@ -38,31 +38,32 @@
                         <th width="15%" style='text-align:center'>Nama Provinsi</th>
                         <th width="15%" style='text-align:center'>Kode Provinsi</th>
                         <th width="15%" style='text-align:center'>Nama Kota</th>
-                        <th width="15%" style='text-align:center'>Nama Kota</th>
                         <th width="15%" style='text-align:center'>Nomor Provinsi</th>
+                        <th width="15%" style='text-align:center'>Nomor Kota</th>
                         <th width="10%" style='text-align:center'>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($core_citys as $index => $core_city)
+                    <?php $no = 1; ?>
+                    @forelse($core_city as $data)
                     <tr>
-                        <td style='text-align:center'>{{ $index + 1 }}</td>
-                        <td style='text-align:center'>{{ $core_city->city_code }}</td>
-                        <td style='text-align:center'>{{ $core_city->core_provinces->province_name }}</td>
-                        <td style='text-align:center'>{{ $core_city->core_provinces->province_code }}</td>
-                        <td style='text-align:center'>{{ $core_city->city_name }}</td>
-                        <td style='text-align:center'>{{ $core_city->core_provinces->province_no }}</td>
-                        <td style='text-align:center'>{{ $core_city->city_no }}</td>
+                        <td style='text-align:center'>{{ $no++ }}</td>
+                        <td style='text-align:center'>{{ $data->city_code }}</td>
+                        <td style='text-align:center'>{{ $data->Province->province_name }}</td>
+                        <td style='text-align:center'>{{ $data->Province->province_code }}</td>
+                        <td style='text-align:center'>{{ $data->city_name }}</td>
+                        <td style='text-align:center'>{{ $data->Province->province_no }}</td>
+                        <td style='text-align:center'>{{ $data->city_no }}</td>
                         <td class="text-center">
                         <a type="button" class="btn btn-outline-warning btn-sm mb-2"
-                            href="{{ route('CoreCity.update', $core_city->city_id) }}">Edit</a>
-                        <form action="{{ route('CoreCity.delete', $core_city->city_id) }}" method="post">
+                            href="{{ route('CoreCity.update', $data->id) }}">Edit</a>
+                        <form action="{{ route('CoreCity.delete', $data->id) }}" method="post">
                             @csrf
                             <button class="btn btn-outline-danger btn-sm"
                                 onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>
                         </form>
                         </td>
-                        
+
                     </tr>
                     @empty
                     <tr>
@@ -70,11 +71,9 @@
                     </tr>
                     @endforelse
                 </tbody>
-                
             </table>
         </div>
     </div>
-</div>
 </div>
 @stop
 @section('css')

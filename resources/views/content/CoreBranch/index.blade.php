@@ -1,29 +1,27 @@
 @extends('adminlte::page')
 
-@section('title', 'Cabang | AdminLTE')
+@section('title', 'Kode Cabang | AdminLTE')
 @section('content')
-@if (session('msg'))
-<div class="alert alert-{{ session('type') ?? 'info' }}" role="alert">
-    {{ session('msg') }}
-</div>
-@endif
-
-
-@if (count($errors) > 0)
-<div class="alert alert-danger" role="alert">
-    @foreach ($errors->all() as $error)
-    <li>{{ $error }}</li>
-    @endforeach
-</div>
-@endif
+    @if (session('msg'))
+        <div class="alert alert-{{ session('type') ?? 'info' }}" role="alert">
+            {{ session('msg') }}
+        </div>
+    @endif
+    @if (count($errors) > 0)
+        <div class="alert alert-danger" role="alert">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </div>
+    @endif
     <div class="card border border-dark">
         <div class="card-header bg-dark clearfix">
             <h5 class="mb-0 float-left">
-                Tabel Core Branch
+                Tabel Kode Cabang
             </h5>
             <div class="form-actions float-right">
-                <a href="{{ url('/core_branch/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
-                    Core Branch</a>
+                <a href="{{ url('/core_branch/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah Data
+                    Kode Cabang</a>
             </div>
         </div>
         <div class="card-body">
@@ -33,10 +31,10 @@
                     <thead>
                         <tr>
                             <th width="2%" style='text-align:center'>No</th>
-                            <th width="15%" style='text-align:center'>Kode Branch</th>
-                            <th width="15%" style='text-align:center'>Nama Branch</th>
-                            <th width="15%" style='text-align:center'>Alamat Branch</th>
-                            <th width="15%" style='text-align:center'>Kota Branch</th>
+                            <th width="15%" style='text-align:center'>Kode Cabang</th>
+                            <th width="15%" style='text-align:center'>Nama Cabang</th>
+                            <th width="15%" style='text-align:center'>Alamat Cabang</th>
+                            <th width="15%" style='text-align:center'>Kota Cabang</th>
                             <th width="15%" style='text-align:center'>Contact Person</th>
                             <th width="15%" style='text-align:center'>Email</th>
                             <th width="15%" style='text-align:center'>Phone1</th>
@@ -73,26 +71,24 @@
             </div>
         </div>
     </div>
-    </div>
 @stop
 @section('css')
     <link rel="stylesheet" href="/css/admin.custom.css">
 @stop
 @section('js')
-<script>
-    $(document).ready(function () {
-        setTimeout(function () {
-            $('[class*="alert"]').each(function () {
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                $('[class*="alert"]').each(function() {
+                    $(this).alert('close');
+                });
+            }, 5000);
+        });
+
+        $(document).on('DOMNodeInserted', '[class*="alert"]', function() {
+            setTimeout(function() {
                 $(this).alert('close');
-            });
-        }, 5000);
-    });
-
-    $(document).on('DOMNodeInserted', '[class*="alert"]', function () {
-        setTimeout(function () {
-            $(this).alert('close');
-        }.bind(this), 5000);
-    });
-
-</script>
+            }.bind(this), 5000);
+        });
+    </script>
 @stop

@@ -1,13 +1,11 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
-
 class CoreBranch extends Model
 {
      /** @use HasFactory<\Database\Factories\CoreBranchFactory> */
@@ -25,21 +23,17 @@ class CoreBranch extends Model
         'branch_phone2',
         'data_state',
     ];
-
     protected $dates = [
         'created_on',
         'deleted_at',
     ];
-
     public $timestamps = true;
-
     protected static function booted() {
-        $userid = auth()->id(); // Menggunakan auth() dengan tanda kurung
-
+        $userid = auth()->id();
         static::creating(function ($model) use ($userid) {
             $model->created_id = $userid;
         });
-        static::updating(function ($model) use ($userid) { // Mengubah 'updated' menjadi 'updating'
+        static::updating(function ($model) use ($userid) {
             $model->updated_id = $userid;
         });
         static::deleting(function ($model) use ($userid) {

@@ -14,12 +14,13 @@ class CreateCoreKecamatanTable extends Migration
     public function up()
     {
         Schema::create('core_kecamatan', function (Blueprint $table) {
-            $table->id('kecamatan_id');
-            $table->string('city_code')->nullable();
-            $table->unsignedBigInteger('city_id')->nullable();
+            $table->id();
+            $table->foreignId('city_id')->constrained(
+                table: 'core_city',
+                indexName: 'kecamatan_city_id'
+            );
             $table->string('kecamatan_code')->nullable();
             $table->string('kecamatan_name')->nullable();
-            $table->integer('city_no')->default(0);
             $table->integer('kecamatan_no')->default(0);
             $table->smallInteger('data_state')->default(0)->nullable();
             $table->unsignedBigInteger('branch_id')->default(1)->nullable();
@@ -27,7 +28,7 @@ class CreateCoreKecamatanTable extends Migration
             $table->unsignedBigInteger('updated_id')->nullable();
             $table->uuid('uuid')->nullable();
             $table->unsignedBigInteger('deleted_id')->nullable();
-            $table->softDeletes(); 
+            $table->softDeletes();
             $table->timestamps();
         });
     }

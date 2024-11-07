@@ -1,29 +1,27 @@
 @extends('adminlte::page')
 
-@section('title', 'Perkiraan | AdminLTE')
+@section('title', 'Nomor Perkiraan | AdminLTE')
 @section('content')
-@if (session('msg'))
-<div class="alert alert-{{ session('type') ?? 'info' }}" role="alert">
-    {{ session('msg') }}
-</div>
-@endif
-
-
-@if (count($errors) > 0)
-<div class="alert alert-danger" role="alert">
-    @foreach ($errors->all() as $error)
-    <li>{{ $error }}</li>
-    @endforeach
-</div>
-@endif
+    @if (session('msg'))
+        <div class="alert alert-{{ session('type') ?? 'info' }}" role="alert">
+            {{ session('msg') }}
+        </div>
+    @endif
+    @if (count($errors) > 0)
+        <div class="alert alert-danger" role="alert">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </div>
+    @endif
     <div class="card border border-dark">
         <div class="card-header bg-dark clearfix">
             <h5 class="mb-0 float-left">
-                Tabel Perkiraan
+                Tabel Nomor Perkiraan
             </h5>
             <div class="form-actions float-right">
                 <a href="{{ url('/acct_account/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
-                    Perkiraan</a>
+                    Nomor Perkiraan</a>
             </div>
         </div>
         <div class="card-body">
@@ -67,26 +65,24 @@
             </div>
         </div>
     </div>
-    </div>
 @stop
 @section('css')
     <link rel="stylesheet" href="/css/admin.custom.css">
 @stop
 @section('js')
-<script>
-    $(document).ready(function () {
-        setTimeout(function () {
-            $('[class*="alert"]').each(function () {
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                $('[class*="alert"]').each(function() {
+                    $(this).alert('close');
+                });
+            }, 5000);
+        });
+
+        $(document).on('DOMNodeInserted', '[class*="alert"]', function() {
+            setTimeout(function() {
                 $(this).alert('close');
-            });
-        }, 5000);
-    });
-
-    $(document).on('DOMNodeInserted', '[class*="alert"]', function () {
-        setTimeout(function () {
-            $(this).alert('close');
-        }.bind(this), 5000);
-    });
-
-</script>
+            }.bind(this), 5000);
+        });
+    </script>
 @stop

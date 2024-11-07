@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('core_dusun', function (Blueprint $table) {
-            $table->increments('dusun_id');
-            $table->unsignedBigInteger('kelurahan_id')->default(0)->nullable();
+            $table->id();
+            $table->foreignId('kelurahan_id')->constrained(
+                table: 'core_kelurahan',
+                indexName: 'dusun_kelurahan_id'
+            );
             $table->string('dusun_code', 10)->nullable();
             $table->string('dusun_name', 50)->nullable();
             $table->smallInteger('data_state')->default(0)->nullable();
