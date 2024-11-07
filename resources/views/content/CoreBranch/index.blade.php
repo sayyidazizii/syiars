@@ -19,11 +19,10 @@
     <div class="card border border-dark">
         <div class="card-header bg-dark clearfix">
             <h5 class="mb-0 float-left">
-                Tabel Core Branch
+                Tabel Cabang
             </h5>
             <div class="form-actions float-right">
-                <a href="{{ url('/core_branch/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
-                    Core Branch</a>
+                <a href="{{ url('/core_branch/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah Data Cabang</a>
             </div>
         </div>
         <div class="card-body">
@@ -33,10 +32,10 @@
                     <thead>
                         <tr>
                             <th width="2%" style='text-align:center'>No</th>
-                            <th width="15%" style='text-align:center'>Kode Branch</th>
-                            <th width="15%" style='text-align:center'>Nama Branch</th>
-                            <th width="15%" style='text-align:center'>Alamat Branch</th>
-                            <th width="15%" style='text-align:center'>Kota Branch</th>
+                            <th width="15%" style='text-align:center'>Kode Cabang</th>
+                            <th width="15%" style='text-align:center'>Nama Cabang</th>
+                            <th width="15%" style='text-align:center'>Alamat Cabang</th>
+                            <th width="15%" style='text-align:center'>Kota Cabang</th>
                             <th width="15%" style='text-align:center'>Contact Person</th>
                             <th width="15%" style='text-align:center'>Email</th>
                             <th width="15%" style='text-align:center'>Phone1</th>
