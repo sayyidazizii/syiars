@@ -91,26 +91,35 @@ class CoreMemberController extends Controller
     public function update($id)
     {
         $core_member = CoreMember::find($id);
-        return view('content.CoreMember.edit', compact('core_member'));
+        $core_province = CoreProvince::all();
+        $core_city = CoreCity::all();
+        $core_kecamatan = CoreKecamatan::all();
+        $core_kelurahan = CoreKelurahan::all();
+        $core_dusun = CoreDusun::all();
+        $membergender = Configuration::MemberGender();
+        $membercharacter = Configuration::MemberCharacter();
+        $memberidentity = Configuration::Member();
+        return view('content.CoreMember.edit', compact('core_member', 'core_province', 'core_city', 'core_kecamatan', 'core_kelurahan', 'core_dusun','membergender', 'membercharacter', 'memberidentity'));
     }
     public function prosesupdate(Request $request, $id)
     {
         $request->validate([
-            'office_code' => 'required|string|max:20',
-            'office_name' => 'required|string|max:50',
-            'branch_id' => 'required|integer',
+            'member_name' => 'required|string|max:100',
+            'member_address' => 'required|string',
+            'member_phone' => 'required|string|max:20',
+            'member_character' => 'required|numeric',
         ]);
 
-        $core_member = CoreMember::findOrFail($id);
+            $core_member = CoreMember::findOrFail($id);
+            $core_member->member_name           = $request->input('member_name');
+            $core_member->member_address        = $request->input('member_address');
+            $core_member->member_phone          = $request->input('member_phone');
+            $core_member->member_character      = $request->input('member_character');
 
-    $core_member->office_code = $request->input('office_code');
-    $core_member->office_name = $request->input('office_name');
-    $core_member->branch_id = $request->input('branch_id');
 
+            $core_member->save();
 
-    $core_member->save();
-
-    return redirect()->route('core_member.index')->warning('Data Business Office diperbarui!');
+        return redirect()->route('core_member.index')->warning('Data Business Office diperbarui!');
     }
     public function delete($id)
     {

@@ -21,8 +21,6 @@ class CoreMember extends Model
 
     protected $table = 'core_member';
 
-    protected $primaryKey = 'member_id';
-
     protected $fillable = [
             'member_id',
             'branch_id',
