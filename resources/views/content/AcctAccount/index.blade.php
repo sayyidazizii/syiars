@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Perkiraan | AdminLTE')
+@section('title', 'Nomor Perkiraan | AdminLTE')
 @section('content')
 @if (session('msg'))
 <div class="alert alert-{{ session('type') ?? 'info' }}" role="alert">
@@ -19,11 +19,11 @@
     <div class="card border border-dark">
         <div class="card-header bg-dark clearfix">
             <h5 class="mb-0 float-left">
-                Tabel Perkiraan
+                Tabel Nomor Perkiraan
             </h5>
             <div class="form-actions float-right">
                 <a href="{{ url('/acct_account/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
-                    Perkiraan</a>
+                    Nomor Perkiraan</a>
             </div>
         </div>
         <div class="card-body">

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Perkiraan Tambah Baru | AdminLTE')
+@section('title', 'Tambah Nomor Perkiraan | AdminLTE')
 @section('content_header')<h1>Tambah Data</h1>
 @stop
 @section('content')<div class="col-md-6">

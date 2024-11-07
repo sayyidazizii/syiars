@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Nomor Perkiraan Edit | AdminLTE')
+@section('title', 'Edit Nomor Perkiraan | AdminLTE')
 @section('content_header')<h1>Edit Data</h1>
 @stop
 @section('content')<div class="col-md-6">
@@ -9,12 +9,12 @@
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Kode Pembiayaan</label>
+                        <label for="exampleInputEmail1">Nomor Perkiraan</label>
                         <input type="text" name="account_code" class="form-control"
                             value="{{ $acct_account->account_code }}">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Nama Pembiayaan</label>
+                        <label for="exampleInputEmail1">Nama Perkiraan</label>
                         <input type="text" name="account_name" class="form-control"
                             value="{{ $acct_account->account_name }}">
                     </div>
