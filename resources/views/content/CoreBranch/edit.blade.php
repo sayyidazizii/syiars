@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Edit Cabang | AdminLTE')
+@section('title', 'Edit Kode Cabang | AdminLTE')
 @section('content_header')<h1>Edit Data</h1>
 @stop
 @section('content')

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Cabang | AdminLTE')
+@section('title', 'Kode Cabang | AdminLTE')
 @section('content')
     @if (session('msg'))
         <div class="alert alert-{{ session('type') ?? 'info' }}" role="alert">
@@ -17,11 +17,11 @@
     <div class="card border border-dark">
         <div class="card-header bg-dark clearfix">
             <h5 class="mb-0 float-left">
-                Tabel Cabang
+                Tabel Kode Cabang
             </h5>
             <div class="form-actions float-right">
                 <a href="{{ url('/core_branch/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah Data
-                    Cabang</a>
+                    Kode Cabang</a>
             </div>
         </div>
         <div class="card-body">

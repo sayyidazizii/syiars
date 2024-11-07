@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Tambah Cabang | AdminLTE')
+@section('title', 'Tambah Kode Cabang | AdminLTE')
 @section('content_header')<h1>Tambah Data</h1>
 @stop
 @section('content')

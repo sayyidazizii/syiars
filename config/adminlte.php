@@ -300,7 +300,7 @@ return [
             'text' => 'search',
             'topnav_right' => true,
         ],
-        ['header' => 'menu'],
+        ['header' => 'MENU'],
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
@@ -312,34 +312,47 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'Cabang',
-            'url' => 'core_branch',
-            'icon' => 'fas fa-fw fa-list',
+            'text' => 'System User Group',
+            'url' => 'system-user-group',
+            'icon' => 'fas fa-fw fa-lock',
         ],
-        [
-            'text' => 'Kode Pembiayaan',
-            'url' => 'acct_credit',
-            'icon' => 'fas fa-fw fa-bolt',
-        ],
+        ['header' => 'ACCOUNTING'],
         [
             'text' => 'Nomor Perkiraan',
             'url' => 'acct_account',
             'icon' => 'fas fa-fw fa-beer',
         ],
+        ['header' => 'UTILITY'],
         [
-            'text' => 'System User Group',
-            'url' => 'system-user-group',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'Kode Simpanan Berjangka',
-            'url' => 'AcctDeposito',
-            'icon' => 'fas fa-fw fa-gavel',
-        ],
-        [
-            'text' => 'Kode Simpanan',
-            'url' => 'AcctSavings',
-            'icon' => 'fas fa-fw fa-code',
+            'text' => 'Kofigurasi',
+            'icon' => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Kode Cabang',
+                    'url' => 'core_branch',
+                    'icon' => 'fas fa-fw fa-list',
+                ],
+                [
+                    'text' => 'Kode Simpanan',
+                    'url' => 'AcctSavings',
+                    'icon' => 'fas fa-fw fa-code',
+                ],
+                [
+                    'text' => 'Kode Simpanan Berjangka',
+                    'url' => 'AcctDeposito',
+                    'icon' => 'fas fa-fw fa-gavel',
+                ],
+                [
+                    'text' => 'Kode Pembiayaan',
+                    'url' => 'acct_credit',
+                    'icon' => 'fas fa-fw fa-bolt',
+                ],
+                [
+                    'text' => 'Kode BO',
+                    'url' => 'core_office',
+                    'icon' => 'fas fa-fw fa-hammer',
+                ],
+            ],
         ],
         [
             'text' => 'Core Province',
@@ -347,25 +360,15 @@ return [
             'icon' => 'fas fa-fw fa-globe',
         ],
         [
-            'text' => 'Kode BO',
-            'url' => 'core_office',
-            'icon' => 'fas fa-fw fa-hammer',
-        ],
-        [
             'text' => 'Core City',
             'url' => 'CoreCity',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        ['header' => 'ANGGOTA'],
         [
-            'text' => 'Anggota',
-            'icon' => 'fas fa-fw fa-child',
-            'submenu' => [
-                [
-                    'text' => 'Data Anggota',
-                    'url' => 'core_member',
-                    'icon' => 'fas fa-fw fa-list',
-                ],
-            ],
+            'text' => 'Data Anggota',
+            'url' => 'core_member',
+            'icon' => 'fas fa-fw fa-list',
         ],
     ],
 
