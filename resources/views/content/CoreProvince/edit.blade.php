@@ -27,24 +27,24 @@
         <h5 class="mb-0 text-white">Edit Provinsi</h5>
     </div>
     <div class="card-body">
-        <form action="{{ route('core_province.prosesupdate', $province->province_id) }}" method="POST">
+        <form action="{{ route('core_province.prosesupdate', $core_province->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">
                 <label for="province_code">Kode Provinsi</label>
-                <input type="text" class="form-control" id="province_code" name="province_code" value="{{ $province->province_code }}" required maxlength="2" placeholder="Masukkan kode provinsi">
+                <input type="text" class="form-control" id="province_code" name="province_code" value="{{ $core_province->province_code }}" required maxlength="2" placeholder="Masukkan kode provinsi">
             </div>
             <div class="form-group">
                 <label for="province_name">Nama Provinsi</label>
-                <input type="text" class="form-control" id="province_name" name="province_name" value="{{ $province->province_name }}" required maxlength="255" placeholder="Masukkan nama provinsi">
+                <input type="text" class="form-control" id="province_name" name="province_name" value="{{ $core_province->province_name }}" required maxlength="255" placeholder="Masukkan nama provinsi">
             </div>
             <div class="form-group">
                 <label for="province_no">Nomor Provinsi</label>
-                <input type="text" class="form-control" id="province_no" name="province_no" value="{{ $province->province_no }}" maxlength="20" placeholder="Masukkan nomor provinsi (opsional)">
+                <input type="text" class="form-control" id="province_no" name="province_no" value="{{ $core_province->province_no }}" maxlength="20" placeholder="Masukkan nomor provinsi (opsional)">
             </div>
             <div class="form-group">
                 <label for="data_state">Data State</label>
-                <input type="number" class="form-control" id="data_state" name="data_state" value="{{ $province->data_state }}" min="0" placeholder="Masukkan data state">
+                <input type="number" class="form-control" id="data_state" name="data_state" value="{{ $core_province->data_state }}" min="0" placeholder="Masukkan data state">
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
             <a href="{{ route('core_province.index') }}" class="btn btn-secondary">Kembali</a>

@@ -56,8 +56,8 @@ class CoreProvinceController extends Controller
      */
     public function update($id)
     {
-        $province = CoreProvince::findOrFail($id);
-        return view('content.CoreProvince.edit', compact('province'));
+        $core_province = CoreProvince::findOrFail($id);
+        return view('content.CoreProvince.edit', compact('core_province'));
     }
 
     /**
