@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use App\Models\CoreCity;
 use App\Models\CoreDusun;
 use App\Models\CoreKecamatan;
@@ -12,15 +11,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 class CoreMember extends Model
 {
     /** @use HasFactory<\Database\Factories\CoreMemberFactory> */
     use HasFactory, SoftDeletes;
     use Notifiable;
-
     protected $table = 'core_member';
-
     protected $fillable = [
             'member_id',
             'branch_id',
@@ -66,14 +62,11 @@ class CoreMember extends Model
             'member_no_status',
             'data_state',
     ];
-
     protected $dates = [
         'created_on',
         'deleted_at',
     ];
-
     public $timestamps = true;
-
     protected static function booted() {
         $userid = auth()->id();
 
@@ -87,7 +80,6 @@ class CoreMember extends Model
             $model->deleted_id = $userid;
         });
     }
-
     public function Dusun(): HasMany
     {
         return $this->hasMany(CoreDusun::class, 'dusun_id');

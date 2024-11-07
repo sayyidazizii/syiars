@@ -5,7 +5,6 @@ use App\Models\CoreBranch;
 use App\Models\CoreOffice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 class CoreOfficeController extends Controller
 {
     public function index()
@@ -25,7 +24,6 @@ class CoreOfficeController extends Controller
             'office_name' => 'required|string|max:50',
             'branch_id' => 'required|integer',
         ]);
-
         try {
             DB::beginTransaction();
             CoreOffice::create([
@@ -54,23 +52,17 @@ class CoreOfficeController extends Controller
             'office_name' => 'required|string|max:50',
             'branch_id' => 'required|integer',
         ]);
-
         $core_office = CoreOffice::findOrFail($id);
-
-    $core_office->office_code = $request->input('office_code');
-    $core_office->office_name = $request->input('office_name');
-    $core_office->branch_id = $request->input('branch_id');
-
-
-    $core_office->save();
-
-    return redirect()->route('core_office.index')->warning('Data Business Office diperbarui!');
+        $core_office->office_code = $request->input('office_code');
+        $core_office->office_name = $request->input('office_name');
+        $core_office->branch_id = $request->input('branch_id');
+        $core_office->save();
+        return redirect()->route('core_office.index')->warning('Data Business Office diperbarui!');
     }
     public function delete($id)
     {
         $core_office = CoreOffice::find($id);
         $core_office->delete();
-
         return redirect()->route('core_office.index')->danger('Data Business Office dihapus!');
     }
 }

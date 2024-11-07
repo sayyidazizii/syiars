@@ -3,7 +3,8 @@
 @section('title', 'Tambah Cabang | AdminLTE')
 @section('content_header')<h1>Tambah Data</h1>
 @stop
-@section('content')<div class="col-md-6">
+@section('content')
+    <div class="col-md-6">
         <div class="box box-primary">
             <form role="form" method="post" action="{{ route('core_branch.store') }}">
                 @csrf
@@ -50,6 +51,7 @@
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
+                </div>
             </form>
         </div>
     </div>

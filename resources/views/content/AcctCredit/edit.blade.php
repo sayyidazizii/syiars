@@ -3,7 +3,8 @@
 @section('title', 'Edit Kode Pembiayaan | AdminLTE')
 @section('content_header')<h1>Edit Data</h1>
 @stop
-@section('content')<div class="col-md-6">
+@section('content')
+    <div class="col-md-6">
         <div class="box box-primary">
             <form role="form" method="post" action="{{ route('acct_credit.prosesupdate', $acct_credits->id) }}">
                 @csrf
@@ -41,6 +42,7 @@
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
+                </div>
             </form>
         </div>
     </div>
