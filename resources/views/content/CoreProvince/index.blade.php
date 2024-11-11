@@ -37,8 +37,7 @@
                         <th width="5%" style='text-align:center'>No</th>
                         <th width="20%" style='text-align:center'>Kode Provinsi</th>
                         <th width="30%" style='text-align:center'>Nama Provinsi</th>
-                        <th width="20%" style='text-align:center'>Nomor Provinsi</th>
-                        <th width="10%" style='text-align:center'>Data State</th>
+                        <th width="20%" style='text-align:center'>Nomor Provinsi</th>\
                         <th width="10%" style='text-align:center'>Aksi</th>
                     </tr>
                 </thead>
@@ -50,7 +49,6 @@
                         <td>{{ $province->province_code }}</td>
                         <td>{{ $province->province_name }}</td>
                         <td>{{ $province->province_no }}</td>
-                        <td>{{ $province->data_state }}</td>
                         <td class="text-center">
                             <a class="btn btn-outline-warning btn-sm mb-2" href="{{ route('core_province.update', $province->province_id) }}">Edit</a>
                             <form action="{{ route('core_province.delete', $province->province_id) }}" method="POST" class="d-inline">

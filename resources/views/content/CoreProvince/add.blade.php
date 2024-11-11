@@ -41,10 +41,6 @@
                 <label for="province_no">Nomor Provinsi</label>
                 <input type="text" class="form-control" id="province_no" name="province_no" maxlength="20" placeholder="Masukkan nomor provinsi (opsional)">
             </div>
-            <div class="form-group">
-                <label for="data_state">Data State</label>
-                <input type="number" class="form-control" id="data_state" name="data_state" value="0" min="0" placeholder="Masukkan data state">
-            </div>
             <button type="submit" class="btn btn-primary">Simpan</button>
             <a href="{{ route('core_province.index') }}" class="btn btn-secondary">Kembali</a>
         </form>
