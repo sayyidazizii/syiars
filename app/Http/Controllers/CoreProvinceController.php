@@ -70,7 +70,7 @@ class CoreProvinceController extends Controller
         'province_code' => 'required|string|max:2',
         'province_name' => 'required|string|max:255',
         'province_no' => 'nullable|string|max:20',
-        'data_state' => 'nullable|integer',
+        'data_state' => 0,
     ]);
 
     $province = CoreProvince::findOrFail($id);
@@ -93,7 +93,7 @@ class CoreProvinceController extends Controller
     {
         $province = CoreProvince::findOrFail($id);
         $province->delete(); // Menghapus provinsi
-
+        
         Session::flash('success', 'Provinsi berhasil dihapus.');
         return redirect()->route('core_province.index');
     }
