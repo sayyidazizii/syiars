@@ -39,28 +39,22 @@
                 <div class="form-group">
                     <label for="no Perkiraan">Nama Province</label>
                     <select name="province_id" class="form-control">
-                        @foreach ($core_provinces as $data)
-                        <option value="{{ $data->province_id }}">{{ $data->province_name }}</option>
+                        @foreach ($core_province as $data)
+                        <option value="{{ $data->id }}">{{ $data->province_name }}</option>
                         @endforeach
                     </select>
-                    @error('province_id')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
                 </div>
-                
+
                 <!-- Province Code -->
                 <div class="form-group">
                     <label for="no Perkiraan">Kode Province</label>
-                    <select name="province_code" class="form-control">
-                        @foreach ($core_provinces as $data)
-                        <option value="{{ $data->province_id }}">{{ $data->province_code }}</option>
+                    <select name="province_id" class="form-control">
+                        @foreach ($core_province as $data)
+                        <option value="{{ $data->id }}">{{ $data->province_code }}</option>
                         @endforeach
                     </select>
-                    @error('province_code')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
                 </div>
-               
+
 
                 <!-- City Name -->
                 <div class="form-group">
@@ -75,16 +69,13 @@
                 <!-- Province No -->
                 <div class="form-group">
                     <label for="no Perkiraan">Nomor Province</label>
-                    <select name="province_no" class="form-control">
-                        @foreach ($core_provinces as $data)
-                        <option value="{{ $data->province_id }}">{{ $data->province_no }}</option>
+                    <select name="province_id" class="form-control">
+                        @foreach ($core_province as $data)
+                        <option value="{{ $data->id }}">{{ $data->province_no }}</option>
                         @endforeach
                     </select>
-                    @error('province_no')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
                 </div>
-                
+
 
                 <!-- City No -->
                 <div class="form-group">

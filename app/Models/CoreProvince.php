@@ -14,8 +14,6 @@ class CoreProvince extends Model
 
     protected $table = 'core_province'; // Nama tabel yang digunakan
 
-    protected $primaryKey = 'province_id'; // Menentukan primary key
-
     protected $fillable = [
         'province_code',
         'province_name',
@@ -32,14 +30,13 @@ class CoreProvince extends Model
     {
         return $this->belongsTo(CoreBranch::class, 'branch_id');
     }
-
-    public function corecity(): HasMany
+    public function Member(): BelongsTo
     {
-        return $this->hasMany(AcctDeposito::class,'city_id');
+        return $this->belongsTo(CoreMember::class);
     }
-    public function CoreProvince(): BelongsTo
+    public function City(): HasMany
     {
-        return $this->belongsTo(CoreProvince::class, 'kelurahan_id');
+        return $this->hasMany(CoreCity::class);
     }
 }
 

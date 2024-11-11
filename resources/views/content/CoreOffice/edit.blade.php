@@ -1,9 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Business Office Edit | AdminLTE')
+@section('title', 'Edit Business Office | AdminLTE')
 @section('content_header')<h1>Edit Data</h1>
 @stop
-@section('content')<div class="col-md-6">
+@section('content')
+    <div class="col-md-6">
         <div class="box box-primary">
             <form role="form" method="post" action="{{ route('core_office.prosesupdate', $core_office->office_id) }}">
                 @csrf
@@ -29,6 +30,7 @@
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
+                </div>
             </form>
         </div>
     </div>

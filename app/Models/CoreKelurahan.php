@@ -27,7 +27,8 @@ class CoreKelurahan extends Model
     ];
 
     protected $casts = [
-        'created_on' => 'datetime',
+        'created_on',
+        'deleted_at',
     ];
 
     /**
@@ -48,15 +49,23 @@ class CoreKelurahan extends Model
         });
     }
 
-    public function CoreKelurahan(): BelongsTo
+    public function Member(): BelongsTo
     {
-        return $this->belongsTo(CoreKelurahan::class, 'kelurahan_id');
+        return $this->belongsTo(CoreMember::class);
+    }
+    public function Kecamatan(): BelongsTo
+    {
+        return $this->belongsTo(CoreKecamatan::class, 'kecamatan_id');
+    }
+    public function Dusun(): HasMany
+    {
+        return $this->hasMany(CoreDusun::class);
     }
 
-    public function branch(): BelongsTo
+    public function Branch(): BelongsTo
     {
-        return $this->belongsTo(CoreDusun::class, 'branch_id', 'branch_id');
+        return $this->belongsTo(CoreBranch::class, 'branch_id');
     }
 
-    
+
 }

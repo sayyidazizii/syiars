@@ -5,7 +5,6 @@ use App\Models\AcctAccount;
 use App\Models\AcctCredit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 class AcctCreditController extends Controller
 {
     public function index()
@@ -25,7 +24,6 @@ class AcctCreditController extends Controller
             'credits_name' => 'required|string|max:255',
             'account_id' => 'required|integer',
         ]);
-
         try {
             DB::beginTransaction();
             AcctCredit::create([
@@ -54,23 +52,17 @@ class AcctCreditController extends Controller
             'credits_name' => 'required|string|max:255',
             'account_id' => 'required|integer',
         ]);
-
         $acct_credits = AcctCredit::findOrFail($id);
-
-    $acct_credits->credits_code = $request->input('credits_code');
-    $acct_credits->credits_name = $request->input('credits_name');
-    $acct_credits->account_id = $request->input('account_id');
-
-
-    $acct_credits->save();
-
-    return redirect()->route('acct_credit.index')->warning('Data Kode Pembiayaan diperbarui!');
+        $acct_credits->credits_code = $request->input('credits_code');
+        $acct_credits->credits_name = $request->input('credits_name');
+        $acct_credits->account_id = $request->input('account_id');
+        $acct_credits->save();
+        return redirect()->route('acct_credit.index')->warning('Data Kode Pembiayaan diperbarui!');
     }
     public function delete($id)
     {
         $acct_credits = AcctCredit::find($id);
         $acct_credits->delete();
-
         return redirect()->route('acct_credit.index')->danger('Data Kode Pembiayaan dihapus!');
     }
 }

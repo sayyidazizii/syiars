@@ -67,22 +67,21 @@ class Configuration
 	}
 
 	public static function MemberGender(){
-		$member_gender = array (
-            9 => ' ',
+		$membergender = array (
             0 => 'Perempuan',
             1 => 'Laki - Laki'
         );
 
-		return $member_gender;
+		return $membergender;
 	}
 
 	public static function MemberStatus(){
-		$member_status = array (
+		$memberstatus = array (
             0 => 'Calon Anggota',
             1 => 'Anggota'
         );
 
-		return $member_status;
+		return $memberstatus;
 	}
 
 	public static function MemberStatusAktif(){
@@ -139,14 +138,13 @@ class Configuration
 	}
 
 	public static function MemberCharacter(){
-		$member_character = array (
-            9 => ' ',
+		$membercharacter = array (
             2 => 'Pendiri',
             0 => 'Biasa',
             1 => 'Luar Biasa'
         );
 
-		return $member_character;
+		return $membercharacter;
 	}
 
 	public static function debetsource(){
@@ -159,16 +157,15 @@ class Configuration
 		return $source;
 	}
 
-	public static function MemberIdentity(){
-		$member_identity = array (
-            9 => ' ',
+	public static function Member(){
+		$memberidentity = array (
             0 => 'KTP',
             1 => 'KK',
             2 => 'SIM',
             3 => 'AKTA'
         );
 
-		return $member_identity;
+		return $memberidentity;
 	}
 
 	public static function KelompokLaporanSimpanan(){

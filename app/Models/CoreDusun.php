@@ -1,23 +1,18 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
-
 class CoreDusun extends Model
 {
     /** @use HasFactory<\Database\Factories\CoreDusunFactory> */
     use HasFactory, SoftDeletes;
     use Notifiable;
-
     protected $table = 'core_dusun';
-
     protected $primaryKey = 'dusun_id';
-
     protected $fillable = [
         'dusun_id',
         'kelurahan_id',
@@ -26,14 +21,11 @@ class CoreDusun extends Model
         'data_state',
         'branch_id',
     ];
-
     protected $dates = [
         'created_on',
         'deleted_at',
     ];
-
     public $timestamps = true;
-
     protected static function booted() {
         $userid = auth()->id();
 
@@ -47,14 +39,16 @@ class CoreDusun extends Model
             $model->deleted_id = $userid;
         });
     }
-
-    public function CoreDusun(): BelongsTo
+    public function Member(): BelongsTo
     {
-        return $this->belongsTo(CoreDusun::class, 'dusun_id');
+        return $this->belongsTo(CoreMember::class);
     }
-
+    public function Kelurahan(): BelongsTo
+    {
+        return $this->belongsTo(CoreKelurahan::class, 'kelurahan_id');
+    }
     public function branch(): BelongsTo
     {
-        return $this->belongsTo(CoreDusun::class, 'branch_id', 'branch_id');
+        return $this->belongsTo(CoreBranch::class, 'branch_id');
     }
 }

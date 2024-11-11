@@ -56,8 +56,8 @@ class CoreProvinceController extends Controller
      */
     public function update($id)
     {
-        $province = CoreProvince::findOrFail($id);
-        return view('content.CoreProvince.edit', compact('province'));
+        $core_province = CoreProvince::findOrFail($id);
+        return view('content.CoreProvince.edit', compact('core_province'));
     }
 
     /**
@@ -93,7 +93,7 @@ class CoreProvinceController extends Controller
     {
         $province = CoreProvince::findOrFail($id);
         $province->delete(); // Menghapus provinsi
-        
+
         Session::flash('success', 'Provinsi berhasil dihapus.');
         return redirect()->route('core_province.index');
     }

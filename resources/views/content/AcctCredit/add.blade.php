@@ -1,9 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Kode Pembiayaan Tambah | AdminLTE')
+@section('title', 'Tambah Kode Pembiayaan | AdminLTE')
 @section('content_header')<h1>Tambah Data</h1>
 @stop
-@section('content')<div class="col-md-6">
+@section('content')
+    <div class="col-md-6">
         <div class="box box-primary">
             <form role="form" method="post" action="{{ route('acct_credit.store') }}">
                 @csrf
@@ -22,7 +23,7 @@
                         <label for="exampleInputEmail1">Nomor Perkiraan</label>
                         <select name="account_id" class="form-control">
                             @foreach ($acct_account as $data)
-                                <option value="{{ $data->id }}">{{ $data->id }}
+                                <option value="{{ $data->id }}">{{ $data->account_code }}
                                     - {{ $data->account_name }}</option>
                             @endforeach
                         </select>
@@ -31,7 +32,7 @@
                         <label for="exampleInputEmail1">Nomor Perkiraan Margin</label>
                         <select name="account_id" class="form-control">
                             @foreach ($acct_account as $data)
-                                <option value="{{ $data->id }}">{{ $data->id }}
+                                <option value="{{ $data->id }}">{{ $data->account_code }}
                                     - {{ $data->account_name }}</option>
                             @endforeach
                         </select>
@@ -44,6 +45,7 @@
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
+                </div>
             </form>
         </div>
     </div>

@@ -1,11 +1,11 @@
 @extends('adminlte::page')
 
 @section('title', 'Acct Deposito Edit | AdminLTE')
-@section('content_header') < h1 > Edit Data</h1>
+@section('content_header')<h1>Edit Data</h1>
 @stop
 
 @section('content')
-@if(session('msg')) < div class = "alert alert-{{ session('type') ?? 'info' }}" role = "alert" > {{ session('msg') }} < /div>
+@if(session('msg'))<div class="alert alert-{{ session('type') ?? 'info' }}" role = "alert" > {{ session('msg') }}</div>
 @endif
 
 @if (count($errors) > 0)
