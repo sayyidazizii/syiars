@@ -43,7 +43,7 @@ class AcctAccountController extends Controller
         }catch (\Exception $e){
             DB::rollBack();
             report($e);
-            return redirect()->route('acct_account.index')->danger('Data Nomor Perkiraan gagal diperbarui!');
+            return redirect()->route('acct_account.index')->danger('Data Nomor Perkiraan gagal ditambahkan!');
         }
     }
     public function update($id)
@@ -69,12 +69,12 @@ class AcctAccountController extends Controller
         $acct_account->account_type_id = $request->input('account_type_id');
         $acct_account->account_status = $request->input('account_status');
         $acct_account->save();
-        return redirect()->route('acct_account.index')->warning('Data Nomor Perkiraan diperbarui!');
+        return redirect()->route('acct_account.index')->warning('Data Nomor Perkiraan berhasil diperbarui!');
     }
     public function delete($id)
     {
         $acct_account = AcctAccount::find($id);
         $acct_account->delete();
-        return redirect()->route('acct_account.index')->danger('Data Nomor Perkiraan dihapus!');
+        return redirect()->route('acct_account.index')->danger('Data Nomor Perkiraan berhasil dihapus!');
     }
 }

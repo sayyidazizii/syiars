@@ -44,7 +44,7 @@ class CoreBranchController extends Controller
         }catch (\Exception $e){
             DB::rollBack();
             report($e);
-            return redirect()->route('core_branch.index')->danger('Data Kode Cabang gagal diperbarui!');
+            return redirect()->route('core_branch.index')->danger('Data Kode Cabang gagal ditambahkan!');
         }
     }
     public function update($id)
@@ -74,12 +74,12 @@ class CoreBranchController extends Controller
         $core_branch->branch_phone1 = $request->input('branch_phone1');
         $core_branch->branch_phone2 = $request->input('branch_phone2');
         $core_branch->save();
-        return redirect()->route('core_branch.index')->warning('Data Kode Cabang diperbarui!');
+        return redirect()->route('core_branch.index')->warning('Data Kode Cabang berhasil diperbarui!');
     }
     public function delete($id)
     {
         $core_branch = CoreBranch::find($id);
         $core_branch->delete();
-        return redirect()->route('core_branch.index')->danger('Data Kode Cabang dihapus!');
+        return redirect()->route('core_branch.index')->danger('Data Kode Cabang berhasil dihapus!');
     }
 }

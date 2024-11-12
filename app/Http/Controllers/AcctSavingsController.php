@@ -20,7 +20,7 @@ class AcctSavingsController extends Controller
 
     public function create()
     {
-        $acct_acount = AcctAccount::get(); 
+        $acct_acount = AcctAccount::get();
         return view('content.AcctSavings.add', compact('acct_acount'));
     }
 
@@ -34,7 +34,7 @@ class AcctSavingsController extends Controller
             'savings_nisbah' => 'required|numeric',
             'savings_basil' => 'required|numeric',
         ]);
-        
+
 
         try {
             DB::beginTransaction();
@@ -53,7 +53,7 @@ class AcctSavingsController extends Controller
         }catch (\Exception $e){
             DB::rollBack();
             report($e);
-            return redirect()->route('AcctSavings.index')->success('Data simpanan gagal diperbarui!');
+            return redirect()->route('AcctSavings.index')->warning('Data simpanan gagal ditambahkan!');
         }
     }
 

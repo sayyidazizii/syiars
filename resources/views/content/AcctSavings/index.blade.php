@@ -29,7 +29,7 @@
     </h4>
 </div>
 @endif
-<div class="card border border-dark mt-5">
+<div class="card border border-dark">
     <div class="card-header bg-dark clearfix">
         <h5 class="mb-0 float-left">
             Tabel Kode Simpanan
