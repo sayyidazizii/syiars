@@ -41,7 +41,7 @@
             <div class="form-group">
                 <label for="province_no">Nomor Provinsi</label>
                 <input type="text" class="form-control" id="province_no" name="province_no" value="{{ $core_province->province_no }}" maxlength="20" placeholder="Masukkan nomor provinsi (opsional)">
-            </div>
+            </div> 
             <button type="submit" class="btn btn-primary">Update</button>
             <a href="{{ route('core_province.index') }}" class="btn btn-secondary">Kembali</a>
         </form>
