@@ -14,7 +14,7 @@ class CoreDusunSeeder extends Seeder
     public function run(): void
     {
         DB::table('core_dusun')->insert([
-
+            ['dusun_id' => 1, 'kelurahan_id' => 0, 'dusun_code' => '', 'dusun_name' => 'Bakaran', 'data_state' => 0],
         ]);
     }
 }
