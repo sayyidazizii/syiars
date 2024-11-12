@@ -30,10 +30,8 @@ return new class extends Migration
                 table: 'core_kelurahan',
                 indexName: 'member_kelurahan_id'
             );
-            $table->foreignId('dusun_id')->constrained(
-                table: 'core_dusun',
-                indexName: 'member_dusun_id'
-            );
+            $table->unsignedBigInteger('dusun_id');
+            $table->foreign('dusun_id')->references('dusun_id')->on('core_dusun');
             $table->string('member_no', 50)->nullable();
             $table->string('member_name', 100)->nullable();
             $table->decimal('member_gender', 1,0)->default(0)->nullable();

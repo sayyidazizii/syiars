@@ -22,34 +22,34 @@ class CoreProvinceController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'province_code' => 'required|max:2',
-            'province_name' => 'required|max:255',
-            'province_no' => 'max:20',
-            'data_state' => 'required|integer',
+{
+    $request->validate([
+        'province_code' => 'required|max:2',
+        'province_name' => 'required|max:255',
+        'province_no' => 'max:20',
+    ]);
+
+    try {
+        DB::beginTransaction();
+        CoreProvince::create([
+            'province_code' => $request->province_code,
+            'province_name' => $request->province_name,
+            'province_no' => $request->province_no,
+            'data_state' => 0, // Set default value to 0
+            'branch_id' => $request->branch_id ?? 1,
+            'created_id' => auth()->id(),
+            'uuid' => \Str::uuid(),
         ]);
+        DB::commit();
 
-        try {
-            DB::beginTransaction();
-            CoreProvince::create([
-                'province_code' => $request->province_code,
-                'province_name' => $request->province_name,
-                'province_no' => $request->province_no,
-                'data_state' => $request->data_state,
-                'branch_id' => $request->branch_id ?? 1,
-                'created_id' => auth()->id(),
-                'uuid' => \Str::uuid(),
-            ]);
-            DB::commit();
-
-            return redirect()->route('core_province.index')->with('success', 'Provinsi berhasil ditambahkan.');
-        }catch (\Exception $e){
-            DB::rollBack();
-            report($e);
-            return redirect()->route('core_province.index')->success('Data simpanan gagal diperbarui!');
-        }
+        return redirect()->route('core_province.index')->with('success', 'Provinsi berhasil ditambahkan.');
+    } catch (\Exception $e) {
+        DB::rollBack();
+        report($e);
+        return redirect()->route('core_province.index')->with('danger', 'Data provinsi gagal ditambahkan!');
     }
+}
+
 
     /**
      * Menampilkan form untuk mengedit provinsi.
@@ -70,7 +70,7 @@ class CoreProvinceController extends Controller
         'province_code' => 'required|string|max:2',
         'province_name' => 'required|string|max:255',
         'province_no' => 'nullable|string|max:20',
-        'data_state' => 'nullable|integer',
+        'data_state' => 0,
     ]);
 
     $province = CoreProvince::findOrFail($id);
@@ -93,7 +93,7 @@ class CoreProvinceController extends Controller
     {
         $province = CoreProvince::findOrFail($id);
         $province->delete(); // Menghapus provinsi
-
+        
         Session::flash('success', 'Provinsi berhasil dihapus.');
         return redirect()->route('core_province.index');
     }
