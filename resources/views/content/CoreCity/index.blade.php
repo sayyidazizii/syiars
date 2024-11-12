@@ -45,29 +45,47 @@
                 </thead>
                 <tbody>
                     <?php $no = 1; ?>
+                    <?php $no = 1; ?>
                     @forelse($core_city as $data)
                     <tr>
                         <td style='text-align:center'>{{ $no++ }}</td>
                         <td style='text-align:center'>{{ $data->city_code }}</td>
-                        <td style='text-align:center'>{{ $data->Province->province_name }}</td>
-                        <td style='text-align:center'>{{ $data->Province->province_code }}</td>
+                        <td style='text-align:center'>
+                            @if ($data->Province)
+                            {{ $data->Province->province_name }}
+                            @else
+                            Tidak Ada Provinsi Terkait
+                            @endif
+                        </td>
+                        <td style='text-align:center'>
+                            @if ($data->Province)
+                            {{ $data->Province->province_code }}
+                            @else
+                            -
+                            @endif
+                        </td>
                         <td style='text-align:center'>{{ $data->city_name }}</td>
-                        <td style='text-align:center'>{{ $data->Province->province_no }}</td>
+                        <td style='text-align:center'>
+                            @if ($data->Province)
+                            {{ $data->Province->province_no }}
+                            @else
+                            -
+                            @endif
+                        </td>
                         <td style='text-align:center'>{{ $data->city_no }}</td>
                         <td class="text-center">
-                        <a type="button" class="btn btn-outline-warning btn-sm mb-2"
-                            href="{{ route('CoreCity.update', $data->city_id) }}">Edit</a>
-                        <form action="{{ route('CoreCity.delete', $data->city_id) }}" method="post">
-                            @csrf
-                            <button class="btn btn-outline-danger btn-sm"
-                                onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>
-                        </form>
+                            <a type="button" class="btn btn-outline-warning btn-sm mb-2"
+                                href="{{ route('CoreCity.update', $data->city_id) }}">Edit</a>
+                            <form action="{{ route('CoreCity.delete', $data->city_id) }}" method="post">
+                                @csrf
+                                <button class="btn btn-outline-danger btn-sm"
+                                    onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>
+                            </form>
                         </td>
-
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="4" style="text-align:center">Tidak ada data pengguna</td>
+                        <td colspan="8" style="text-align:center">Data Kota tidak ditemukan.</td>
                     </tr>
                     @endforelse
                 </tbody>
