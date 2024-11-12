@@ -14,6 +14,9 @@ class CoreProvince extends Model
 
     protected $table = 'core_province'; // Nama tabel yang digunakan
 
+    protected $primaryKey = 'province_id';
+
+
     protected $fillable = [
         'province_code',
         'province_name',
@@ -36,7 +39,7 @@ class CoreProvince extends Model
     }
     public function City(): HasMany
     {
-        return $this->hasMany(CoreCity::class);
+        return $this->hasMany(CoreCity::class,'province_id');
     }
 }
 

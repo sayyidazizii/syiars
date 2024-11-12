@@ -39,11 +39,13 @@ class CoreCityController extends Controller
                 'province_id' => $request->input('province_id'),
             ]);
             DB::commit();
-            return redirect()->route('CoreCity.index')->success( 'Data core city berhasil ditambahkan!');
+            return redirect()->route('CoreCity.index')->with('msg', 'Data core city berhasil ditambahkan!')->with('type', 'success');
+
         }catch (\Exception $e){
             DB::rollBack();
             report($e);
-            return redirect()->route('CoreCity.index')->success('Data core city gagal diperbarui!');
+            return redirect()->route('CoreCity.index')->with('msg', 'Data core city gagal ditambahkan!')->with('type', 'success');
+
         }
     }
     public function update($id)
