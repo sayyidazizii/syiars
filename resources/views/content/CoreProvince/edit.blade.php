@@ -27,7 +27,7 @@
         <h5 class="mb-0 text-white">Edit Provinsi</h5>
     </div>
     <div class="card-body">
-        <form action="{{ route('core_province.prosesupdate', $core_province->id) }}" method="POST">
+        <form action="{{ route('core_province.prosesupdate', $core_province->province_id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">
