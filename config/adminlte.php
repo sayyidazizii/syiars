@@ -350,7 +350,7 @@ return [
                 [
                     'text' => 'Daftar Mutasi',
                     'url' => 'acct_mutation',
-                    'icon' => 'fas fa-fw fa-bolt',
+                    'icon' => 'fas fa-exchange-alt',
                 ],
                 [
                     'text' => 'Kode BO',
