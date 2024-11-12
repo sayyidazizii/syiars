@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class CoreDusunSeeder extends Seeder
@@ -12,6 +13,8 @@ class CoreDusunSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table('core_dusun')->insert([
+            ['dusun_id' => 1, 'kelurahan_id' => 0, 'dusun_code' => '', 'dusun_name' => 'Bakaran', 'data_state' => 0],
+        ]);
     }
 }

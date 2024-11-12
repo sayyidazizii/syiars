@@ -36,6 +36,15 @@
                     <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
+                <div class="form-group">
+                    <label for="city_name">Nama Provinsi</label>
+                    <input type="text" name="province_id"
+                        class="form-control @error('province_id') is-invalid @enderror"
+                        value="{{ old('province_id', $core_city->Province->province_name) }}" placeholder="Masukkan nama provinsi">
+                    @error('province_id')
+                    <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
 
                 <div class="form-group">
                     <label for="province_code">Kode Provinsi</label>

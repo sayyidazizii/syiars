@@ -23,5 +23,9 @@ class DatabaseSeeder extends Seeder
 
          $this->call(UserSeeder::class);
          $this->call(CoreProvinceSeeder::class);
+         $this->call(CoreCitySeeder::class);
+         $this->call(CoreKecamatanSeeder::class);
+         $this->call(CoreKelurahanSeeder::class);
+         $this->call(CoreDusunSeeder::class);
     }
 }
