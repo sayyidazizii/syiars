@@ -91,7 +91,7 @@ Route::prefix('core_office')->name('core_office.')->group(function () {
     Route::get('add', [CoreOfficeController::class, 'create'])->name('create');
     Route::post('add', [CoreOfficeController::class, 'store'])->name('store');
     Route::get('edit{id}', [CoreOfficeController::class, 'update'])->name('update');
-    Route::put('prosesedit{id}', [CoreOfficeController::class, 'prosesupdate'])->name('prosesupdate');
+    Route::post('prosesedit{id}', [CoreOfficeController::class, 'prosesupdate'])->name('prosesupdate');
     Route::post('delete{id}', [CoreOfficeController::class, 'delete'])->name('delete');
 });
 Route::prefix('core_member')->name('core_member.')->group(function () {
