@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('core_dusun', function (Blueprint $table) {
             $table->id('dusun_id');
-            $table->foreignId('kelurahan_id')->constrained(
-                table: 'core_kelurahan',
-                indexName: 'dusun_kelurahan_id'
-            );
-            $table->string('dusun_code', 10)->nullable();
-            $table->string('dusun_name', 50)->nullable();
+            $table->unsignedBigInteger('kelurahan_id')->default(0);
+            $table->string('dusun_code', 10)->default('');
+            $table->string('dusun_name', 50)->default('')->index();
             $table->smallInteger('data_state')->default(0)->nullable();
             $table->softDeletes();
             $table->timestamps();

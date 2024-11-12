@@ -12,21 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('core_city', function (Blueprint $table) {
-            $table->id(); // Primary key, auto increment
-            $table->char('city_code', 4); // Char, length 4
-            $table->foreignId('province_id')->constrained(
-                table: 'core_province',
-                indexName: 'city_province_id'
-            );
-            $table->string('city_name', 255); // Varchar, length 255
-            $table->string('city_no', 20)->default(''); // Varchar, length 20, default ''
+            $table->id('city_id')->index('city_id');
+            $table->char('city_code', 4)->default('')->nullable();
+            $table->unsignedBigInteger('province_id')->default(0)->index('FK_core_city_province_id');
+            $table->foreign('province_id')
+            ->references('province_id')
+            ->on('core_province')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->char('province_code', 2)->default('')->nullable()->index('regencies_province_id_index');
+            $table->string('city_name', 255)->default('')->nullable();
+            $table->string('province_no', 20)->default('')->nullable();
+            $table->string('city_no', 20)->default('')->nullable();
             $table->smallInteger('data_state')->default(0)->nullable();
-            $table->unsignedBigInteger('branch_id')->default(1)->nullable();
-            $table->unsignedBigInteger('created_id')->nullable();
-            $table->dateTime('created_on')->nullable();
-            $table->unsignedBigInteger('updated_id')->nullable();
-            $table->uuid('uuid')->nullable();
-            $table->unsignedBigInteger('deleted_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

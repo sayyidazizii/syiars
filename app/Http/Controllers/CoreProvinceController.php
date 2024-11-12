@@ -35,10 +35,6 @@ class CoreProvinceController extends Controller
             'province_code' => $request->province_code,
             'province_name' => $request->province_name,
             'province_no' => $request->province_no,
-            'data_state' => 0, // Set default value to 0
-            'branch_id' => $request->branch_id ?? 1,
-            'created_id' => auth()->id(),
-            'uuid' => \Str::uuid(),
         ]);
         DB::commit();
 
@@ -96,7 +92,7 @@ class CoreProvinceController extends Controller
     {
         $province = CoreProvince::findOrFail($id);
         $province->delete(); // Menghapus provinsi
-        
+
         Session::flash('success', 'Provinsi berhasil dihapus.');
         return redirect()->route('core_province.index');
     }

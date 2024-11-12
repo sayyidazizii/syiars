@@ -37,7 +37,7 @@
                         <th width="5%" style='text-align:center'>No</th>
                         <th width="20%" style='text-align:center'>Kode Provinsi</th>
                         <th width="30%" style='text-align:center'>Nama Provinsi</th>
-                        <th width="20%" style='text-align:center'>Nomor Provinsi</th>\
+                        <th width="20%" style='text-align:center'>Nomor Provinsi</th>
                         <th width="10%" style='text-align:center'>Aksi</th>
                     </tr>
                 </thead>
