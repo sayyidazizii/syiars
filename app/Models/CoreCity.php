@@ -30,11 +30,9 @@ class CoreCity extends Model
     // Kolom yang bisa diisi secara massal
     protected $fillable = [
         'city_code',
-        'province_id',
-        'province_code',
         'city_name',
-        'province_no',
         'city_no',
+        'province_id',
         'data_state',
         'branch_id',
         'created_id',
@@ -56,9 +54,10 @@ class CoreCity extends Model
         return $this->belongsTo(CoreMember::class);
     }
     public function Province(): BelongsTo
-    {
-        return $this->belongsTo(CoreProvince::class, 'province_id');
-    }
+{
+    return $this->belongsTo(CoreProvince::class, 'province_id');
+}
+
     public function Kecamatan(): HasMany
     {
         return $this->hasMany(CoreKecamatan::class);

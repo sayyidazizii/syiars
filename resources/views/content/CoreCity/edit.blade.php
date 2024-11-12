@@ -37,16 +37,6 @@
                     @enderror
                 </div>
 
-                <!-- Province ID -->
-                <!-- <div class="form-group">
-                    <label for="province_id">ID Provinsi</label>
-                    
-                    @error('province_id')
-                    <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
-                </div> -->
-
-                <!-- Province Code -->
                 <div class="form-group">
                     <label for="province_code">Kode Provinsi</label>
                     <input type="text" name="province_code"

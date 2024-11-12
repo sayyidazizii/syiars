@@ -40,7 +40,7 @@
                     <label for="no Perkiraan">Nama Province</label>
                     <select name="province_id" class="form-control">
                         @foreach ($core_province as $data)
-                        <option value="{{ $data->id }}">{{ $data->province_name }}</option>
+                        <option value="{{ $data->province_id }}">{{ $data->province_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -50,7 +50,7 @@
                     <label for="no Perkiraan">Kode Province</label>
                     <select name="province_id" class="form-control">
                         @foreach ($core_province as $data)
-                        <option value="{{ $data->id }}">{{ $data->province_code }}</option>
+                        <option value="{{ $data->province_id }}">{{ $data->province_code }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -71,11 +71,10 @@
                     <label for="no Perkiraan">Nomor Province</label>
                     <select name="province_id" class="form-control">
                         @foreach ($core_province as $data)
-                        <option value="{{ $data->id }}">{{ $data->province_no }}</option>
+                        <option value="{{ $data->province_id }}">{{ $data->province_no }}</option>
                         @endforeach
                     </select>
                 </div>
-
 
                 <!-- City No -->
                 <div class="form-group">
