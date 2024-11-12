@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\AcctAccountController;
-use App\Http\Controllers\CoreCityController;
-use App\Http\Controllers\CoreMemberController;
-use App\Http\Controllers\CoreOfficeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CoreCityController;
 use App\Http\Controllers\AcctCreditController;
 use App\Http\Controllers\CoreBranchController;
+use App\Http\Controllers\CoreMemberController;
+use App\Http\Controllers\CoreOfficeController;
+use App\Http\Controllers\AcctAccountController;
 use App\Http\Controllers\AcctSavingsController;
-use App\Http\Controllers\CoreProvinceController;
-
 use App\Http\Controllers\AcctDepositoController;
+
+use App\Http\Controllers\AcctMutationController;
+use App\Http\Controllers\CoreProvinceController;
 use App\Http\Controllers\SystemUserGroupController;
 
 Route::get('/', function () {
@@ -101,4 +102,12 @@ Route::prefix('core_member')->name('core_member.')->group(function () {
     Route::get('edit{id}', [CoreMemberController::class, 'update'])->name('update');
     Route::post('prosesedit{id}', [CoreMemberController::class, 'prosesupdate'])->name('prosesupdate');
     Route::post('delete{id}', [CoreMemberController::class, 'delete'])->name('delete');
+});
+Route::prefix('acct_mutation')->name('acct_mutation.')->group(function () {
+    Route::get('/', [AcctMutationController::class, 'index'])->name('index');
+    Route::get('add', [AcctMutationController::class, 'create'])->name('create');
+    Route::post('add', [AcctMutationController::class, 'store'])->name('store');
+    Route::get('edit{id}', [AcctMutationController::class, 'update'])->name('update');
+    Route::put('prosesedit{id}', [AcctMutationController::class, 'prosesupdate'])->name('prosesupdate');
+    Route::post('delete{id}', [AcctMutationController::class, 'delete'])->name('delete');
 });

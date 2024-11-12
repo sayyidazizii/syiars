@@ -348,6 +348,11 @@ return [
                     'icon' => 'fas fa-fw fa-bolt',
                 ],
                 [
+                    'text' => 'Daftar Mutasi',
+                    'url' => 'acct_mutation',
+                    'icon' => 'fas fa-fw fa-bolt',
+                ],
+                [
                     'text' => 'Kode BO',
                     'url' => 'core_office',
                     'icon' => 'fas fa-fw fa-hammer',
