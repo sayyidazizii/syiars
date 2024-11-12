@@ -36,6 +36,18 @@ class CoreProvinceSeeder extends Seeder
             ['province_id' => 81, 'province_code' => '', 'province_name' => 'Maluku Utara', 'province_no' => '', 'data_state' => 0],
             ['province_id' => 82, 'province_code' => '', 'province_name' => 'Nanggroe Aceh Darussalam (NAD)', 'province_no' => '', 'data_state' => 0],
             ['province_id' => 83, 'province_code' => '', 'province_name' => 'Nusa Tenggara Barat (NTB)', 'province_no' => '', 'data_state' => 0],
+            ['province_id' => 84, 'province_code' => '', 'province_name' => 'Nusa Tenggara Timur (NTT)', 'province_no' => '', 'data_state' => 0],
+            ['province_id' => 85, 'province_code' => '', 'province_name' => 'Papua', 'province_no' => '', 'data_state' => 0],
+            ['province_id' => 86, 'province_code' => '', 'province_name' => 'Papua Barat', 'province_no' => '', 'data_state' => 0],
+            ['province_id' => 87, 'province_code' => '', 'province_name' => 'Riau', 'province_no' => '', 'data_state' => 0],
+            ['province_id' => 88, 'province_code' => '', 'province_name' => 'Sulawesi Barat', 'province_no' => '', 'data_state' => 0],
+            ['province_id' => 89, 'province_code' => '', 'province_name' => 'Sulawesi Selatan', 'province_no' => '', 'data_state' => 0],
+            ['province_id' => 90, 'province_code' => '', 'province_name' => 'Sulawesi Tengah', 'province_no' => '', 'data_state' => 0],
+            ['province_id' => 91, 'province_code' => '', 'province_name' => 'Sulawesi Tenggara', 'province_no' => '', 'data_state' => 0],
+            ['province_id' => 92, 'province_code' => '', 'province_name' => 'Sulawesi Utara', 'province_no' => '', 'data_state' => 0],
+            ['province_id' => 93, 'province_code' => '', 'province_name' => 'Sumatera Barat', 'province_no' => '', 'data_state' => 0],
+            ['province_id' => 94, 'province_code' => '', 'province_name' => 'Sumatera Selatan', 'province_no' => '', 'data_state' => 0],
+            ['province_id' => 95, 'province_code' => '', 'province_name' => 'Sumatera Utara', 'province_no' => '', 'data_state' => 0],
         ]);
     }
 }
