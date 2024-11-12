@@ -61,10 +61,12 @@
                         <td>{{ $mutation->mutation_function }}</td>
                         <td style="text-align:center">{{ $mutation->mutation_status }}</td>
                         <td class="text-center">
-                            <a type="button" class="btn btn-outline-warning btn-sm mb-2" href="{{ route('acct_mutation.update', $mutation->mutation_id) }}">Edit</a>
-                            <form action="{{ route('acct_mutation.delete', $mutation->mutation_id) }}" method="POST" class="d-inline">
+                            <a type="button" class="btn btn-outline-warning btn-sm mb-2"
+                             href="{{ route('acct_mutation.update', $mutation->mutation_id) }}">Edit</a>
+                            <form action="{{ route('acct_mutation.delete', $mutation->mutation_id) }}" method="POST">
                                 @csrf
-                                <button class="btn btn-outline-danger btn-sm" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>
+                                <button class="btn btn-outline-danger btn-sm" 
+                                 onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>
                             </form>
                         </td>
                     </tr>

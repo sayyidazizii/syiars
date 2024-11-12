@@ -77,8 +77,7 @@
                         <td class="text-center">
                             <a type="button" class="btn btn-outline-warning btn-sm mb-2"
                                 href="{{ route('AcctSavings.update', $saving->savings_id) }}">Edit</a>
-                            <form action="{{ route('AcctSavings.delete', $saving->savings_id) }}" method="POST"
-                                class="d-inline">
+                            <form action="{{ route('AcctSavings.delete', $saving->savings_id) }}" method="POST">
                                 @csrf
                                 <button class="btn btn-outline-danger btn-sm"
                                     onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>
