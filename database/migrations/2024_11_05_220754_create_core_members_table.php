@@ -13,25 +13,37 @@ return new class extends Migration
     {
         Schema::create('core_member', function (Blueprint $table) {
             $table->id('id');
+            $table->unsignedBigInteger('province_id')->default(0)->index('FK_core_member_province_id');
+            $table->foreign('province_id')
+                  ->references('province_id')
+                  ->on('core_province')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+            $table->unsignedBigInteger('city_id')->default(0)->index('FK_core_member_city_id');
+            $table->foreign('city_id')
+                  ->references('city_id')
+                  ->on('core_city')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+            $table->unsignedBigInteger('kecamatan_id')->default(0)->index('FK_core_member_kecamatan_id');
+            $table->foreign('kecamatan_id')
+                  ->references('kecamatan_id')
+                  ->on('core_kecamatan')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+            $table->unsignedBigInteger('kelurahan_id')->default(0)->index('FK_core_member_kelurahan_id');
+            $table->foreign('kelurahan_id')
+                  ->references('kelurahan_id')
+                  ->on('core_kelurahan')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+            $table->unsignedBigInteger('dusun_id')->default(0)->index('FK_core_member_dusun_id');
+            $table->foreign('dusun_id')
+                  ->references('dusun_id')
+                  ->on('core_dusun')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
             $table->integer('branch_id')->default(0)->nullable();
-            $table->foreignId('province_id')->constrained(
-                table: 'core_province',
-                indexName: 'member_province_id'
-            );
-            $table->foreignId('city_id')->constrained(
-                table: 'core_city',
-                indexName: 'member_city_id'
-            );
-            $table->foreignId('kecamatan_id')->constrained(
-                table: 'core_kecamatan',
-                indexName: 'member_kecamatan_id'
-            );
-            $table->foreignId('kelurahan_id')->constrained(
-                table: 'core_kelurahan',
-                indexName: 'member_kelurahan_id'
-            );
-            $table->unsignedBigInteger('dusun_id');
-            $table->foreign('dusun_id')->references('dusun_id')->on('core_dusun');
             $table->string('member_no', 50)->nullable();
             $table->string('member_name', 100)->nullable();
             $table->decimal('member_gender', 1,0)->default(0)->nullable();
@@ -68,10 +80,6 @@ return new class extends Migration
             $table->string('member_no_old', 50)->nullable();
             $table->integer('member_no_status')->default(0)->nullable();
             $table->smallInteger('data_state')->default(0)->nullable();
-            $table->unsignedBigInteger('created_id')->nullable();
-            $table->unsignedBigInteger('updated_id')->nullable();
-            $table->uuid('uuid')->nullable();
-            $table->unsignedBigInteger('deleted_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

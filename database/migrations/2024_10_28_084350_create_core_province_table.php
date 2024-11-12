@@ -12,16 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('core_province', function (Blueprint $table) {
-            $table->id();
+            $table->id('province_id')->index('province_id');
             $table->char('province_code', 2);
             $table->string('province_name', 255);
             $table->string('province_no', 20)->default('');
             $table->smallInteger('data_state')->default(0)->nullable();
-            $table->unsignedBigInteger('branch_id')->default(1)->nullable();
-            $table->unsignedBigInteger('created_id')->nullable();
-            $table->unsignedBigInteger('updated_id')->nullable();
-            $table->uuid('uuid')->nullable();
-            $table->unsignedBigInteger('deleted_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

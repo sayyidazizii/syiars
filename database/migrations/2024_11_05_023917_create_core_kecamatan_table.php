@@ -14,20 +14,19 @@ class CreateCoreKecamatanTable extends Migration
     public function up()
     {
         Schema::create('core_kecamatan', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('city_id')->constrained(
-                table: 'core_city',
-                indexName: 'kecamatan_city_id'
-            );
-            $table->string('kecamatan_code')->nullable();
-            $table->string('kecamatan_name')->nullable();
-            $table->integer('kecamatan_no')->default(0);
+            $table->id('kecamatan_id')->index('kecamatan_id');
+            $table->char('city_code', 4)->default('')->nullable()->index('districts_regency_id_index');
+            $table->unsignedBigInteger('city_id')->default(0)->index('FK_core_kecamatan_city_id');
+            $table->foreign('city_id')
+                  ->references('city_id')
+                  ->on('core_city')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+            $table->char('kecamatan_code', 7)->default('')->nullable()->index();
+            $table->string('kecamatan_name', 255)->default('')->nullable()->index();
+            $table->string('city_no', 20)->default('')->index();
+            $table->string('kecamatan_no', 20)->default('')->index();
             $table->smallInteger('data_state')->default(0)->nullable();
-            $table->unsignedBigInteger('branch_id')->default(1)->nullable();
-            $table->unsignedBigInteger('created_id')->nullable();
-            $table->unsignedBigInteger('updated_id')->nullable();
-            $table->uuid('uuid')->nullable();
-            $table->unsignedBigInteger('deleted_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
