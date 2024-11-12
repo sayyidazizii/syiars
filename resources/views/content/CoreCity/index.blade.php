@@ -56,8 +56,8 @@
                         <td style='text-align:center'>{{ $data->city_no }}</td>
                         <td class="text-center">
                         <a type="button" class="btn btn-outline-warning btn-sm mb-2"
-                            href="{{ route('CoreCity.update', $data->id) }}">Edit</a>
-                        <form action="{{ route('CoreCity.delete', $data->id) }}" method="post">
+                            href="{{ route('CoreCity.update', $data->city_id) }}">Edit</a>
+                        <form action="{{ route('CoreCity.delete', $data->city_id) }}" method="post">
                             @csrf
                             <button class="btn btn-outline-danger btn-sm"
                                 onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>
