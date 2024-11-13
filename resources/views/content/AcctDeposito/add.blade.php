@@ -1,14 +1,14 @@
 @extends('adminlte::page')
 
-@section('title', 'Acct Deposito Tambah | AdminLTE')
+@section('title', 'Tambah Kode Simpanan Berjangka | AdminLTE')
 @section('content_header')
     <h1> Tambah Data</h1>
 @stop
 
 @section('content')
     @if(session('msg'))
-        <div class="alert alert-{{ session('type') ?? 'info' }}" role="alert"> 
-            {{ session('msg') }} 
+        <div class="alert alert-{{ session('type') ?? 'info' }}" role="alert">
+            {{ session('msg') }}
         </div>
     @endif
 
@@ -20,7 +20,7 @@
                 @endforeach
             </ul>
         </div>
-    @endif 
+    @endif
 
     <div class="col-md-12">
         <div class="box box-primary">
@@ -116,11 +116,11 @@
             </div>
         </div>
     </div>
-@stop 
+@stop
 
 @section('css')
     <link rel="stylesheet" href="/css/admin.custom.css">
-@stop 
+@stop
 
 @section('js')
     <script>

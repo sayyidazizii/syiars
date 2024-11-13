@@ -75,7 +75,7 @@ class CoreBranchController extends Controller
             $core_branch->branch_email = $request->input('branch_email');
             $core_branch->branch_phone1 = $request->input('branch_phone1');
             $core_branch->branch_phone2 = $request->input('branch_phone2');
-            $core_branch->save();
+            $core_branch->update();
             DB::commit();
             return redirect()->route('core_branch.index')->warning('Data Kode Cabang berhasil diperbarui!');
         } catch (\Exception $e) {

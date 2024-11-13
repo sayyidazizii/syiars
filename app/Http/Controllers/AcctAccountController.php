@@ -70,7 +70,7 @@ class AcctAccountController extends Controller
             $acct_account->account_group = $request->input('account_group');
             $acct_account->account_type_id = $request->input('account_type_id');
             $acct_account->account_status = $request->input('account_status');
-            $acct_account->save();
+            $acct_account->update();
             DB::commit();
             return redirect()->route('acct_account.index')->warning('Data Nomor Perkiraan berhasil diperbarui!');
         } catch (\Exception $e) {

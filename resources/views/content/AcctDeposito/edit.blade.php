@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Acct Deposito Edit | AdminLTE')
+@section('title', 'Edit Kode Simpanan Berjangka | AdminLTE')
 @section('content_header')<h1>Edit Data</h1>
 @stop
 
