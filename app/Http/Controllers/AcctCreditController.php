@@ -32,11 +32,11 @@ class AcctCreditController extends Controller
                 'account_id' => $request->input('account_id'),
             ]);
             DB::commit();
-            return redirect()->route('acct_credit.index')->success( 'Data Kode Pembiayaan berhasil ditambahkan!');
+            return redirect()->route('acct_credit.index')->success('Data Kode Pembiayaan berhasil ditambahkan!');
         }catch (\Exception $e){
             DB::rollBack();
             report($e);
-            return redirect()->route('acct_credit.index')->danger('Data Kode Pembiayaan gagal diperbarui!');
+            return redirect()->route('acct_credit.index')->danger('Data Kode Pembiayaan gagal ditambahkan!');
         }
     }
         public function update($id)
@@ -52,17 +52,25 @@ class AcctCreditController extends Controller
             'credits_name' => 'required|string|max:255',
             'account_id' => 'required|integer',
         ]);
-        $acct_credits = AcctCredit::findOrFail($id);
-        $acct_credits->credits_code = $request->input('credits_code');
-        $acct_credits->credits_name = $request->input('credits_name');
-        $acct_credits->account_id = $request->input('account_id');
-        $acct_credits->save();
-        return redirect()->route('acct_credit.index')->warning('Data Kode Pembiayaan diperbarui!');
+        try {
+            DB::beginTransaction();
+            $acct_credits = AcctCredit::findOrFail($id);
+            $acct_credits->credits_code = $request->input('credits_code');
+            $acct_credits->credits_name = $request->input('credits_name');
+            $acct_credits->account_id = $request->input('account_id');
+            $acct_credits->update();
+            DB::commit();
+            return redirect()->route('acct_credit.index')->warning('Data Kode Pembiayaan berhasil diperbarui!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            report($e);
+            return redirect()->route('acct_credit.index')->danger('Data Kode Pembiayaan gagal diperbarui!');
+        }
     }
     public function delete($id)
     {
         $acct_credits = AcctCredit::find($id);
         $acct_credits->delete();
-        return redirect()->route('acct_credit.index')->danger('Data Kode Pembiayaan dihapus!');
+        return redirect()->route('acct_credit.index')->danger('Data Kode Pembiayaan berhasil dihapus!');
     }
 }

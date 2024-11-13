@@ -40,11 +40,11 @@ class AcctSavingsController extends Controller
                 'savings_status' => $request->input('savings_status'),
             ]);
             DB::commit();
-            return redirect()->route('AcctSavings.index')->success('Kode Simpanan berhasil ditambahkan!');
+            return redirect()->route('AcctSavings.index')->success('Data Kode Simpanan berhasil ditambahkan!');
         }catch (\Exception $e){
             DB::rollBack();
             report($e);
-            return redirect()->route('AcctSavings.index')->warning('Kode Simpanan gagal ditambahkan!');
+            return redirect()->route('AcctSavings.index')->warning('Data Kode Simpanan gagal ditambahkan!');
         }
     }
     public function update($id)
@@ -76,17 +76,17 @@ class AcctSavingsController extends Controller
             $acct_savings->savings_basil = $request->savings_basil;
             $acct_savings->update();
             DB::commit();
-            return redirect()->route('AcctSavings.index')->warning('Kode Simpanan berhasil diperbarui!');
+            return redirect()->route('AcctSavings.index')->warning('Data Kode Simpanan berhasil diperbarui!');
         } catch (\Exception $e) {
             DB::rollBack();
             report($e);
-            return redirect()->route('AcctSavings.index')->danger('Kode Simpanan gagal diperbarui!');
+            return redirect()->route('AcctSavings.index')->danger('Data Kode Simpanan gagal diperbarui!');
         }
     }
     public function delete($id)
     {
         $acct_savings = AcctSavings::find($id);
         $acct_savings->delete();
-        return redirect()->route('AcctSavings.index')->danger('Kode Simpanan berhasil dihapus!');
+        return redirect()->route('AcctSavings.index')->danger('Data Kode Simpanan berhasil dihapus!');
     }
 }

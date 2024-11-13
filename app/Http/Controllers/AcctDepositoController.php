@@ -38,11 +38,11 @@ class AcctDepositoController extends Controller{
                 'deposito_profit_sharing' => $request->input('deposito_profit_sharing'),
             ]);
             DB::commit();
-            return redirect()->route('AcctDeposito.index')->success( 'Kode Simpanan Berjangka berhasil ditambahkan!');
+            return redirect()->route('AcctDeposito.index')->success('Data Kode Simpanan Berjangka berhasil ditambahkan!');
         }catch (\Exception $e){
             DB::rollBack();
             report($e);
-            return redirect()->route('AcctDeposito.index')->danger('Kode Simpanan Serjangka gagal ditambahkan!');
+            return redirect()->route('AcctDeposito.index')->danger('Data Kode Simpanan Berjangka gagal ditambahkan!');
         }
     }
     public function update($id)
@@ -70,17 +70,17 @@ class AcctDepositoController extends Controller{
             $acct_deposito->deposito_profit_sharing = $request->input('deposito_profit_sharing');
             $acct_deposito->update();
             DB::commit();
-            return redirect()->route('AcctDeposito.index')->warning('Kode Simpanan Berjangka berhasil diperbarui!');
+            return redirect()->route('AcctDeposito.index')->warning('Data Kode Simpanan Berjangka berhasil diperbarui!');
         } catch (\Exception $e) {
             DB::rollBack();
             report($e);
-            return redirect()->route('AcctDeposito.index')->danger('Kode Simpanan Berjangka gagal diperbarui!');
+            return redirect()->route('AcctDeposito.index')->danger('Data Kode Simpanan Berjangka gagal diperbarui!');
         }
     }
     public function delete($id)
     {
         $acct_deposito = AcctDeposito::findOrFail($id);
         $acct_deposito->delete();
-        return redirect()->route('AcctDeposito.index')->danger('Kode Simpanan Berjangka berhasil dihapus!');
+        return redirect()->route('AcctDeposito.index')->danger('Data Kode Simpanan Berjangka berhasil dihapus!');
     }
 }

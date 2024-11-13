@@ -40,7 +40,7 @@ class CoreBranchController extends Controller
                 'branch_phone2' => $request->input('branch_phone2'),
             ]);
             DB::commit();
-            return redirect()->route('core_branch.index')->success( 'Data Kode Cabang berhasil ditambahkan!');
+            return redirect()->route('core_branch.index')->success('Data Kode Cabang berhasil ditambahkan!');
         }catch (\Exception $e){
             DB::rollBack();
             report($e);
