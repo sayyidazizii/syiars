@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Form Tambah Mutasi | AdminLTE')
+@section('title', 'Tambah Daftar Mutasi | AdminLTE')
 
 @section('content')
 <div class="card border border-dark mt-5">
