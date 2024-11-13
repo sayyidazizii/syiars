@@ -41,7 +41,7 @@
                                 <select name="province_id" id="province_id" class="form-control" required>
                                     <option value="">--- Pilih Salah Satu ---</option>
                                     @foreach ($core_province as $data)
-                                        <option value="{{ $data->id }}">{{ $data->province_name }}</option>
+                                        <option value="{{ $data->province_id }}">{{ $data->province_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -50,7 +50,7 @@
                                 <select name="city_id" id="city_id" class="form-control" required>
                                     <option value="">--- Pilih Salah Satu ---</option>
                                     @foreach ($core_city as $data)
-                                        <option value="{{ $data->id }}">{{ $data->city_name }}</option>
+                                        <option value="{{ $data->city_id }}">{{ $data->city_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -59,7 +59,7 @@
                                 <select name="kecamatan_id" id="kecamatan_id" class="form-control" required>
                                     <option value="">--- Pilih Salah Satu ---</option>
                                     @foreach ($core_kecamatan as $data)
-                                        <option value="{{ $data->id }}">{{ $data->kecamatan_name }}</option>
+                                        <option value="{{ $data->kecamatan_id }}">{{ $data->kecamatan_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -68,7 +68,7 @@
                                 <select name="kelurahan_id" id="kelurahan_id" class="form-control" required>
                                     <option value="">--- Pilih Salah Satu ---</option>
                                     @foreach ($core_kelurahan as $data)
-                                        <option value="{{ $data->id }}">{{ $data->kelurahan_name }}</option>
+                                        <option value="{{ $data->kelurahan_id }}">{{ $data->kelurahan_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -77,7 +77,7 @@
                                 <select name="dusun_id" id="dusun_id" class="form-control" required>
                                     <option value="">--- Pilih Salah Satu ---</option>
                                     @foreach ($core_dusun as $data)
-                                        <option value="{{ $data->id }}">{{ $data->dusun_name }}</option>
+                                        <option value="{{ $data->dusun_id }}">{{ $data->dusun_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
