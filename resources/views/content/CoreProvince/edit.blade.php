@@ -3,26 +3,7 @@
 @section('title', 'Edit Provinsi | AdminLTE')
 
 @section('content')
-@if (Session::has('success'))
-<div class="alert alert-success alert-dismissible mt-5">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <h4><i class="icon fa fa-check"></i>{{ Session::get('success') }}</h4>
-</div>
-@endif
-@if (Session::has('warning'))
-<div class="alert alert-warning alert-dismissible mt-5">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <h4><i class="icon fa fa-exclamation-triangle"></i>{{ Session::get('warning') }}</h4>
-</div>
-@endif
-@if (Session::has('danger'))
-<div class="alert alert-danger alert-dismissible mt-5">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <h4><i class="icon fa fa-times"></i>{{ Session::get('danger') }}</h4>
-</div>
-@endif
-
-<div class="card border border-dark mt-5">
+<div class="card border border-dark">
     <div class="card-header bg-dark">
         <h5 class="mb-0 text-white">Edit Provinsi</h5>
     </div>
@@ -41,7 +22,7 @@
             <div class="form-group">
                 <label for="province_no">Nomor Provinsi</label>
                 <input type="text" class="form-control" id="province_no" name="province_no" value="{{ $core_province->province_no }}" maxlength="20" placeholder="Masukkan nomor provinsi (opsional)">
-            </div> 
+            </div>
             <button type="submit" class="btn btn-primary">Update</button>
             <a href="{{ route('core_province.index') }}" class="btn btn-secondary">Kembali</a>
         </form>
