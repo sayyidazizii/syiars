@@ -3,13 +3,6 @@
 @section('title', 'Edit Kode Simpanan | AdminLTE')
 
 @section('content')
-    @if (Session::has('success'))
-        <div class="alert alert-success alert-dismissible mt-5">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4><i class="icon fa fa-check"></i> {{ Session::get('success') }}</h4>
-        </div>
-    @endif
-
     <div class="card border border-dark mt-5">
         <div class="card-header bg-dark clearfix">
             <h5 class="mb-0 float-left">Edit Data Kode Simpanan</h5>
@@ -17,8 +10,8 @@
         <div class="card-body">
             <form action="{{ route('AcctSavings.prosesupdate', $acct_savings->savings_id) }}" method="POST">
                 @csrf
-                @method('PUT') <!-- Untuk metode update -->
-                
+                @method('PUT')
+
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
