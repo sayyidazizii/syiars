@@ -1,30 +1,28 @@
 @extends('adminlte::page')
 
-@section('title', 'Core City | AdminLTE')
+@section('title', 'Kota | AdminLTE')
 
 @section('content')
-@if (session('msg'))
-<div class="alert alert-{{ session('type') ?? 'info' }}" role="alert">
-    {{ session('msg') }}
-</div>
-@endif
-
-
-@if (count($errors) > 0)
-<div class="alert alert-danger" role="alert">
-    @foreach ($errors->all() as $error)
-    <li>{{ $error }}</li>
-    @endforeach
-</div>
-@endif
-<div class="card border border-dark mt-5">
+    @if (session('msg'))
+        <div class="alert alert-{{ session('type') ?? 'info' }}" role="alert">
+            {{ session('msg') }}
+        </div>
+    @endif
+    @if (count($errors) > 0)
+        <div class="alert alert-danger" role="alert">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </div>
+    @endif
+<div class="card border border-dark">
     <div class="card-header bg-dark clearfix">
         <h5 class="mb-0 float-left">
-            Tabel Core City
+            Tabel Kota
         </h5>
         <div class="form-actions float-right">
             <a href="{{ route('CoreCity.create') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
-                Core City</a>
+                Kota</a>
         </div>
     </div>
     <div class="card-body">
@@ -99,19 +97,18 @@
 @stop
 @section('js')
 <script>
-    $(document).ready(function () {
-        setTimeout(function () {
-            $('[class*="alert"]').each(function () {
+    $(document).ready(function() {
+        setTimeout(function() {
+            $('[class*="alert"]').each(function() {
                 $(this).alert('close');
             });
         }, 5000);
     });
 
-    $(document).on('DOMNodeInserted', '[class*="alert"]', function () {
-        setTimeout(function () {
+    $(document).on('DOMNodeInserted', '[class*="alert"]', function() {
+        setTimeout(function() {
             $(this).alert('close');
         }.bind(this), 5000);
     });
-
 </script>
 @stop
