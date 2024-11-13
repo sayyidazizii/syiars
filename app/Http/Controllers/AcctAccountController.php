@@ -62,14 +62,22 @@ class AcctAccountController extends Controller
             'account_type_id' => 'required|integer',
             'account_status' => 'required|numeric',
         ]);
-        $acct_account = AcctAccount::findOrFail($id);
-        $acct_account->account_code = $request->input('account_code');
-        $acct_account->account_name = $request->input('account_name');
-        $acct_account->account_group = $request->input('account_group');
-        $acct_account->account_type_id = $request->input('account_type_id');
-        $acct_account->account_status = $request->input('account_status');
-        $acct_account->save();
-        return redirect()->route('acct_account.index')->warning('Data Nomor Perkiraan berhasil diperbarui!');
+        try {
+            DB::beginTransaction();
+            $acct_account = AcctAccount::findOrFail($id);
+            $acct_account->account_code = $request->input('account_code');
+            $acct_account->account_name = $request->input('account_name');
+            $acct_account->account_group = $request->input('account_group');
+            $acct_account->account_type_id = $request->input('account_type_id');
+            $acct_account->account_status = $request->input('account_status');
+            $acct_account->save();
+            DB::commit();
+            return redirect()->route('acct_account.index')->warning('Data Nomor Perkiraan berhasil diperbarui!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            report($e);
+            return redirect()->route('acct_account.index')->danger('Data Nomor Perkiraan gagal diperbarui!');
+        }
     }
     public function delete($id)
     {
