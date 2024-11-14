@@ -45,6 +45,7 @@ return new class extends Migration
                   ->onUpdate('cascade');
             $table->integer('branch_id')->default(0)->nullable();
             $table->integer('created_id')->default(0)->nullable();
+            $table->integer('updated_id')->default(0)->nullable();
             $table->string('member_no', 50)->nullable();
             $table->string('member_name', 100)->nullable();
             $table->decimal('member_gender', 1,0)->default(0)->nullable();
