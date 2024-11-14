@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('updated_id')->nullable();
             $table->uuid('uuid')->nullable();
             $table->unsignedBigInteger('deleted_id')->nullable();
-            $table->softDeletes(); // Menambahkan kolom deleted_at
+            $table->softDeletes();
             $table->timestamps();
         });
     }

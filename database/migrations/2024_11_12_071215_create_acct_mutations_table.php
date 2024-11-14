@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('acct_mutation', function (Blueprint $table) {
-            $table->id('mutation_id'); // Primary Key
+            $table->id('mutation_id');
             $table->string('mutation_code', 10)->default('')->nullable(false);
             $table->string('mutation_name', 50)->default('')->nullable(false);
             $table->string('mutation_function', 10)->default('')->nullable(false);
@@ -23,11 +23,11 @@ return new class extends Migration
             $table->timestamp('last_update')->useCurrent();
             $table->unsignedBigInteger('branch_id')->default(1)->nullable();
             $table->unsignedBigInteger('created_id')->nullable();
-            $table->dateTime('created_on')->nullable(); 
+            $table->dateTime('created_on')->nullable();
             $table->unsignedBigInteger('updated_id')->nullable();
             $table->uuid('uuid')->nullable();
             $table->unsignedBigInteger('deleted_id')->nullable();
-            $table->softDeletes(); 
+            $table->softDeletes();
             $table->timestamps();
         });
     }
