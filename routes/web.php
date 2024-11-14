@@ -9,10 +9,10 @@ use App\Http\Controllers\CoreOfficeController;
 use App\Http\Controllers\AcctAccountController;
 use App\Http\Controllers\AcctSavingsController;
 use App\Http\Controllers\AcctDepositoController;
-
 use App\Http\Controllers\AcctMutationController;
 use App\Http\Controllers\CoreProvinceController;
 use App\Http\Controllers\SystemUserGroupController;
+use App\Http\Controllers\LocationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -111,3 +111,8 @@ Route::prefix('acct_mutation')->name('acct_mutation.')->group(function () {
     Route::put('prosesedit{id}', [AcctMutationController::class, 'prosesupdate'])->name('prosesupdate');
     Route::post('delete{id}', [AcctMutationController::class, 'delete'])->name('delete');
 });
+Route::get('/get-cities/{provinceId}', [LocationController::class, 'getCities']);
+Route::get('/get-kecamatans/{cityId}', [LocationController::class, 'getKecamatans']);
+Route::get('/get-kelurahans/{kecamatanId}', [LocationController::class, 'getKelurahans']);
+Route::get('/get-dusuns/{kelurahanId}', [LocationController::class, 'getDusuns']);
+
