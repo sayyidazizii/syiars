@@ -1,22 +1,17 @@
 <?php
 
 namespace App\Models;
-
 use App\Models\AcctAccount;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 class AcctSavings extends Model
 {
     use HasFactory, SoftDeletes;
-
-    protected $table = 'acct_savings'; // Nama tabel
-
-    protected $primaryKey = 'savings_id'; // Primary key
-
+    protected $table = 'acct_savings';
+    protected $primaryKey = 'savings_id';
     protected $fillable = [
         'savings_code',
         'savings_name',
@@ -38,7 +33,6 @@ class AcctSavings extends Model
         'savings_basil' => 'decimal:2',
         'savings_index_amount' => 'decimal:2',
     ];
-
     protected static function boot()
     {
         parent::boot();
@@ -49,20 +43,16 @@ class AcctSavings extends Model
             }
         });
     }
-
     public function AcctSavings()
     {
         return $this->belongsTo(AcctSavings::class, 'id');
     }
-
     public function account(): BelongsTo
     {
         return $this->belongsTo(AcctAccount::class, 'account_id');
     }
-
     public function branch()
     {
         return $this->belongsTo(related: CoreBranch::class);
     }
-
 }

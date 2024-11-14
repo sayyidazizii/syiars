@@ -1,21 +1,17 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 class CoreKelurahan extends Model
 {
     use HasFactory, SoftDeletes;
-
     protected $table = 'core_kelurahan';
     protected $primaryKey = 'kelurahan_id';
     public $incrementing = true;
-
     protected $fillable = [
         'kelurahan_code',
         'kecamatan_id',
@@ -25,16 +21,13 @@ class CoreKelurahan extends Model
         'kelurahan_no',
         'data_state',
     ];
-
     protected $casts = [
         'created_on',
         'deleted_at',
     ];
-
     /**
      * Define a relationship with the related Kecamatan model.
      */
-
      protected static function booted() {
         $userid = auth()->id();
 
@@ -48,7 +41,6 @@ class CoreKelurahan extends Model
             $model->deleted_id = $userid;
         });
     }
-
     public function Member(): BelongsTo
     {
         return $this->belongsTo(CoreMember::class);
@@ -61,11 +53,8 @@ class CoreKelurahan extends Model
     {
         return $this->hasMany(CoreDusun::class);
     }
-
     public function Branch(): BelongsTo
     {
         return $this->belongsTo(CoreBranch::class, 'branch_id');
     }
-
-
 }
