@@ -40,7 +40,7 @@
                             <select name="account_id" class="form-control">
                                 <option value="" selected disabled>Pilih Nomor Perkiraan</option>
                                 @foreach ($acct_account as $account)
-                                    <option value="{{ $account->id }}" {{ old('account_id', $acct_savings->account_id) == $account->id ? 'selected' : '' }}>
+                                    <option value="{{ $account->account_id }}" {{ old('account_id', $acct_savings->account_id) == $account->id ? 'selected' : '' }}>
                                         {{ $account->account_name }}
                                     </option>
                                 @endforeach
@@ -68,7 +68,7 @@
                             <select name="account_basil_id" class="form-control">
                                 <option value="" selected disabled>Pilih Nomor Perkiraan Hasil</option>
                                 @foreach ($acct_account as $account)
-                                    <option value="{{ $account->id }}" {{ old('account_basil_id', $acct_savings->account_basil_id) == $account->id ? 'selected' : '' }}>
+                                    <option value="{{ $account->account_id }}" {{ old('account_basil_id', $acct_savings->account_basil_id) == $account->id ? 'selected' : '' }}>
                                         {{ $account->account_name }}
                                     </option>
                                 @endforeach

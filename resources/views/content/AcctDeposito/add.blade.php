@@ -52,7 +52,7 @@
                         <select name="account_id" class="form-control @error('account_id') is-invalid @enderror">
                             <option value="">-- Pilih Akun --</option>
                             @foreach ($acct_acount as $data)
-                                <option value="{{ $data->id }}">{{ $data->account_code }}</option>
+                                <option value="{{ $data->account_id }}">{{ $data->account_code }}</option>
                             @endforeach
                         </select>
                         @error('account_id')
@@ -75,7 +75,7 @@
                         <select name="account_basil_id" class="form-control @error('account_basil_id') is-invalid @enderror">
                             <option value="">-- Pilih Akun Basil --</option>
                             @foreach ($acct_acount as $data)
-                                <option value="{{ $data->id }}">{{ $data->account_name }}</option>
+                                <option value="{{ $data->account_id }}">{{ $data->account_name }}</option>
                             @endforeach
                         </select>
                         @error('account_basil_id')

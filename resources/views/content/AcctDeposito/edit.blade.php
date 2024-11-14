@@ -18,7 +18,7 @@
     <div class="box box-primary">
         <form role="form" method="post" action="{{ route('AcctDeposito.prosesupdate', $acct_deposito->deposito_id) }}">
             @csrf
-            @method('PUT') <!-- Use PUT method for updates -->
+            @method('PUT')
             <div class="box-body">
                 <div class="form-group">
                     <label for="deposito_code">Kode Berjangka</label > <input

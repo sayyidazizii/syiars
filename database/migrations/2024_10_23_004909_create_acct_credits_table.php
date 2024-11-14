@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('acct_credits', function (Blueprint $table) {
             $table->id('credits_id');
-            $table->unsignedBigInteger('account_id')->default(0)->index('FK_core_city_account_id');
+            $table->unsignedBigInteger('account_id')->default(0)->index('FK_core_credit_account_id');
             $table->foreign('account_id')
             ->references('account_id')
             ->on('acct_account')

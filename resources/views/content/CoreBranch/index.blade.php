@@ -57,8 +57,8 @@
                                 <td>{{ $data->branch_phone2 }}</td>
                                 <td class="text-center">
                                     <a type="button" class="btn btn-outline-warning btn-sm mb-2"
-                                        href="{{ route('core_branch.update', $data->id) }}">Edit</a>
-                                    <form action="{{ route('core_branch.delete', $data->id) }}" method="post">
+                                        href="{{ route('core_branch.update', $data->branch_id) }}">Edit</a>
+                                    <form action="{{ route('core_branch.delete', $data->branch_id) }}" method="post">
                                         @csrf
                                         <button class="btn btn-outline-danger btn-sm"
                                             onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>

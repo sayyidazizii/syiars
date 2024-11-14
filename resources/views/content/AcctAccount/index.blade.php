@@ -51,8 +51,8 @@
                                 <td>{{ $accountstatus[$data->account_status] }}</td>
                                 <td class="text-center">
                                     <a type="button" class="btn btn-outline-warning btn-sm mb-2"
-                                        href="{{ route('acct_account.update', $data->id) }}">Edit</a>
-                                    <form action="{{ route('acct_account.delete', $data->id) }}" method="post">
+                                        href="{{ route('acct_account.update', $data->account_id) }}">Edit</a>
+                                    <form action="{{ route('acct_account.delete', $data->account_id) }}" method="post">
                                         @csrf
                                         <button class="btn btn-outline-danger btn-sm"
                                             onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>

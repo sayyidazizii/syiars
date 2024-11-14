@@ -31,7 +31,7 @@
                         <select name="account_id" class="form-control">
                             <option value="" selected disabled>Select</option>
                             @foreach ($acct_acount as $data)
-                                <option value="{{ $data->id }}">{{ $data->account_code }}</option>
+                                <option value="{{ $data->account_id }}">{{ $data->account_code }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -59,7 +59,7 @@
                         <select name="account_basil_id" class="form-control">
                             <option value="" selected disabled>Pilih Nama Akun</option>
                             @foreach ($acct_acount as $data)
-                                <option value="{{ $data->id }}">{{ $data->account_name }}</option>
+                                <option value="{{ $data->account_id }}">{{ $data->account_name }}</option>
                             @endforeach
                         </select>
                     </div>
