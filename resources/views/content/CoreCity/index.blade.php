@@ -1,7 +1,6 @@
 @extends('adminlte::page')
 
 @section('title', 'Kota | AdminLTE')
-
 @section('content')
     @if (session('msg'))
         <div class="alert alert-{{ session('type') ?? 'info' }}" role="alert">
@@ -15,100 +14,99 @@
             @endforeach
         </div>
     @endif
-<div class="card border border-dark">
-    <div class="card-header bg-dark clearfix">
-        <h5 class="mb-0 float-left">
-            Tabel Kota
-        </h5>
-        <div class="form-actions float-right">
-            <a href="{{ route('CoreCity.create') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
-                Kota</a>
+    <div class="card border border-dark">
+        <div class="card-header bg-dark clearfix">
+            <h5 class="mb-0 float-left">
+                Tabel Kota
+            </h5>
+            <div class="form-actions float-right">
+                <a href="{{ route('CoreCity.create') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
+                    Kota</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="example" style="width:100%"
+                    class="table table-striped table-bordered table-hover table-full-width">
+                    <thead>
+                        <tr>
+                            <th width="2%" style='text-align:center'>No</th>
+                            <th width="15%" style='text-align:center'>Kode Kota</th>
+                            <th width="15%" style='text-align:center'>Nama Provinsi</th>
+                            <th width="15%" style='text-align:center'>Kode Provinsi</th>
+                            <th width="15%" style='text-align:center'>Nama Kota</th>
+                            <th width="15%" style='text-align:center'>Nomor Provinsi</th>
+                            <th width="15%" style='text-align:center'>Nomor Kota</th>
+                            <th width="10%" style='text-align:center'>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1; ?>
+                        <?php $no = 1; ?>
+                        @forelse($core_city as $data)
+                            <tr>
+                                <td style='text-align:center'>{{ $no++ }}</td>
+                                <td style='text-align:center'>{{ $data->city_code }}</td>
+                                <td style='text-align:center'>
+                                    @if ($data->Province)
+                                        {{ $data->Province->province_name }}
+                                    @else
+                                        Tidak Ada Provinsi Terkait
+                                    @endif
+                                </td>
+                                <td style='text-align:center'>
+                                    @if ($data->Province)
+                                        {{ $data->Province->province_code }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td style='text-align:center'>{{ $data->city_name }}</td>
+                                <td style='text-align:center'>
+                                    @if ($data->Province)
+                                        {{ $data->Province->province_no }}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td style='text-align:center'>{{ $data->city_no }}</td>
+                                <td class="text-center">
+                                    <a type="button" class="btn btn-outline-warning btn-sm mb-2"
+                                        href="{{ route('CoreCity.update', $data->city_id) }}">Edit</a>
+                                    <form action="{{ route('CoreCity.delete', $data->city_id) }}" method="post">
+                                        @csrf
+                                        <button class="btn btn-outline-danger btn-sm"
+                                            onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="8" style="text-align:center">Data Kota tidak ditemukan.</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table id="example" style="width:100%"
-                class="table table-striped table-bordered table-hover table-full-width">
-                <thead>
-                    <tr>
-                        <th width="2%" style='text-align:center'>No</th>
-                        <th width="15%" style='text-align:center'>Kode Kota</th>
-                        <th width="15%" style='text-align:center'>Nama Provinsi</th>
-                        <th width="15%" style='text-align:center'>Kode Provinsi</th>
-                        <th width="15%" style='text-align:center'>Nama Kota</th>
-                        <th width="15%" style='text-align:center'>Nomor Provinsi</th>
-                        <th width="15%" style='text-align:center'>Nomor Kota</th>
-                        <th width="10%" style='text-align:center'>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $no = 1; ?>
-                    <?php $no = 1; ?>
-                    @forelse($core_city as $data)
-                    <tr>
-                        <td style='text-align:center'>{{ $no++ }}</td>
-                        <td style='text-align:center'>{{ $data->city_code }}</td>
-                        <td style='text-align:center'>
-                            @if ($data->Province)
-                            {{ $data->Province->province_name }}
-                            @else
-                            Tidak Ada Provinsi Terkait
-                            @endif
-                        </td>
-                        <td style='text-align:center'>
-                            @if ($data->Province)
-                            {{ $data->Province->province_code }}
-                            @else
-                            -
-                            @endif
-                        </td>
-                        <td style='text-align:center'>{{ $data->city_name }}</td>
-                        <td style='text-align:center'>
-                            @if ($data->Province)
-                            {{ $data->Province->province_no }}
-                            @else
-                            -
-                            @endif
-                        </td>
-                        <td style='text-align:center'>{{ $data->city_no }}</td>
-                        <td class="text-center">
-                            <a type="button" class="btn btn-outline-warning btn-sm mb-2"
-                                href="{{ route('CoreCity.update', $data->city_id) }}">Edit</a>
-                            <form action="{{ route('CoreCity.delete', $data->city_id) }}" method="post">
-                                @csrf
-                                <button class="btn btn-outline-danger btn-sm"
-                                    onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @empty
-                    <tr>
-                        <td colspan="8" style="text-align:center">Data Kota tidak ditemukan.</td>
-                    </tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
 @stop
 @section('css')
-<link rel="stylesheet" href="/css/admin.custom.css">
+    <link rel="stylesheet" href="/css/admin.custom.css">
 @stop
 @section('js')
-<script>
-    $(document).ready(function() {
-        setTimeout(function() {
-            $('[class*="alert"]').each(function() {
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                $('[class*="alert"]').each(function() {
+                    $(this).alert('close');
+                });
+            }, 5000);
+        });
+        $(document).on('DOMNodeInserted', '[class*="alert"]', function() {
+            setTimeout(function() {
                 $(this).alert('close');
-            });
-        }, 5000);
-    });
-
-    $(document).on('DOMNodeInserted', '[class*="alert"]', function() {
-        setTimeout(function() {
-            $(this).alert('close');
-        }.bind(this), 5000);
-    });
-</script>
+            }.bind(this), 5000);
+        });
+    </script>
 @stop

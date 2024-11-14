@@ -6,7 +6,6 @@ use App\Models\SystemMenu;
 use App\Models\SystemUserGroup;
 use App\Models\AcctSavings;
 use Illuminate\Support\Facades\DB;
-
 class SystemUserGroupController extends Controller
 {
     public function index(){
@@ -17,12 +16,10 @@ class SystemUserGroupController extends Controller
         $systemmenu         = SystemMenu::get();
         return view('content.SystemUserGroup.FormAddSystemUserGroup',compact('systemmenu'));
     }
-
     public function store(Request $request){
         $fields = $request->validate([
             'user_group_name'           => 'required',
         ]);
-        // * get sistem menu
         $systemmenu = SystemMenu::get();
         try {
         DB::beginTransaction();
@@ -40,11 +37,8 @@ class SystemUserGroupController extends Controller
             'branch_id'              => auth()->user()->branch_id,
             'company_id'             => auth()->user()->company_id,
         ]);
-
         foreach ($systemmenu as $key => $val) {
-            // Memeriksa apakah checkbox untuk menu ini di-check
             if (isset($request['checkbox_' . $val['id_menu']])) {
-                // Menambahkan pemetaan untuk simpanan
                 $acctSavings->maping()->create([
                     'user_group_level' => $fields['user_group_level'],
                     'id_menu'          => $val['id_menu'],
@@ -60,7 +54,6 @@ class SystemUserGroupController extends Controller
         return redirect()->route('system-user-group')->danger('Tambah System User Group Gagal');
         }
     }
-
     public function update(Request $request){
         $fields = $request->validate([
             'user_group_id'             => 'required',

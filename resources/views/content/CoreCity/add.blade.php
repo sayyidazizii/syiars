@@ -4,7 +4,6 @@
 @section('content_header')
     <h1>Tambah Data Kota</h1>
 @stop
-
 @section('content')
     <div class="col-md-12">
         <div class="box box-primary">
@@ -68,11 +67,9 @@
         </div>
     </div>
 @stop
-
 @section('css')
     <link rel="stylesheet" href="/css/admin.custom.css">
 @stop
-
 @section('js')
     <script>
         console.log('Form tambah data kota siap!');

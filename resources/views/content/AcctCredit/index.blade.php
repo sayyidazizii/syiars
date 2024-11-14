@@ -76,7 +76,6 @@
                 });
             }, 5000);
         });
-
         $(document).on('DOMNodeInserted', '[class*="alert"]', function() {
             setTimeout(function() {
                 $(this).alert('close');
