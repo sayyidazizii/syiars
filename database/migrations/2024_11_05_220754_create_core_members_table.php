@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('core_member', function (Blueprint $table) {
-            $table->id('id');
+            $table->id('member_id');
             $table->unsignedBigInteger('province_id')->default(0)->index('FK_core_member_province_id');
             $table->foreign('province_id')
                   ->references('province_id')
@@ -44,6 +44,7 @@ return new class extends Migration
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
             $table->integer('branch_id')->default(0)->nullable();
+            $table->integer('created_id')->default(0)->nullable();
             $table->string('member_no', 50)->nullable();
             $table->string('member_name', 100)->nullable();
             $table->decimal('member_gender', 1,0)->default(0)->nullable();

@@ -17,6 +17,7 @@ class CoreMember extends Model
     use HasFactory, SoftDeletes;
     use Notifiable;
     protected $table = 'core_member';
+    protected $primaryKey = 'member_id';
     protected $fillable = [
             'member_id',
             'branch_id',

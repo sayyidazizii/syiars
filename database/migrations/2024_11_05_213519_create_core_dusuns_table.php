@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('core_dusun', function (Blueprint $table) {
             $table->id('dusun_id');
-            $table->unsignedBigInteger('kelurahan_id')->default(0);
+            $table->unsignedBigInteger('kelurahan_id')->default(0)->index('FK_core_dusun_kelurahan_id');
+            $table->foreign('kelurahan_id')
+                  ->references('kelurahan_id')
+                  ->on('core_kelurahan')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
             $table->string('dusun_code', 10)->default('');
             $table->string('dusun_name', 50)->default('')->index();
             $table->smallInteger('data_state')->default(0)->nullable();

@@ -114,9 +114,6 @@ class CoreMemberController extends Controller
             $core_member->member_address = $request->input('member_address');
             $core_member->member_phone = $request->input('member_phone');
             $core_member->member_character = $request->input('member_character');
-            $core_member->office_code = $request->input('office_code');
-            $core_member->office_name = $request->input('office_name');
-            $core_member->branch_id = $request->input('branch_id');
             $core_member->update();
             DB::commit();
             return redirect()->route('core_member.index')->warning('Data Anggota berhasil diperbarui!');
