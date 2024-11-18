@@ -99,8 +99,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="member_postal_code">Kode Pos</label>
-                                <input type="text" name="member_postal_code" id="member_postal_code" class="form-control"
-                                    required>
+                                <input type="text" name="member_postal_code" id="member_postal_code" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="member_phone">Nomor Telp *</label>
@@ -141,8 +140,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="member_mother">Nama Ibu Kandung</label>
-                                <input type="text" name="member_mother" id="member_mother" class="form-control"
-                                    required>
+                                <input type="text" name="member_mother" id="member_mother" class="form-control" required>
                             </div>
                         </div>
                     </div>
