@@ -12,6 +12,7 @@ class CoreBranch extends Model
      use HasFactory, SoftDeletes;
      use Notifiable;
     protected $table = 'core_branch';
+    protected $primaryKey = 'branch_id';
     protected $fillable = [
         'branch_code',
         'branch_name',

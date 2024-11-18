@@ -6,7 +6,7 @@
 @section('content')
     <div class="col-md-6">
         <div class="box box-primary">
-            <form role="form" method="post" action="{{ route('acct_credit.prosesupdate', $acct_credits->id) }}">
+            <form role="form" method="post" action="{{ route('acct_credit.prosesupdate', $acct_credits->credits_id) }}">
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
@@ -24,7 +24,7 @@
                         <select name="account_id" class="form-control">
                             @foreach ($acct_account as $data)
                                 <option {{ $acct_credits->account_id == $data->id ? 'selected' : '' }}
-                                    value="{{ $data->id }}">{{ $data->account_code }}
+                                    value="{{ $data->account_id }}">{{ $data->account_code }}
                                     - {{ $data->account_name }}</option>
                             @endforeach
                         </select>
@@ -34,7 +34,7 @@
                         <select name="accountaccount_code" class="form-control">
                             @foreach ($acct_account as $data)
                                 <option {{ $acct_credits->account_id == $data->id ? 'selected' : '' }}
-                                    value="{{ $data->id }}">{{ $data->account_code }}
+                                    value="{{ $data->account_id }}">{{ $data->account_code }}
                                     - {{ $data->account_name }}</option>
                             @endforeach
                         </select>

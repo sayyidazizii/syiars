@@ -18,7 +18,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="member_no">No Anggota</label>
-                                <input type="text" class="form-control" id="member_no" name="member_no" value="{{ $newMemberNo }}" readonly>
+                                <input type="text" class="form-control" id="member_no" name="member_no"
+                                    value="{{ $newMemberNo }}" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="member_name">Nama Anggota *</label>
@@ -41,7 +42,7 @@
                                 <select name="province_id" id="province_id" class="form-control" required>
                                     <option value="">--- Pilih Salah Satu ---</option>
                                     @foreach ($core_province as $data)
-                                        <option value="{{ $data->id }}">{{ $data->province_name }}</option>
+                                        <option value="{{ $data->province_id }}">{{ $data->province_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -49,36 +50,24 @@
                                 <label for="city_id">Kabupaten *</label>
                                 <select name="city_id" id="city_id" class="form-control" required>
                                     <option value="">--- Pilih Salah Satu ---</option>
-                                    @foreach ($core_city as $data)
-                                        <option value="{{ $data->id }}">{{ $data->city_name }}</option>
-                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="kecamatan_id">Kecamatan *</label>
                                 <select name="kecamatan_id" id="kecamatan_id" class="form-control" required>
                                     <option value="">--- Pilih Salah Satu ---</option>
-                                    @foreach ($core_kecamatan as $data)
-                                        <option value="{{ $data->id }}">{{ $data->kecamatan_name }}</option>
-                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="kelurahan_id">Kelurahan *</label>
                                 <select name="kelurahan_id" id="kelurahan_id" class="form-control" required>
                                     <option value="">--- Pilih Salah Satu ---</option>
-                                    @foreach ($core_kelurahan as $data)
-                                        <option value="{{ $data->id }}">{{ $data->kelurahan_name }}</option>
-                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="dusun_id">Dusun *</label>
                                 <select name="dusun_id" id="dusun_id" class="form-control" required>
                                     <option value="">--- Pilih Salah Satu ---</option>
-                                    @foreach ($core_dusun as $data)
-                                        <option value="{{ $data->id }}">{{ $data->dusun_name }}</option>
-                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
@@ -157,6 +146,87 @@
     <link rel="stylesheet" href="/css/admin.custom.css">
 @stop
 @section('js')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#province_id').change(function() {
+                var provinceId = $(this).val();
+                $('#city_id').empty().append('<option value="">--- Pilih Salah Satu ---</option>');
+                $('#kecamatan_id, #kelurahan_id, #dusun_id').empty().append(
+                    '<option value="">--- Pilih Salah Satu ---</option>');
+                if (provinceId) {
+                    $.ajax({
+                        url: '/get-cities/' + provinceId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $.each(data, function(key, value) {
+                                $('#city_id').append('<option value="' + value.city_id +
+                                    '">' + value.city_name + '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+            $('#city_id').change(function() {
+                var cityId = $(this).val();
+                $('#kecamatan_id').empty().append('<option value="">--- Pilih Salah Satu ---</option>');
+                $('#kelurahan_id, #dusun_id').empty().append(
+                    '<option value="">--- Pilih Salah Satu ---</option>');
+                if (cityId) {
+                    $.ajax({
+                        url: '/get-kecamatans/' + cityId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $.each(data, function(key, value) {
+                                $('#kecamatan_id').append('<option value="' + value
+                                    .kecamatan_id + '">' + value.kecamatan_name +
+                                    '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+            $('#kecamatan_id').change(function() {
+                var kecamatanId = $(this).val();
+                $('#kelurahan_id').empty().append('<option value="">--- Pilih Salah Satu ---</option>');
+                $('#dusun_id').empty().append('<option value="">--- Pilih Salah Satu ---</option>');
+                if (kecamatanId) {
+                    $.ajax({
+                        url: '/get-kelurahans/' + kecamatanId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $.each(data, function(key, value) {
+                                $('#kelurahan_id').append('<option value="' + value
+                                    .kelurahan_id + '">' + value.kelurahan_name +
+                                    '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+            $('#kelurahan_id').change(function() {
+                var kelurahanId = $(this).val();
+                $('#dusun_id').empty().append('<option value="">--- Pilih Salah Satu ---</option>');
+                if (kelurahanId) {
+                    $.ajax({
+                        url: '/get-dusuns/' + kelurahanId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $.each(data, function(key, value) {
+                                $('#dusun_id').append('<option value="' + value
+                                    .dusun_id + '">' + value.dusun_name +
+                                    '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    </script>
     <script>
         $(document).ready(function() {
             setTimeout(function() {
@@ -165,7 +235,6 @@
                 });
             }, 5000);
         });
-
         $(document).on('DOMNodeInserted', '[class*="alert"]', function() {
             setTimeout(function() {
                 $(this).alert('close');

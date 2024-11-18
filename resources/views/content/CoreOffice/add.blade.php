@@ -23,7 +23,7 @@
                         <label for="exampleInputEmail1">Cabang</label>
                         <select name="branch_id" class="form-control">
                             @foreach ($core_branch as $data)
-                                <option value="{{ $data->id }}">{{ $data->branch_name }}</option>
+                                <option value="{{ $data->branch_id }}">{{ $data->branch_name }}</option>
                             @endforeach
                         </select>
                     </div>

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('acct_account', function (Blueprint $table) {
-            $table->id();
+            $table->id('account_id');
             $table->unsignedBigInteger('account_type_id')->default(0)->nullable();
             $table->string('account_code', 255)->nullable();
             $table->string('account_name', 255)->nullable();
@@ -34,7 +34,7 @@ return new class extends Migration
             $table->unsignedBigInteger('updated_id')->nullable();
             $table->uuid('uuid')->nullable();
             $table->unsignedBigInteger('deleted_id')->nullable();
-            $table->softDeletes(); // Menambahkan kolom deleted_at
+            $table->softDeletes();
             $table->timestamps();
         });
     }

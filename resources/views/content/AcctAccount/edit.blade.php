@@ -6,7 +6,7 @@
 @section('content')
     <div class="col-md-6">
         <div class="box box-primary">
-            <form role="form" method="post" action="{{ route('acct_account.prosesupdate', $acct_account->id) }}">
+            <form role="form" method="post" action="{{ route('acct_account.prosesupdate', $acct_account->account_id) }}">
                 @csrf
                 <div class="box-body">
                     <div class="form-group">

@@ -1,22 +1,17 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Auth;
-
 class AcctDeposito extends Model
 {
     use HasFactory, SoftDeletes, Notifiable;
-
-    protected $table = 'acct_deposito'; // Specify the table name
-
-    protected $primaryKey = 'deposito_id'; // Primary key column
-
+    protected $table = 'acct_deposito';
+    protected $primaryKey = 'deposito_id';
     protected $fillable = [
         'account_basil_id',
         'deposito_code',
@@ -34,16 +29,13 @@ class AcctDeposito extends Model
         'uuid',
         'deleted_id',
     ];
-
     protected $dates = [
         'created_on',
         'deleted_at',
     ];
-
     public $timestamps = true;
-
     protected static function booted() {
-        $userid = Auth::id(); // Use Auth facade directly
+        $userid = Auth::id();
 
         static::creating(function ($model) use ($userid) {
             $model->created_id = $userid;
@@ -55,9 +47,6 @@ class AcctDeposito extends Model
             $model->deleted_id = $userid;
         });
     }
-
-    // If this relationship is intended, ensure the foreign key is correct
-    // Otherwise, you might want to remove it
     public function account(): BelongsTo
     {
         return $this->belongsTo(AcctAccount::class, 'account_id');

@@ -11,8 +11,9 @@ class AcctCredit extends Model
     /** @use HasFactory<\Database\Factories\AcctCreditFactory> */
     use HasFactory, SoftDeletes;
     use Notifiable;
+    protected $table = 'acct_credits';
+    protected $primaryKey = 'credits_id';
     protected $fillable = [
-        'id',
         'account_id',
         'credits_code',
         'credits_name',

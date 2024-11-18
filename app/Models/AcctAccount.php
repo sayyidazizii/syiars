@@ -13,6 +13,7 @@ class AcctAccount extends Model
     use HasFactory, SoftDeletes;
     use Notifiable;
     protected $table = 'acct_account';
+    protected $primaryKey = 'account_id';
     protected $fillable = [
         'account_type_id',
         'account_code',

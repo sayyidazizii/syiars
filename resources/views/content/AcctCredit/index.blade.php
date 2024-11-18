@@ -49,8 +49,8 @@
                                 <td>{{ $data->account->account_code }} - {{ $data->account->account_name }}</td>
                                 <td class="text-center">
                                     <a type="button" class="btn btn-outline-warning btn-sm mb-2"
-                                        href="{{ route('acct_credit.update', $data->id) }}">Edit</a>
-                                    <form action="{{ route('acct_credit.delete', $data->id) }}" method="post">
+                                        href="{{ route('acct_credit.update', $data->credits_id) }}">Edit</a>
+                                    <form action="{{ route('acct_credit.delete', $data->credits_id) }}" method="post">
                                         @csrf
                                         <button class="btn btn-outline-danger btn-sm"
                                             onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">Hapus</button>
@@ -76,7 +76,6 @@
                 });
             }, 5000);
         });
-
         $(document).on('DOMNodeInserted', '[class*="alert"]', function() {
             setTimeout(function() {
                 $(this).alert('close');

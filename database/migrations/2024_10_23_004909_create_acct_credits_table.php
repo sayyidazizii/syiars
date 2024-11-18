@@ -12,11 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('acct_credits', function (Blueprint $table) {
-            $table->id('id');
-            $table->foreignId('account_id')->constrained(
-                table: 'acct_account',
-                indexName: 'credits_account_id'
-            );
+            $table->id('credits_id');
+            $table->unsignedBigInteger('account_id')->default(0)->index('FK_core_credit_account_id');
+            $table->foreign('account_id')
+            ->references('account_id')
+            ->on('acct_account')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->string('credits_code', 255);
             $table->string('credits_name', 255);
             $table->unsignedBigInteger('credits_number')->default(0)->nullable();
@@ -29,7 +31,7 @@ return new class extends Migration
             $table->unsignedBigInteger('updated_id')->nullable();
             $table->uuid('uuid')->nullable();
             $table->unsignedBigInteger('deleted_id')->nullable();
-            $table->softDeletes(); // Menambahkan kolom deleted_at
+            $table->softDeletes();
             $table->timestamps();
         });
     }

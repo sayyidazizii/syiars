@@ -30,7 +30,8 @@
                             <select name="account_type_id" id="account_type_id" class="form-control">
                                 @foreach ($kelompokperkiraan as $key => $value)
                                     <option data-kt-flag="{{ $key }}" value="{{ $key }}"
-                                        {{ $key === old('account_type_id', '' ?? '') ? 'selected' : '' }}>{{ $value }}
+                                        {{ $key === old('account_type_id', '' ?? '') ? 'selected' : '' }}>
+                                        {{ $value }}
                                     </option>
                                 @endforeach
                             </select>

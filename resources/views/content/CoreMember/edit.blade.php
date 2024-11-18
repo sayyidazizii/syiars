@@ -12,7 +12,7 @@
                 Form Edit Anggota
             </div>
             <div class="card-body">
-                <form action="{{ route('core_member.prosesupdate', $core_member->id) }}" method="POST">
+                <form action="{{ route('core_member.prosesupdate', $core_member->member_id) }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
@@ -46,7 +46,7 @@
                     </div>
                     <div class="d-flex justify-content-end">
                         <a href="{{ route('core_member.index') }}" class="btn btn-danger mr-2">Batal</a>
-                        <button type="submit" class="btn btn-success">Simpan Perubahan</button>
+                        <button type="submit" class="btn btn-success">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -65,7 +65,6 @@
                 });
             }, 5000);
         });
-
         $(document).on('DOMNodeInserted', '[class*="alert"]', function() {
             setTimeout(function() {
                 $(this).alert('close');

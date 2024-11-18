@@ -22,8 +22,8 @@ class CoreMemberController extends Controller
     public function create()
     {
         $lastMember = CoreMember::orderBy('member_no', 'desc')->first();
-        $newMemberNo = $lastMember ? $lastMember->member_no + 1 : 1; // Jika tidak ada anggota, mulai dari 1
-        $newMemberNo = str_pad($newMemberNo, 3, '0', STR_PAD_LEFT); // Menambahkan nol di depan jika kurang dari 3 digit
+        $newMemberNo = $lastMember ? $lastMember->member_no + 1 : 1;
+        $newMemberNo = str_pad($newMemberNo, 3, '0', STR_PAD_LEFT);
         $core_province = CoreProvince::all();
         $core_city = CoreCity::all();
         $core_kecamatan = CoreKecamatan::all();
@@ -83,7 +83,7 @@ class CoreMemberController extends Controller
         }catch (\Exception $e) {
             DB::rollBack();
             report($e);
-            return redirect()->route('core_member.index')->danger('Data Anggota gagal diperbarui!');
+            return redirect()->route('core_member.index')->danger('Data Anggota gagal ditambahkan!');
         }
     }
     public function update($id)
@@ -107,23 +107,26 @@ class CoreMemberController extends Controller
             'member_phone' => 'required|string|max:20',
             'member_character' => 'required|numeric',
         ]);
+        try {
+            DB::beginTransaction();
             $core_member = CoreMember::findOrFail($id);
-            $core_member->member_name           = $request->input('member_name');
-            $core_member->member_address        = $request->input('member_address');
-            $core_member->member_phone          = $request->input('member_phone');
-            $core_member->member_character      = $request->input('member_character');
-            $core_member->office_code = $request->input('office_code');
-            $core_member->office_name = $request->input('office_name');
-            $core_member->branch_id = $request->input('branch_id');
-        
-            $core_member->save();
-        return redirect()->route('core_member.index')->warning('Data Anggota diperbarui!');
-
+            $core_member->member_name = $request->input('member_name');
+            $core_member->member_address = $request->input('member_address');
+            $core_member->member_phone = $request->input('member_phone');
+            $core_member->member_character = $request->input('member_character');
+            $core_member->update();
+            DB::commit();
+            return redirect()->route('core_member.index')->warning('Data Anggota berhasil diperbarui!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            report($e);
+            return redirect()->route('core_member.index')->danger('Data Anggota gagal diperbarui!');
+        }
     }
     public function delete($id)
     {
         $core_member = CoreMember::find($id);
         $core_member->delete();
-        return redirect()->route('core_member.index')->danger('Data Anggota dihapus!');
+        return redirect()->route('core_member.index')->danger('Data Anggota berhasil dihapus!');
     }
 }

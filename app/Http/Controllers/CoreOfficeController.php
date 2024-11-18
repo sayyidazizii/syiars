@@ -36,7 +36,7 @@ class CoreOfficeController extends Controller
         }catch (\Exception $e){
             DB::rollBack();
             report($e);
-            return redirect()->route('core_office.index')->danger('Data Business Office gagal diperbarui!');
+            return redirect()->route('core_office.index')->danger('Data Business Office gagal ditambahkan!');
         }
     }
     public function update($id)
@@ -52,17 +52,25 @@ class CoreOfficeController extends Controller
             'office_name' => 'required|string|max:50',
             'branch_id' => 'required|integer',
         ]);
-        $core_office = CoreOffice::findOrFail($id);
-        $core_office->office_code = $request->input('office_code');
-        $core_office->office_name = $request->input('office_name');
-        $core_office->branch_id = $request->input('branch_id');
-        $core_office->save();
-        return redirect()->route('core_office.index')->warning('Data Business Office diperbarui!');
+        try {
+            DB::beginTransaction();
+            $core_office = CoreOffice::findOrFail($id);
+            $core_office->office_code = $request->input('office_code');
+            $core_office->office_name = $request->input('office_name');
+            $core_office->branch_id = $request->input('branch_id');
+            $core_office->save();
+            DB::commit();
+            return redirect()->route('core_office.index')->warning('Data Business Office berhasil diperbarui!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            report($e);
+            return redirect()->route('core_office.index')->danger('Data Business Office gagal diperbarui!');
+        }
     }
     public function delete($id)
     {
         $core_office = CoreOffice::find($id);
         $core_office->delete();
-        return redirect()->route('core_office.index')->danger('Data Business Office dihapus!');
+        return redirect()->route('core_office.index')->danger('Data Business Office berhasil dihapus!');
     }
 }

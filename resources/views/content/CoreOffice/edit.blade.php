@@ -23,7 +23,7 @@
                         <select name="branch_id" class="form-control">
                             @foreach ($core_branch as $data)
                                 <option {{ $core_office->branch_id == $data->id ? 'selected' : '' }}
-                                    value="{{ $data->id }}">{{ $data->branch_name }}</option>
+                                    value="{{ $data->branch_id }}">{{ $data->branch_name }}</option>
                             @endforeach
                         </select>
                     </div>

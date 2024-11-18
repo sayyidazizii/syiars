@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -12,11 +11,7 @@ class SystemUserGroup extends Model
     /** @use HasFactory<\Database\Factories\SystemUserGroupFactory> */
     use HasFactory;
     use Notifiable;
-
-    // Menentukan tabel yang digunakan
     protected $table = 'system_user_group';
-
-    // Jika primary key bukan id, tentukan di sini (misalnya 'user_id')
     protected $primaryKey = 'user_group_id';
     /**
      * The attributes that are mass assignable.
@@ -34,7 +29,6 @@ class SystemUserGroup extends Model
         'branch_id',
     ];
     protected static function booted(){
-
         $userid=auth->id();
         static::creating(function ($model) use($userid) {
             $model->created_id = $userid;
@@ -49,6 +43,4 @@ class SystemUserGroup extends Model
     public function maping() {
         return $this->hasMany(SystemMenuMapping::class,'user_group_level','user_group_id');
      }
- 
-
 }

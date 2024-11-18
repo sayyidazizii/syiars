@@ -6,7 +6,7 @@
 @section('content')
     <div class="col-md-6">
         <div class="box box-primary">
-            <form role="form" method="post" action="{{ route('core_branch.prosesupdate', $core_branch->id) }}">
+            <form role="form" method="post" action="{{ route('core_branch.prosesupdate', $core_branch->branch_id) }}">
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
