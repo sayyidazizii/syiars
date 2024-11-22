@@ -152,6 +152,7 @@ class CoreMemberController extends Controller
             return redirect()->route('core_member_status.index_update')->danger('Data Update Calon Anggota gagal diperbarui!');
         }
     }
+
     public function getMasterDataCoreMember()
     {
         $branches = CoreBranch::all(); 
@@ -160,5 +161,23 @@ class CoreMemberController extends Controller
         $membercharacter = Configuration::MemberCharacter(); // Pastikan metode ini ada
 
         return view('content.CoreMember.getMasterDataCoreMember', compact('core_member', 'memberstatus', 'membercharacter', 'branches'));
+    }
+
+    public function CoreMemberSavings()
+    {
+        $core_member = CoreMember::all();
+        $memberstatus = Configuration::MemberStatus();
+        $membercharacter = Configuration::MemberCharacter();
+        return view('content.CoreMember.CoreMemberSavings', compact('core_member', 'memberstatus', 'membercharacter'));
+
+    }
+
+    // Contoh Controller
+    public function getActiveMembers(Request $request)
+    {
+        // Hanya mengambil anggota dengan status "Aktif"
+        $core_members = CoreMember::where('status', 'Aktif')->get();
+
+        return response()->json($core_members);
     }
 }
