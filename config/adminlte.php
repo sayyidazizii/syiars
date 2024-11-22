@@ -375,6 +375,11 @@ return [
             'url' => 'core_member',
             'icon' => 'fas fa-fw fa-list',
         ],
+        [
+            'text' => 'Transaksi Simpanan Anggota',
+           'url' => 'core_member/CoreMemberSavings',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
     ],
 
     /*
