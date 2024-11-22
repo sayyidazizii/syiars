@@ -20,8 +20,7 @@
                 Tabel Data Anggota
             </h5>
             <div class="form-actions float-right">
-                <a href="{{ url('/core_member/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah
-                    Data Anggota</a>
+                <a href="{{ url('/core_member/add') }}" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah Data Anggota</a>
             </div>
         </div>
         <div class="card-body">
