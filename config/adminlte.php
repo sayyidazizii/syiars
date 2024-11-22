@@ -376,6 +376,11 @@ return [
             'icon' => 'fas fa-fw fa-list',
         ],
         [
+            'text' => 'Update Calon Anggota',
+            'url' => 'core_member_status',
+            'icon' => 'fas fa-fw fa-tree',
+        ],
+        [
             'text' => 'Transaksi Simpanan Anggota',
            'url' => 'core_member/CoreMemberSavings',
             'icon' => 'fas fa-fw fa-lock',
