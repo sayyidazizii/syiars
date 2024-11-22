@@ -375,6 +375,11 @@ return [
             'url' => 'core_member',
             'icon' => 'fas fa-fw fa-list',
         ],
+        [
+            'text' => 'Master Data Anggota',
+            'url' => 'core_member/getMasterDataCoreMember',
+            'icon' => 'fas fa-fw fa-list',
+        ],
     ],
 
     /*

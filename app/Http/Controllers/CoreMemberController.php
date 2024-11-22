@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\CoreBranch;
 use App\Models\CoreCity;
 use App\Models\CoreDusun;
 use App\Models\CoreMember;
@@ -128,5 +129,15 @@ class CoreMemberController extends Controller
         $core_member = CoreMember::find($id);
         $core_member->delete();
         return redirect()->route('core_member.index')->danger('Data Anggota berhasil dihapus!');
+    }
+
+    public function getMasterDataCoreMember()
+    {
+        $branches = CoreBranch::all(); 
+        $core_member = CoreMember::all();
+        $memberstatus = Configuration::MemberStatus(); // Pastikan metode ini ada
+        $membercharacter = Configuration::MemberCharacter(); // Pastikan metode ini ada
+
+        return view('content.CoreMember.getMasterDataCoreMember', compact('core_member', 'memberstatus', 'membercharacter', 'branches'));
     }
 }
