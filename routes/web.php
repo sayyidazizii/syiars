@@ -103,6 +103,10 @@ Route::prefix('core_member')->name('core_member.')->group(function () {
     Route::post('prosesedit{id}', [CoreMemberController::class, 'prosesupdate'])->name('prosesupdate');
     Route::post('delete{id}', [CoreMemberController::class, 'delete'])->name('delete');
 });
+Route::prefix('core_member_status')->name('core_member_status.')->group(function () {
+    Route::get('/', [CoreMemberController::class, 'index_update'])->name('index_update');
+    Route::post('update_status{id}', [CoreMemberController::class, 'update_status'])->name('update_status');
+});
 Route::prefix('acct_mutation')->name('acct_mutation.')->group(function () {
     Route::get('/', [AcctMutationController::class, 'index'])->name('index');
     Route::get('add', [AcctMutationController::class, 'create'])->name('create');

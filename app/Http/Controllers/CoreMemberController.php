@@ -129,4 +129,26 @@ class CoreMemberController extends Controller
         $core_member->delete();
         return redirect()->route('core_member.index')->danger('Data Anggota berhasil dihapus!');
     }
+    public function index_update()
+    {
+        $core_member = CoreMember::all();
+        $memberstatus = Configuration::MemberStatus();
+        $membercharacter = Configuration::MemberCharacter();
+        return view('content.CoreMember.index_update', compact('core_member', 'memberstatus', 'membercharacter'));
+    }
+    public function update_status(Request $request, $id)
+    {
+        try {
+            DB::beginTransaction();
+            $core_member = CoreMember::findOrFail($id);
+            $core_member->member_status = 1;
+            $core_member->update();
+            DB::commit();
+            return redirect()->route('core_member_status.index_update')->warning('Data Update Calon Anggota berhasil diperbarui!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            report($e);
+            return redirect()->route('core_member_status.index_update')->danger('Data Update Calon Anggota gagal diperbarui!');
+        }
+    }
 }

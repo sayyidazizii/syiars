@@ -375,6 +375,11 @@ return [
             'url' => 'core_member',
             'icon' => 'fas fa-fw fa-list',
         ],
+        [
+            'text' => 'Update Calon Anggota',
+            'url' => 'core_member_status',
+            'icon' => 'fas fa-fw fa-tree',
+        ],
     ],
 
     /*
