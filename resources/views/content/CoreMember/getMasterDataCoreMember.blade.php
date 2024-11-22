@@ -41,16 +41,21 @@
             <!-- Filter Section -->
             <div class="form-group">
                 <label for="branch" class="font-weight-bold">Cabang <span class="text-danger">*</span></label>
-                <select id="branch" class="form-control" name="branch">
+                <select id="branch" class="form-control" name="branch" onchange="this.form.submit()">
                     <option value="" disabled selected>Select</option>
                     @foreach ($branches as $branch)
-                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                        <option value="{{ $branch->id }}" {{ request('branch') == $branch->id ? 'selected' : '' }}>{{ $branch->name }}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="d-flex justify-content-between">
-                <button class="btn btn-danger">Batal</button>
-                <button class="btn btn-success">Cari</button>
+            <div class="d-flex justify-content-end mb-3">
+                <!-- Sejajarkan tombol "Batal" dan "Cari" di sebelah kanan dengan ikon -->
+                <button class="btn btn-danger mr-2">
+                    <i class="fa fa-times"></i> Batal
+                </button>
+                <button class="btn btn-success">
+                    <i class="fa fa-search"></i> Cari
+                </button>
             </div>
 
             <!-- Table Section -->
@@ -68,7 +73,7 @@
                             <th>Simp Pokok</th>
                             <th>Simp Khusus</th>
                             <th>Simp Wajib</th>
-                            <th>Action</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,13 +89,14 @@
                                 <td>{{ $data->saldo_pokok_old }}</td>
                                 <td>{{ $data->saldo_khusus_old }}</td>
                                 <td>{{ $data->saldo_wajib_old }}</td>
-                                <td class="text-center">
-                                    <a href="{{ route('core_member.update', $data->member_id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    <form action="{{ route('core_member.delete', $data->member_id) }}" method="POST" style="display:inline;">
-                                        @csrf
-                                        <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
-                                    </form>
+                                <td>
+                                    @if($data->member_status == 1)
+                                        Aktif
+                                    @else
+                                        Tidak Aktif
+                                    @endif
                                 </td>
+                                                            
                             </tr>
                         @empty
                             <tr>
@@ -99,6 +105,13 @@
                         @endforelse
                     </tbody>
                 </table>
+            </div>
+
+            <!-- Export Button -->
+            <div class="d-flex justify-content-end mt-3">
+                <a href="{{ url('/core_member/export') }}" class="btn btn-sm btn-success">
+                    <i class="fa fa-file-export"></i> Export Data
+                </a>
             </div>
         </div>
     </div>
@@ -126,7 +139,7 @@
                 lengthMenu: [5, 10, 25, 50], // Options for 'records'
                 language: {
                     search: "Search:", // Search input label
-                    lengthMenu: "Show _MENU_ records per page",
+                    lengthMenu: " _MENU_ records ",
                     zeroRecords: "No matching records found",
                     info: "Showing _START_ to _END_ of _TOTAL_ entries",
                     infoEmpty: "No entries available",

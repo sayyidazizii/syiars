@@ -380,6 +380,11 @@ return [
             'url' => 'core_member_status',
             'icon' => 'fas fa-fw fa-tree',
         ],
+        [
+            'text' => 'Master Data Anggota',
+            'url' => 'core_member/getMasterDataCoreMember',
+            'icon' => 'fas fa-fw fa-list',
+        ],
     ],
 
     /*
