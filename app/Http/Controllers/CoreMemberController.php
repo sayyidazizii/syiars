@@ -155,10 +155,10 @@ class CoreMemberController extends Controller
 
     public function getMasterDataCoreMember()
     {
-        $branches = CoreBranch::all(); 
+        $branches = CoreBranch::all();
         $core_member = CoreMember::all();
-        $memberstatus = Configuration::MemberStatus(); // Pastikan metode ini ada
-        $membercharacter = Configuration::MemberCharacter(); // Pastikan metode ini ada
+        $memberstatus = Configuration::MemberStatus();
+        $membercharacter = Configuration::MemberCharacter();
 
         return view('content.CoreMember.getMasterDataCoreMember', compact('core_member', 'memberstatus', 'membercharacter', 'branches'));
     }
@@ -171,13 +171,13 @@ class CoreMemberController extends Controller
         return view('content.CoreMember.CoreMemberSavings', compact('core_member', 'memberstatus', 'membercharacter'));
 
     }
-
-    // Contoh Controller
-    public function getActiveMembers(Request $request)
+    public function getMembers()
     {
-        // Hanya mengambil anggota dengan status "Aktif"
-        $core_members = CoreMember::where('status', 'Aktif')->get();
-
-        return response()->json($core_members);
+        $core_member = CoreMember::select('member_no', 'member_name', 'member_address')
+            ->where('member_status', 1)
+            ->get();
+        return response()->json($core_member);
     }
+
+
 }

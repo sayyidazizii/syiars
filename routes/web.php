@@ -123,4 +123,4 @@ Route::get('/get-cities/{provinceId}', [LocationController::class, 'getCities'])
 Route::get('/get-kecamatans/{cityId}', [LocationController::class, 'getKecamatans']);
 Route::get('/get-kelurahans/{kecamatanId}', [LocationController::class, 'getKelurahans']);
 Route::get('/get-dusuns/{kelurahanId}', [LocationController::class, 'getDusuns']);
-
+Route::get('/api/members', [CoreMemberController::class, 'getMembers']);
