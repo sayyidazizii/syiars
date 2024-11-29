@@ -106,6 +106,9 @@ Route::prefix('core_member')->name('core_member.')->group(function () {
     ->name('core_member.getMasterDataCoreMember.index');
     Route::get('CoreMemberSavings', [CoreMemberController::class, 'CoreMemberSavings'])
     ->name('core_member.CoreMemberSavings.index');
+    Route::get('/core-member/data', [CoreMemberController::class, 'getData'])->name('core_member.getData');
+
+
 });
 Route::prefix('core_member_status')->name('core_member_status.')->group(function () {
     Route::get('/', [CoreMemberController::class, 'index_update'])->name('index_update');
