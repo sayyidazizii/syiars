@@ -27,7 +27,7 @@
                             <label for="member_no">No. Anggota *</label>
                             <div class="input-group">
                                 <input type="text" class="form-control" id="member_no" name="member_no" readonly>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalMemberList">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#anggotaModal">
                                     Cari Anggota
                                 </button>
                             </div>
@@ -124,36 +124,85 @@
 </div>
 
      <!-- Modal -->
-    <!-- Modal untuk Daftar Anggota -->
-    <div class="modal fade" id="modalMemberList" tabindex="-1" aria-labelledby="modalMemberListLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="modalMemberListLabel">Daftar Anggota</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Member No</th>
-                                <th>Member Nama</th>
-                                <th>Alamat</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="memberListBody">
-                            <!-- Data akan diisi dengan AJAX -->
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+
+<div class="modal fade" id="anggotaModal" tabindex="-1" aria-labelledby="anggotaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="anggotaModalLabel">Daftar Anggota</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Member No</th>
+                            <th>Member Nama</th>
+                            <th>Alamat</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="anggotaTableBody">
+                        <!-- Data anggota akan dimuat di sini melalui AJAX -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
+
+
+<script>
+   $(document).ready(function () {
+    $("#openModalButton").on("click", function () {
+        // Tampilkan modal
+        $("#anggotaModal").modal("show");
+
+        // Ambil data anggota melalui AJAX
+        $.ajax({
+            url: "/core-member/data", // URL dari route yang ditambahkan
+            method: "GET",
+            success: function (response) {
+                let rows = "";
+                response.data.forEach((anggota, index) => {
+                    rows += `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${anggota.member_no}</td>
+                            <td>${anggota.member_name}</td>
+                            <td>${anggota.member_address}</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary" onclick="pilihAnggota('${anggota.member_no}')">Pilih</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+                $("#anggotaTableBody").html(rows);
+            },
+            error: function () {
+                alert("Gagal memuat data anggota.");
+            },
+        });
+    });
+});
+
+
+// Fungsi untuk menangani tombol "Pilih"
+function pilihAnggota(memberNo) {
+    // Misalnya, masukkan Member No ke dalam input di form utama
+    $("#memberNoInput").val(memberNo);
+    $("#anggotaModal").modal("hide"); // Tutup modal
+}
+
+
+</script>
+
 
 
 @stop

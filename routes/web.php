@@ -104,6 +104,7 @@ Route::prefix('core_member')->name('core_member.')->group(function () {
     Route::post('delete{id}', [CoreMemberController::class, 'delete'])->name('delete');
     Route::get('CoreMemberSavings', [CoreMemberController::class, 'CoreMemberSavings'])
     ->name('core_member.CoreMemberSavings.index');
+    Route::get('/core-member/data', [CoreMemberController::class, 'getData'])->name('core_member.getData');
 
 
 });
