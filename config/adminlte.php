@@ -381,6 +381,11 @@ return [
             'icon' => 'fas fa-fw fa-tree',
         ],
         [
+            'text' => 'Master Data Anggota',
+            'url' => 'core_member/getMasterDataCoreMember',
+            'icon' => 'fas fa-fw fa-list',
+        ],
+        [
             'text' => 'Transaksi Simpanan Anggota',
            'url' => 'core_member/CoreMemberSavings',
             'icon' => 'fas fa-fw fa-lock',

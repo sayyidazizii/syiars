@@ -102,6 +102,8 @@ Route::prefix('core_member')->name('core_member.')->group(function () {
     Route::get('edit{id}', [CoreMemberController::class, 'update'])->name('update');
     Route::post('prosesedit{id}', [CoreMemberController::class, 'prosesupdate'])->name('prosesupdate');
     Route::post('delete{id}', [CoreMemberController::class, 'delete'])->name('delete');
+    Route::get('getMasterDataCoreMember', [CoreMemberController::class, 'getMasterDataCoreMember'])
+    ->name('core_member.getMasterDataCoreMember.index');
     Route::get('CoreMemberSavings', [CoreMemberController::class, 'CoreMemberSavings'])
     ->name('core_member.CoreMemberSavings.index');
     Route::get('/core-member/data', [CoreMemberController::class, 'getData'])->name('core_member.getData');
@@ -124,4 +126,4 @@ Route::get('/get-cities/{provinceId}', [LocationController::class, 'getCities'])
 Route::get('/get-kecamatans/{cityId}', [LocationController::class, 'getKecamatans']);
 Route::get('/get-kelurahans/{kecamatanId}', [LocationController::class, 'getKelurahans']);
 Route::get('/get-dusuns/{kelurahanId}', [LocationController::class, 'getDusuns']);
-
+Route::get('/api/members', [CoreMemberController::class, 'getMembers']);

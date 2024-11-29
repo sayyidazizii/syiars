@@ -27,7 +27,7 @@
                             <label for="member_no">No. Anggota *</label>
                             <div class="input-group">
                                 <input type="text" class="form-control" id="member_no" name="member_no" readonly>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#anggotaModal">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalMemberList">
                                     Cari Anggota
                                 </button>
                             </div>
@@ -93,26 +93,29 @@
                             <input type="number" class="form-control" id="simp_wajib" name="simp_wajib" value="0.00" required>
                         </div>
 
-                        <div class="form-group mb-3">
-                            <label for="sandi">Sandi *</label>
-                            <select class="form-control" id="sandi" name="sandi" required>
-                                <option value="">-- Pilih Salah Satu --</option>
-                            </select>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="simpanan_pokok">Simpanan Pokok *</label>
-                            <input type="number" class="form-control" id="simpanan_pokok" name="simpanan_pokok" required>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="simpanan_khusus">Simpanan Khusus *</label>
-                            <input type="number" class="form-control" id="simpanan_khusus" name="simpanan_khusus" required>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="simpanan_wajib">Simpanan Wajib *</label>
-                            <input type="number" class="form-control" id="simpanan_wajib" name="simpanan_wajib" required>
+                            <div class="form-group mb-3">
+                                <label for="sandi">Sandi *</label>
+                                <select class="form-control" id="sandi" name="sandi" required>
+                                    <option value="">-- Pilih Salah Satu --</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="simpanan_pokok">Simpanan Pokok *</label>
+                                <input type="number" class="form-control" id="simpanan_pokok" name="simpanan_pokok"
+                                    required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="simpanan_khusus">Simpanan Khusus *</label>
+                                <input type="number" class="form-control" id="simpanan_khusus" name="simpanan_khusus"
+                                    required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="simpanan_wajib">Simpanan Wajib *</label>
+                                <input type="number" class="form-control" id="simpanan_wajib" name="simpanan_wajib"
+                                    required>
+                            </div>
                         </div>
                     </div>
-                </div>
 
                 <div class="d-flex justify-content-end">
                     <a href="{{ route('core_member.index') }}" class="btn btn-danger me-2">Batal</a>
@@ -124,93 +127,133 @@
 </div>
 
      <!-- Modal -->
-
-<div class="modal fade" id="anggotaModal" tabindex="-1" aria-labelledby="anggotaModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="anggotaModalLabel">Daftar Anggota</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Member No</th>
-                            <th>Member Nama</th>
-                            <th>Alamat</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="anggotaTableBody">
-                        <!-- Data anggota akan dimuat di sini melalui AJAX -->
-                    </tbody>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <!-- Modal untuk Daftar Anggota -->
+    <div class="modal fade" id="modalMemberList" tabindex="-1" aria-labelledby="modalMemberListLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="modalMemberListLabel">Daftar Anggota</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Member No</th>
+                                <th>Member Nama</th>
+                                <th>Alamat</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="memberListBody">
+                            <!-- Data akan diisi dengan AJAX -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-
-<script>
-   $(document).ready(function () {
-    $("#openModalButton").on("click", function () {
-        // Tampilkan modal
-        $("#anggotaModal").modal("show");
-
-        // Ambil data anggota melalui AJAX
-        $.ajax({
-            url: "/core-member/data", // URL dari route yang ditambahkan
-            method: "GET",
-            success: function (response) {
-                let rows = "";
-                response.data.forEach((anggota, index) => {
-                    rows += `
-                        <tr>
-                            <td>${index + 1}</td>
-                            <td>${anggota.member_no}</td>
-                            <td>${anggota.member_name}</td>
-                            <td>${anggota.member_address}</td>
-                            <td>
-                                <button class="btn btn-sm btn-primary" onclick="pilihAnggota('${anggota.member_no}')">Pilih</button>
-                            </td>
-                        </tr>
-                    `;
-                });
-                $("#anggotaTableBody").html(rows);
-            },
-            error: function () {
-                alert("Gagal memuat data anggota.");
-            },
-        });
-    });
-});
-
-
-// Fungsi untuk menangani tombol "Pilih"
-function pilihAnggota(memberNo) {
-    // Misalnya, masukkan Member No ke dalam input di form utama
-    $("#memberNoInput").val(memberNo);
-    $("#anggotaModal").modal("hide"); // Tutup modal
-}
-
-
-</script>
-
 
 
 @stop
-
 @section('css')
     <link rel="stylesheet" href="/css/admin.custom.css">
 @stop
-
 @section('js')
+    <script>
+        $(document).ready(function() {
+            $('#modalMemberList').on('show.bs.modal', function() {
+                loadMemberList();
+            });
+
+            function loadMemberList() {
+                $.ajax({
+                    url: '/api/members',
+                    method: 'GET',
+                    success: function(data) {
+                        let memberListBody = $('#memberListBody');
+                        memberListBody.empty();
+                        data.forEach(function(member, index) {
+                            memberListBody.append(`
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${member.member_no}</td>
+                            <td>${member.member_name}</td>
+                            <td>${member.member_address}</td>
+                            <td>
+                                <button
+                                type="button"
+                                class="btn btn-primary btn-select-member"
+                                data-member-no="${member.member_no}"
+                                data-member-name="${member.member_name}"
+                                data-member-character="${member.member_character}"
+                                data-province-id="${member.province_id}"
+                                data-city-id="${member.city_id}"
+                                data-kecamatan-id="${member.kecamatan_id}"
+                                data-kelurahan-id="${member.kelurahan_id}"
+                                data-dusun-id="${member.dusun_id}"
+                                data-member-address="${member.member_address}"
+                                data-simp-pokok="${member.simp_pokok}"
+                                data-simp-khusus="${member.simp_khusus}"
+                                data-simp-wajib="${member.simp_wajib}"
+                                data-sandi="${member.sandi}"
+                                data-simpanan-pokok="${member.simpanan_pokok}"
+                                data-simpanan-khusus="${member.simpanan_khusus}"
+                                data-simpanan-wajib="${member.simpanan_wajib}">
+                                Select
+                            </button>
+
+                            </td>
+                        </tr>
+                    `);
+                        });
+                    },
+                    error: function(error) {
+                        console.error('Gagal memuat data anggota:', error);
+                        alert('Terjadi kesalahan saat memuat daftar anggota.');
+                    },
+                });
+            }
+            $(document).on('click', '.btn-select-member', function() {
+                const memberNo = $(this).data('member-no');
+                const memberName = $(this).data('member-name');
+                const memberCharacter = $(this).data('member-character');
+                const provinceId = $(this).data('province-id');
+                const cityId = $(this).data('city-id');
+                const kecamatanId = $(this).data('kecamatan-id');
+                const kelurahanId = $(this).data('kelurahan-id');
+                const dusunId = $(this).data('dusun-id');
+                const memberAddress = $(this).data('member-address');
+                const simpPokok = $(this).data('simp-pokok');
+                const simpKhusus = $(this).data('simp-khusus');
+                const simpWajib = $(this).data('simp-wajib');
+                const sandi = $(this).data('sandi');
+                const simpananPokok = $(this).data('simpanan-pokok');
+                const simpananKhusus = $(this).data('simpanan-khusus');
+                const simpananWajib = $(this).data('simpanan-wajib');
+                $('#member_no').val(memberNo);
+                $('#member_name').val(memberName);
+                $('#member_character').val(memberCharacter);
+                $('#province_id').val(provinceId);
+                $('#city_id').val(cityId);
+                $('#kecamatan_id').val(kecamatanId);
+                $('#kelurahan_id').val(kelurahanId);
+                $('#dusun_id').val(dusunId);
+                $('#member_address').val(memberAddress);
+                $('#simp_pokok').val(simpPokok);
+                $('#simp_khusus').val(simpKhusus);
+                $('#simp_wajib').val(simpWajib);
+                $('#sandi').val(sandi);
+                $('#simpanan_pokok').val(simpananPokok);
+                $('#simpanan_khusus').val(simpananKhusus);
+                $('#simpanan_wajib').val(simpananWajib);
+                $('#modalMemberList').modal('hide');
+            });
+        });
+    </script>
     <script src="/js/member_form.js"></script>
 @stop

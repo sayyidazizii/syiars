@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\CoreBranch;
 use App\Models\CoreCity;
 use App\Models\CoreDusun;
 use App\Models\CoreMember;
@@ -155,29 +156,33 @@ class CoreMemberController extends Controller
         }
     }
 
+    public function getMasterDataCoreMember()
+    {
+        $branches = CoreBranch::all();
+        $core_member = CoreMember::all();
+        $memberstatus = Configuration::MemberStatus();
+        $membercharacter = Configuration::MemberCharacter();
+
+        return view('content.CoreMember.getMasterDataCoreMember', compact('core_member', 'memberstatus', 'membercharacter', 'branches'));
+    }
+
     public function CoreMemberSavings()
-{
-    $core_member = CoreMember::all();
-    $memberstatus = Configuration::MemberStatus();
-    $membercharacter = Configuration::MemberCharacter();
-    return view('content.CoreMember.CoreMemberSavings', compact('core_member', 'memberstatus', 'membercharacter'));
+    {
+        $core_member = CoreMember::all();
+        $memberstatus = Configuration::MemberStatus();
+        $membercharacter = Configuration::MemberCharacter();
+        return view('content.CoreMember.CoreMemberSavings', compact('core_member', 'memberstatus', 'membercharacter'));
 
 }
 
 // Contoh Controller
-public function getData(Request $request)
-    {
-        if ($request->ajax()) {
-            $data = CoreMember::all(); // Ganti dengan query sesuai kebutuhan
-            return DataTables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    return '<button class="btn btn-sm btn-primary" onclick="selectMember(' . $row->id . ')">Pilih</button>';
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-    }
+public function getActiveMembers(Request $request)
+{
+    // Hanya mengambil anggota dengan status "Aktif"
+    $core_members = CoreMember::where('status', 'Aktif')->get();
+
+    return response()->json($core_members);
+}
 
 
 }
