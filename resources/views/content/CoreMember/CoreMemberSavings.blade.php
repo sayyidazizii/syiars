@@ -11,6 +11,7 @@
             <li class="breadcrumb-item active" aria-current="page">Edit Anggota</li>
         </ol>
     </nav>
+
     <div class="card">
         <div class="card-header bg-success text-white">
             Form Edit
@@ -116,18 +117,16 @@
                         </div>
                     </div>
 
-                <div class="d-flex justify-content-end">
-                    <a href="{{ route('core_member.index') }}" class="btn btn-danger me-2">Batal</a>
-                    <button type="submit" class="btn btn-success">Simpan</button>
-                </div>
-            </form>
+                    <div class="d-flex justify-content-end">
+                        <a href="{{ route('core_member.index') }}" class="btn btn-danger me-2">Batal</a>
+                        <button type="submit" class="btn btn-success">Simpan</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-
-     <!-- Modal -->
-    <!-- Modal untuk Daftar Anggota -->
-    <div class="modal fade" id="modalMemberList" tabindex="-1" aria-labelledby="modalMemberListLabel" aria-hidden="true">
+    <div class="modal fade" id="modalMemberList" tabindex="-1" aria-labelledby="modalMemberListLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
@@ -151,13 +150,11 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-
-
 @stop
 @section('css')
     <link rel="stylesheet" href="/css/admin.custom.css">

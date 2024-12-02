@@ -63,8 +63,6 @@ class CoreMember extends Model
             'member_no_status',
             'data_state',
     ];
-
-    
     protected $dates = [
         'created_on',
         'deleted_at',

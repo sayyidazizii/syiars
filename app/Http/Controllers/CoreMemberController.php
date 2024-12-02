@@ -10,10 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\CoreKecamatan;
 use App\Models\CoreKelurahan;
 use App\Helpers\Configuration;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
-use Yajra\DataTables\DataTables;
-
 class CoreMemberController extends Controller
 {
     public function index()
@@ -173,16 +170,14 @@ class CoreMemberController extends Controller
         $membercharacter = Configuration::MemberCharacter();
         return view('content.CoreMember.CoreMemberSavings', compact('core_member', 'memberstatus', 'membercharacter'));
 
-}
-
-// Contoh Controller
-public function getActiveMembers(Request $request)
-{
-    // Hanya mengambil anggota dengan status "Aktif"
-    $core_members = CoreMember::where('status', 'Aktif')->get();
-
-    return response()->json($core_members);
-}
+    }
+    public function getMembers()
+    {
+        $core_member = CoreMember::select('member_no', 'member_name', 'member_address')
+            ->where('member_status', 1)
+            ->get();
+        return response()->json($core_member);
+    }
 
 
 }
