@@ -11,6 +11,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Edit Anggota</li>
             </ol>
         </nav>
+
         <div class="card">
             <div class="card-header bg-success text-white">
                 Form Edit
@@ -20,6 +21,7 @@
                     @csrf
                     @method('PUT')
                     <div class="row">
+                        <!-- Kolom Kiri -->
                         <div class="col-md-6">
                             <div class="form-group mb-3">
                                 <label for="member_no">No. Anggota *</label>
@@ -76,6 +78,8 @@
                                 <textarea class="form-control" id="member_address" name="member_address" required></textarea>
                             </div>
                         </div>
+
+                        <!-- Kolom Kanan -->
                         <div class="col-md-6">
                             <div class="form-group mb-3">
                                 <label for="simp_pokok">Saldo Simp Pokok</label>
@@ -125,6 +129,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <!-- Modal untuk Daftar Anggota -->
     <div class="modal fade" id="modalMemberList" tabindex="-1" aria-labelledby="modalMemberListLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -150,11 +157,13 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
+
+
 @stop
 @section('css')
     <link rel="stylesheet" href="/css/admin.custom.css">
