@@ -26,9 +26,9 @@ class CoreProvince extends Model
     {
         return $this->belongsTo(CoreBranch::class, 'branch_id');
     }
-    public function Member(): BelongsTo
+    public function Member(): HasMany
     {
-        return $this->belongsTo(CoreMember::class);
+        return $this->hasMany(CoreMember::class);
     }
     public function City(): HasMany
     {

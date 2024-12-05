@@ -173,11 +173,14 @@ class CoreMemberController extends Controller
     }
     public function getMembers()
     {
-        $core_member = CoreMember::select('member_no', 'member_name', 'member_address')
+        $core_member = CoreMember::select('member_no', 'member_name', 'member_address', 'member_character', 'province_id', 'city_id', 'kecamatan_id', 'kelurahan_id', 'dusun_id', 'saldo_pokok_old', 'saldo_khusus_old', 'saldo_wajib_old', 'member_password', 'member_principal_savings', 'member_special_savings', 'member_mandatory_savings')
             ->where('member_status', 1)
+            ->with('province')
+            ->with('city')
+            ->with('kecamatan')
+            ->with('kelurahan')
+            ->with('dusun')
             ->get();
         return response()->json($core_member);
     }
-
-
 }
