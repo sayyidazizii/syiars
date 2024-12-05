@@ -46,7 +46,6 @@
                         <option value="{{ $branch->id }}">{{ $branch->branch_name }}</option>
                     @endforeach
                 </select>
-               
             </div>
             <div class="d-flex justify-content-end mb-3">
                 <!-- Sejajarkan tombol "Batal" dan "Cari" di sebelah kanan dengan ikon -->
