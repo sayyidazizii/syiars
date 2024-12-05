@@ -11,6 +11,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Edit Anggota</li>
             </ol>
         </nav>
+
         <div class="card">
             <div class="card-header bg-success text-white">
                 Form Edit
@@ -20,6 +21,7 @@
                     @csrf
                     @method('PUT')
                     <div class="row">
+                        <!-- Kolom Kiri -->
                         <div class="col-md-6">
                             <div class="form-group mb-3">
                                 <label for="member_no">No. Anggota *</label>
@@ -33,86 +35,76 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="member_name">Nama Anggota *</label>
-                                <input type="text" class="form-control" id="member_name" name="member_name" required>
+                                <input type="text" class="form-control" id="member_name" name="member_name" readonly>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="member_character">Sifat Anggota *</label>
-                                <select class="form-control" id="member_character" name="member_character" required>
-                                    <option value="">-- Pilih Salah Satu --</option>
-                                </select>
+                                <input type="text" class="form-control" id="member_character" name="member_character"
+                                    readonly>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="province_id">Provinsi *</label>
-                                <select class="form-control" id="province_id" name="province_id" required>
-                                    <option value="">-- Pilih Salah Satu --</option>
-                                </select>
+                                <input type="text" class="form-control" id="province_id" name="province_id" readonly>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="city_id">Kabupaten *</label>
-                                <select class="form-control" id="city_id" name="city_id" required>
-                                    <option value="">-- Pilih Salah Satu --</option>
-                                </select>
+                                <input type="text" class="form-control" id="city_id" name="city_id" readonly>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="kecamatan_id">Kecamatan *</label>
-                                <select class="form-control" id="kecamatan_id" name="kecamatan_id" required>
-                                    <option value="">-- Pilih Salah Satu --</option>
-                                </select>
+                                <input type="text" class="form-control" id="kecamatan_id" name="kecamatan_id" readonly>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="kelurahan_id">Kelurahan *</label>
-                                <select class="form-control" id="kelurahan_id" name="kelurahan_id" required>
-                                    <option value="">-- Pilih Salah Satu --</option>
-                                </select>
+                                <input type="text" class="form-control" id="kelurahan_id" name="kelurahan_id" readonly>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="dusun_id">Dusun *</label>
-                                <select class="form-control" id="dusun_id" name="dusun_id" required>
-                                    <option value="">-- Pilih Salah Satu --</option>
-                                </select>
+                                <input type="text" class="form-control" id="dusun_id" name="dusun_id" readonly>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="member_address">Alamat *</label>
-                                <textarea class="form-control" id="member_address" name="member_address" required></textarea>
+                                <textarea class="form-control" id="member_address" name="member_address" readonly></textarea>
                             </div>
                         </div>
+
+                        <!-- Kolom Kanan -->
                         <div class="col-md-6">
                             <div class="form-group mb-3">
-                                <label for="simp_pokok">Saldo Simp Pokok</label>
-                                <input type="number" class="form-control" id="simp_pokok" name="simp_pokok" value="0.00"
-                                    required>
+                                <label for="saldo_pokok_old">Saldo Simp Pokok</label>
+                                <input type="number" class="form-control" id="saldo_pokok_old" name="saldo_pokok_old"
+                                    value="0.00" readonly>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="simp_khusus">Saldo Simp Khusus</label>
-                                <input type="number" class="form-control" id="simp_khusus" name="simp_khusus"
-                                    value="0.00" required>
+                                <label for="saldo_khusus_old">Saldo Simp Khusus</label>
+                                <input type="number" class="form-control" id="saldo_khusus_old" name="saldo_khusus_old"
+                                    value="0.00" readonly>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="simp_wajib">Saldo Simp Wajib</label>
-                                <input type="number" class="form-control" id="simp_wajib" name="simp_wajib" value="0.00"
-                                    required>
+                                <label for="saldo_wajib_old">Saldo Simp Wajib</label>
+                                <input type="number" class="form-control" id="saldo_wajib_old" name="saldo_wajib_old"
+                                    value="0.00" readonly>
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="sandi">Sandi *</label>
-                                <select class="form-control" id="sandi" name="sandi" required>
-                                    <option value="">-- Pilih Salah Satu --</option>
-                                </select>
+                                <label for="member_password">Sandi *</label>
+                                <input type="text" class="form-control" id="member_password" name="member_password"
+                                    readonly>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="simpanan_pokok">Simpanan Pokok *</label>
-                                <input type="number" class="form-control" id="simpanan_pokok" name="simpanan_pokok"
-                                    required>
+                                <label for="member_mandatory_savings">Simpanan Pokok *</label>
+                                <input type="number" class="form-control" id="member_mandatory_savings"
+                                    name="member_mandatory_savings" required>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="simpanan_khusus">Simpanan Khusus *</label>
-                                <input type="number" class="form-control" id="simpanan_khusus" name="simpanan_khusus"
-                                    required>
+                                <label for="member_special_savings">Simpanan Khusus *</label>
+                                <input type="number" class="form-control" id="member_special_savings"
+                                    name="member_special_savings" required>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="simpanan_wajib">Simpanan Wajib *</label>
-                                <input type="number" class="form-control" id="simpanan_wajib" name="simpanan_wajib"
-                                    required>
+                                <label for="member_principal_savings">Simpanan Wajib *</label>
+                                <input type="number" class="form-control" id="member_principal_savings"
+                                    name="member_principal_savings" required>
                             </div>
                         </div>
                     </div>
@@ -125,6 +117,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <!-- Modal untuk Daftar Anggota -->
     <div class="modal fade" id="modalMemberList" tabindex="-1" aria-labelledby="modalMemberListLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -150,11 +145,13 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
+
+
 @stop
 @section('css')
     <link rel="stylesheet" href="/css/admin.custom.css">
@@ -187,11 +184,11 @@
                                 data-member-no="${member.member_no}"
                                 data-member-name="${member.member_name}"
                                 data-member-character="${member.member_character}"
-                                data-province-id="${member.province_id}"
-                                data-city-id="${member.city_id}"
-                                data-kecamatan-id="${member.kecamatan_id}"
-                                data-kelurahan-id="${member.kelurahan_id}"
-                                data-dusun-id="${member.dusun_id}"
+                                data-province-id="${member.province ? member.province.province_name : ''}"
+                                data-city-id="${member.city ? member.city.city_name : ''}"
+                                data-kecamatan-id="${member.kecamatan ? member.kecamatan.kecamatan_name : ''}"
+                                data-kelurahan-id="${member.kelurahan ? member.kelurahan.kelurahan_name : ''}"
+                                data-dusun-id="${member.dusun ? member.dusun.dusun_name : ''}"
                                 data-member-address="${member.member_address}"
                                 data-simp-pokok="${member.simp_pokok}"
                                 data-simp-khusus="${member.simp_khusus}"

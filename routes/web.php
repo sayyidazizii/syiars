@@ -102,10 +102,8 @@ Route::prefix('core_member')->name('core_member.')->group(function () {
     Route::get('edit{id}', [CoreMemberController::class, 'update'])->name('update');
     Route::post('prosesedit{id}', [CoreMemberController::class, 'prosesupdate'])->name('prosesupdate');
     Route::post('delete{id}', [CoreMemberController::class, 'delete'])->name('delete');
-    Route::get('getMasterDataCoreMember', [CoreMemberController::class, 'getMasterDataCoreMember'])
-    ->name('core_member.getMasterDataCoreMember.index');
-    Route::get('CoreMemberSavings', [CoreMemberController::class, 'CoreMemberSavings'])
-    ->name('core_member.CoreMemberSavings.index');
+    Route::get('getMasterDataCoreMember', [CoreMemberController::class, 'getMasterDataCoreMember'])->name('core_member.getMasterDataCoreMember.index');
+    Route::get('CoreMemberSavings', [CoreMemberController::class, 'CoreMemberSavings'])->name('core_member.CoreMemberSavings.index');
 });
 Route::prefix('core_member_status')->name('core_member_status.')->group(function () {
     Route::get('/', [CoreMemberController::class, 'index_update'])->name('index_update');

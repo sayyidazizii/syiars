@@ -81,24 +81,24 @@ class CoreMember extends Model
             $model->deleted_id = $userid;
         });
     }
-    public function Dusun(): HasMany
+    public function dusun(): Belongsto
     {
-        return $this->hasMany(CoreDusun::class, 'dusun_id');
+        return $this->belongsto(CoreDusun::class, 'dusun_id');
     }
-    public function Kelurahan(): HasMany
+    public function kelurahan(): Belongsto
     {
-        return $this->hasMany(CoreKelurahan::class, 'kelurahan_id');
+        return $this->belongsto(CoreKelurahan::class, 'kelurahan_id');
     }
-    public function Kecamatan(): HasMany
+    public function kecamatan(): Belongsto
     {
-        return $this->hasMany(CoreKecamatan::class, 'kecamatan_id');
+        return $this->belongsto(CoreKecamatan::class, 'kecamatan_id');
     }
-    public function City(): HasMany
+    public function city(): Belongsto
     {
-        return $this->hasMany(CoreCity::class, 'city_id');
+        return $this->belongsto(CoreCity::class, 'city_id');
     }
-    public function Province(): HasMany
+    public function province(): BelongsTo
     {
-        return $this->hasMany(CoreProvince::class, 'province_id');
+        return $this->belongsTo(CoreProvince::class, 'province_id');
     }
 }
