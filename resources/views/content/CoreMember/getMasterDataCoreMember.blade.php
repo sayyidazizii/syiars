@@ -32,32 +32,6 @@
     </button>
 </div>
 @endif
-
-<div class="card">
-    <div class="card-header bg-success text-white">
-        <h3 class="card-title">Master Data Anggota</h3>
-    </div>
-    <div class="card-body">
-        <!-- Filter Section -->
-        <div class="form-group">
-            <label for="branch" class="font-weight-bold">Cabang <span class="text-danger">*</span></label>
-            <select id="branch" class="form-control" name="branch" onchange="this.form.submit()">
-                <option value="" disabled selected>Select</option>
-                @foreach ($branches as $branch)
-                <option value="{{ $branch->id }}" {{ request('branch') == $branch->id ? 'selected' : '' }}>
-                    {{ $branch->name }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="d-flex justify-content-end mb-3">
-            <!-- Sejajarkan tombol "Batal" dan "Cari" di sebelah kanan dengan ikon -->
-            <button class="btn btn-danger mr-2">
-                <i class="fa fa-times"></i> Batal
-            </button>
-            <button class="btn btn-success">
-                <i class="fa fa-search"></i> Cari
-            </button>
-        </div>
     <div class="card">
         <div class="card-header bg-success text-white">
             <h3 class="card-title">Master Data Anggota</h3>
